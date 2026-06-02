@@ -8,14 +8,14 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
         <title>Contact - Aneka Galery</title>
-        <link rel="stylesheet" href="../css/contact.css">
+        <link rel="stylesheet" href="css/contact.css">
     </head>
     <body>
 
         <!-- NAVBAR -->
         <section id="navbar">
             <a href="index.html">
-                <img src="../img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
+                <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
             </a>
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
                 <span></span>
@@ -33,13 +33,13 @@
         <div class="contact-hero-wrapper">
             <div class="contact-slider">
                 <div class="contact-slide active">
-                    <img src="../img/contact1.jpeg" alt="slide1">
+                    <img src="img/contact1.jpeg" alt="slide1">
                 </div>
                 <div class="contact-slide">
-                    <img src="../img/contact2.jpeg" alt="slide2">
+                    <img src="img/contact2.jpeg" alt="slide2">
                 </div>
                 <div class="contact-slide">
-                    <img src="../img/contact3.jpeg" alt="slide3">
+                    <img src="img/contact3.jpeg" alt="slide3">
                 </div>
                 <div class="contact-overlay"></div>
             </div>

@@ -8,12 +8,12 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
         <title>Service - Aneka Galery</title>
-        <link rel="stylesheet" href="../css/service.css">
+        <link rel="stylesheet" href="css/service.css">
     </head>
     <body>
         <section id="navbar">
             <a href="index.html">
-                <img src="../img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
+                <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
             </a>
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
                 <span></span>
@@ -31,13 +31,13 @@
         <div class="service-hero-wrapper">
             <div class="service-slider">
                 <div class="service-slide active">
-                    <img src="../img/slide1.jpeg" alt="slide1">
+                    <img src="img/slide1.jpeg" alt="slide1">
                 </div>
                 <div class="service-slide">
-                    <img src="../img/slide2.jpeg" alt="slide2">
+                    <img src="img/slide2.jpeg" alt="slide2">
                 </div>
                 <div class="service-slide">
-                    <img src="../img/slide3.jpeg" alt="slide3">
+                    <img src="img/slide3.jpeg" alt="slide3">
                 </div>
                 <div class="service-overlay"></div>
             </div>
@@ -273,7 +273,7 @@
                     });
                 });
         </script>
-        <script src="../js/service.js"></script>
+        <script src="js/service.js"></script>
         <a href="https://wa.me/6282254068851" target="_blank" class="wa-float">
             <div class="wa-pulse"></div>
             <div class="wa-pulse wa-pulse2"></div>

@@ -64,7 +64,6 @@
                 text-decoration: underline;
             }
 
-            /* ===== HAMBURGER MOBILE ===== */
             .hamburger {
                 display: none;
                 flex-direction: column;

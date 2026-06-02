@@ -3,18 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="../img/anekagalery_32x32.png"/>
+        <link rel="shortcut icon" href="img/anekagalery_32x32.png"/>
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
         <title>About Us - Aneka Galery</title>
-        <link rel="stylesheet" href="../css/aboutus.css">
+        <link rel="stylesheet" href="css/aboutus.css">
     </head>
     <body>
 
         <section id="navbar">
             <a href="index.html">
-                <img src="../img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
+                <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
             </a>
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
                 <span></span>
@@ -32,13 +32,13 @@
         <div class="about-hero-wrapper">
             <div class="about-slider">
                 <div class="about-slide active">
-                    <img src="../img/slide1.jpeg" alt="slide1">
+                    <img src="img/slide1.jpeg" alt="slide1">
                 </div>
                 <div class="about-slide">
-                    <img src="../img/slide2.jpeg" alt="slide2">
+                    <img src="img/slide2.jpeg" alt="slide2">
                 </div>
                 <div class="about-slide">
-                    <img src="../img/slide3.jpeg" alt="slide3">
+                    <img src="img/slide3.jpeg" alt="slide3">
                 </div>
                 <div class="about-overlay"></div>
             </div>
@@ -82,7 +82,7 @@
 
             <div class="about-section">
                 <div class="about-img">
-                    <img src="../img/contact2.jpeg" alt="Lokasi Aneka Galeri"/>
+                    <img src="img/contact2.jpeg" alt="Lokasi Aneka Galeri"/>
                 </div>
                 <div class="about-text">
                     <span class="tag">Awal Mula</span>
@@ -100,7 +100,7 @@
 
             <div class="about-section reverse">
                 <div class="about-img">
-                    <img src="../img/contact3.jpeg" alt="Proses Produksi"/>
+                    <img src="img/contact3.jpeg" alt="Proses Produksi"/>
                 </div>
                 <div class="about-text">
                     <span class="tag">Komitmen Kami</span>
@@ -162,14 +162,14 @@
                 <div class="owner-cards">
                     <div class="owner-card">
                         <div class="owner-avatar-placeholder">
-                            <img src="../img/vebrio.jpeg" alt="Vebrio Chang" class="owner-avatar">
+                            <img src="img/vebrio.jpeg" alt="Vebrio Chang" class="owner-avatar">
                         </div>
                         <h4>Vebrio Chang</h4>
                         <p>Founder & Owner</p>
                     </div>
                     <div class="owner-card">
                         <div class="owner-avatar-placeholder">
-                            <img src="../img/ferry.jpeg" alt="Ferry Febrianto" class="owner-avatar">
+                            <img src="img/ferry.jpeg" alt="Ferry Febrianto" class="owner-avatar">
                         </div>
                         <h4>Ferry Febrianto</h4>
                         <p>Co-Owner</p>

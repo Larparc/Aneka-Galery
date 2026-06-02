@@ -3,17 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="../img/anekagalery_32x32.png"/>
+        <link rel="shortcut icon" href="img/anekagalery_32x32.png"/>
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
         <title>Aneka Galery</title>
-        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
         <section id="navbar">
             <a href="index.php">
-                <img src="../img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
+                <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
             </a>
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
                 <span></span>
@@ -31,15 +31,15 @@
         <div class="slider">
 
             <div class="slide active">
-                <img src="../img/slide1.jpeg">
+                <img src="img/slide1.jpeg">
             </div>
 
             <div class="slide">
-                <img src="../img/slide2.jpeg">
+                <img src="img/slide2.jpeg">
             </div>
 
             <div class="slide">
-                <img src="../img/slide3.jpeg">
+                <img src="img/slide3.jpeg">
             </div>
 
             <div class="overlay"></div>
@@ -177,7 +177,7 @@
 
             <div class="footer-bottom">
                 <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
-                <img src="../img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
+                <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
             </div>
         </footer>
 
@@ -231,6 +231,6 @@
                 <i class="fab fa-whatsapp"></i>
             </div>
         </a>
-        <script src="../js/index.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>
