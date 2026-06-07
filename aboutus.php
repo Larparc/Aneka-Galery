@@ -229,7 +229,7 @@
 
                 <div class="footer-bottom">
                     <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
-                    <img src="../img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
+                    <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
                 </div>
             </footer>
 
@@ -253,6 +253,6 @@
                     <i class="fab fa-whatsapp"></i>
                 </div>
             </a>
-            <script src="../js/aboutus.js"></script>
+            <script src="js/aboutus.js"></script>
         </body>
     </html>

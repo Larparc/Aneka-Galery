@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="../img/anekagalery_32x32.png"/>
+        <link rel="shortcut icon" href="img/anekagalery_32x32.png"/>
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -182,7 +182,7 @@
 
                 <div class="footer-bottom">
                     <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
-                    <img src="../img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
+                    <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
                 </div>
         </footer>
 
@@ -206,6 +206,6 @@
                 <i class="fab fa-whatsapp"></i>
             </div>
         </a>
-        <script src="../js/contact.js"></script>
+        <script src="js/contact.js"></script>
     </body>
 </html>
