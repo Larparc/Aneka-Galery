@@ -56,7 +56,7 @@
             <div class="location-address">
                 <i class="fas fa-map-marker-alt"></i>
                 <span style="text-align: center;">Jl. Komodor Yos Sudarso No.11 A-B, Sungai
-                    Belitung, Kec. Pontianak Bar., Kota Pontianak, Kalimantan Barat 78113</span>
+                    Belitung, Kec. Pontianak Barat, Kota Pontianak, Kalimantan Barat 78113</span>
             </div>
             <div class="map-container">
                 <iframe
