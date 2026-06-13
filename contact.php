@@ -1,3 +1,7 @@
+<?php
+include "koneksi.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,7 +16,6 @@
     </head>
     <body>
 
-        <!-- NAVBAR -->
         <section id="navbar">
             <a href="index.html">
                 <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
