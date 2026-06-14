@@ -429,6 +429,9 @@
                 outline: none;
                 transition: 0.2s ease;
             }
+            .input-group upload-box {
+                view-transition-name: article-image;
+            }
 
             .input-group input:focus,
             .input-group select:focus,

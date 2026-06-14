@@ -46,7 +46,7 @@ include "koneksi.php"
                 <div class="service-overlay"></div>
             </div>
             <div class="service-hero">
-                <h1>Service</h1>
+                <h1>Service</h1>    
             </div>
         </div>
 
