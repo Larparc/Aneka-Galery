@@ -12,7 +12,7 @@ $num = mysqli_num_rows($query);
 
 if($num > 0){
     $_SESSION['username'] = $username;
-    header("Location: index.php");
+    header("Location: panel.php");
     exit;
 }else{
     header("Location: login.php");

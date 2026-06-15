@@ -8,6 +8,7 @@ include "koneksi.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create - Aneka Galery</title>
     <link rel="shortcut icon" href="img/anekagalery_32x32.png">
+    <link rel="stylesheet" href="css/daftar.css">
 </head>
 <body>
     <section class="daftar">
