@@ -1,3 +1,8 @@
+<?php
+include "security.php";
+
+echo "welcome, ".$username;
+?>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">

@@ -8,7 +8,7 @@ $db = "nyaw";
 $conn = mysqli_connect($host, $user, $pass, $db);
 
 if (!$conn) {
-die("Koneksi database gagal: " . mysqli_connect_error());
+    die("Koneksi DataBase Gagal: " . mysqli_connect_error());
 }
 
 ?>
