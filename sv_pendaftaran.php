@@ -6,7 +6,7 @@ $password = trim($_POST['password'] ?? '');
 $no_phone = trim($_POST['no_phone'] ?? '');
 $email = trim($_POST['email'] ?? 0);
 
-$sql = "insert into registrations (username, password, no_phone, email) values(
+$sql = "insert into users (username, password, no_phone, email) values(
     '$username',
     '$password',
     '$no_phone',
