@@ -17,11 +17,11 @@ include "koneksi.php";
             <form action="sv_login.php" method="post" name="form">
                 <div class="login_form">
                     <label for="username">Username</label>
-                    <input type="text" id="username" placeholder="username">
+                    <input type="text" name="username" placeholder="username">
                 </div>
                 <div class="login_form">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="password">
+                    <input type="password" name="password" placeholder="password">
                 </div>
                 <button type="submit">Login</button>
                 <p>Dont have a account?
