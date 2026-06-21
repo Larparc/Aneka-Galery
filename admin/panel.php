@@ -1,45 +1,102 @@
 <?php
 include "security.php";
-
-echo "welcome, ".$username;
 ?>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>Panel - Admin</title>
-    <link rel="shortcut icon" href="img/anekagalery_32x32.png">
+    <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
+    <link rel="stylesheet" href="../css/panel.css">
 </head>
 <body>
-    <section class="header">
-        <header>   
-            <h2>Dashboard Admin</h2>
-            <p>"User"</p>
-            <p>"role..."</p>
-            <p>"jam"</p>
-            <p>"tombol notif"</p>
-            <a href='logout.php' class="logout_panel">Logout </a>
-        </header>
-    </section>
+  <div class="app">
+  <div class="overlay" id="overlay"></div>
 
-    <section class="bodypanel">
-        <h2>Printing Dashboard</h2>
-        <p>Your Project</p>
-        <p>description</p>
-        <input type="file" id="file" placeholder="file">
-        <br>
-        <button>Create project for post</button>
-    </section>
+  <aside class="sidebar" id="sidebar">
+    <div class="logo">
+      <i></i>
+      <div>
+        <b>ANEKA GALERI</b>
+        <span>Digital Printing</span>
+      </div>
+    </div>
 
-    <section>
-        <h2>Your post project</h2>
-    </section>
-    <section class="order-active">
-        <h2>Order Report</h2>
-        <p>order customer....</p>
-    </section>
-    <section class="order_pending">
-        <h2>Order going</h2>
-        <p>order customer...</p>
-    </section>
+    <nav>
+      <a href="panel.php" class="active">
+        Dashboard
+      </a>
+      <a href="account.php">
+        Account
+      </a>
+
+      <small>Pages</small>
+
+      <a href="project.php">
+        Project
+      </a>
+      <a href="orderpending.php">
+        Order Pending
+      </a>
+      <a href="ordercomplete.php">
+        Order Complete
+      </a>
+    </nav>
+  </aside>
+<div class="main">
+    <header class="topbar">
+      <div class="user">
+        <button class="btn round" id="menu-btn" aria-label="Buka menu">
+        </button>
+        <i></i>
+        <div>
+          <b><?php echo "welcome, ".$username; ?></b>
+          <span>Administrator</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="btn round" aria-label="Notifikasi">
+        </button>
+        <a href="logout.php" class="btn light">
+          Logout
+        </a>
+      </div>
+    </header>
+
+    <main class="content">
+      <h1>Dashboard</h1>
+
+      <div class="cards">
+        <a href="project.php" class="card">
+          <i></i>
+          <div><b id="stat-projects">0</b><span>Total Project</span></div>
+        </a>
+        <a href="orderpending.php" class="card">
+          <i></i>
+          <div><b id="stat-pending">0</b><span>Order Pending</span></div>
+        </a>
+        <a href="ordercomplete.php" class="card">
+          <i></i>
+          <div><b id="stat-complete">0</b><span>Order Complete</span></div>
+        </a>
+      </div>
+
+      <div class="block">
+        <div class="head">
+          <h2>Uncomplete order</h2>
+          <a href="orderpending.php">Lihat semua</a>
+        </div>
+        <div class="list" id="dash-pending"></div>
+      </div>
+
+      <div class="block">
+        <div class="head">
+          <h2>Complete Order</h2>
+          <a href="ordercomplete.php">Lihat semua</a>
+        </div>
+        <div class="list" id="dash-complete"></div>
+      </div>
+    </main>
+  </div>
+</div>
 </body>
 </html>

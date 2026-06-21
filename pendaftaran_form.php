@@ -11,28 +11,42 @@ include "koneksi.php";
     <link rel="stylesheet" href="css/daftar.css">
 </head>
 <body>
-    <section class="daftar">
+
+<section class="daftar">
+    <div class="daftar_left">
         <h2>Create Account</h2>
         <form action="sv_pendaftaran.php" method="post" name="form">
+
             <div class="daftar_form">
                 <label for="username">Username</label>
-                <input type="text" name="username" placeholder="username">
+                <input type="text" id="username" placeholder="username">
             </div>
+
             <div class="daftar_form">
                 <label for="username">Password</label>
-                <input type="password" name="password" placeholder="password">
+                <input type="password" id="password" placeholder="password">
             </div>
+
             <div class="daftar_form">
                 <label for="username">Email</label>
-                <input type="email" name="email" placeholder="email">
+                <input type="email" id="email" placeholder="email">
             </div>
+
             <div class="daftar_form">
                 <label for="username">No Phone</label>
-                <input type="number" name="phone" placeholder="phone">
+                <input type="number" id="phone" placeholder="phone">
             </div>
+
             <button type="submit">Create Account</button>
-            <p>Already have a account? <a href="login.php">Login</a></p>
+            <p>
+                Already have an account?
+                <a href="login.php">Login</a>
+            </p>
+
         </form>
-    </section>
+    </div>
+    <div class="daftar_right"></div>
+
+</section>
 </body>
 </html>

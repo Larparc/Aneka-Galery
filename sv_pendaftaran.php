@@ -1,17 +1,30 @@
 <?php
-include "koneksi.php";
+include 'koneksi.php';
 
 $username = trim($_POST['username'] ?? '');
 $password = trim($_POST['password'] ?? '');
-$no_phone = trim($_POST['no_phone'] ?? '');
-$email = trim($_POST['email'] ?? 0);
+$phone = trim($_POST['phone'] ?? '');
+$email = trim($_POST['email'] ?? '');
 
-$sql = "insert into users (username, password, no_phone, email) values(
+$sql = "INSERT INTO profiles
+(
+    role_id,
+    username,
+    password,
+    no_phone,
+    email
+)
+VALUES
+(
+    2,
     '$username',
     '$password',
-    '$no_phone',
-    '$email')";
+    '$phone',
+    '$email'
+)";
+
 $query = mysqli_query($conn, $sql);
+
 header("Location: index.php");
 exit;
 ?>

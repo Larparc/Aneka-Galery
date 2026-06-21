@@ -6,16 +6,35 @@ include "koneksi.php";
 $username = $_POST['username'];
 $password = md5($_POST['password']);
 
-$sql = "select * from profiles where username='$username' and password='$password'";
-$query = mysqli_query($conn,$sql);
+$sql = "SELECT *
+        FROM profiles
+        WHERE username='$username'
+        AND password='$password'";
+
+$query = mysqli_query($conn, $sql);
+
 $num = mysqli_num_rows($query);
 
 if($num > 0){
+
+    $row = mysqli_fetch_assoc($query);
+
     $_SESSION['username'] = $username;
-    header("Location: admin/panel.php");
-    exit;
+    $_SESSION['user_id']  = $row['user_id'];
+    $_SESSION['role_id']  = $row['role_id'];
+
+    if($row['role_id'] == 1){
+        header("Location: admin/panel.php");
+        exit;
+    }else{
+        header("Location: index.php");
+        exit;
+    }
+
 }else{
+
     header("Location: login.php");
     exit;
+
 }
 ?>
