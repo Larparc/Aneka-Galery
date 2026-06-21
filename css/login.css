@@ -1,0 +1,106 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#ffffff;
+}
+
+/* FULL SCREEN */
+.login{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+}
+
+/* =====================================
+   WARNA PANEL KIRI
+   GANTI WARNA DI SINI
+   ===================================== */
+.login_left{
+    width:35%;
+    background:linear-gradient(
+        to bottom,
+        #5f8b8e,
+        #8fd8d8,
+        #c8f6f6
+    );
+    position:relative;
+    overflow:hidden;
+}
+
+.login_left::before{
+    width:170px;
+    border-radius:0 0 90px 90px;
+}
+
+.login_left img{
+    width:300px;
+    max-width:80%;
+    position:relative;
+    z-index:2;
+}
+
+/* AREA ISI FORM */
+.login_right{
+    width:45%;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.login_right h2{
+    font-size:42px;
+    font-weight:700;
+    text-align:center;
+    margin-bottom:40px;
+}
+.login form{
+    width:420px;
+    margin:auto;
+}
+.login_form{
+    margin-bottom:20px;
+}
+
+.login_form label{
+    display:block;
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+.login_form input{
+    width:100%;
+    padding:12px;
+    border:1px solid #999;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#446b68;
+    color:white;
+    cursor:pointer;
+}
+
+.login p{
+    text-align:center;
+    margin-top:18px;
+    font-size:13px;
+}
+
+.login p a{
+    text-decoration:none;
+    color:#446b68;
+    font-weight:600;
+}
+
+button:hover{
+    opacity:.9;
+}

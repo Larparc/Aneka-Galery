@@ -1,0 +1,109 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#f5f5f5;
+}
+
+.daftar{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+}
+
+/* =====================================
+   WARNA PANEL KANAN
+   GANTI WARNA DI SINI
+   ===================================== */
+.daftar_right{
+    width:40%;
+    background:linear-gradient(
+        to bottom,
+        #5f8b8e,
+        #8fd8d8,
+        #c8f6f6
+    );
+
+    position:relative;
+    overflow:hidden;
+}
+
+.daftar_right::before{
+    width:180px;
+    border-radius:0 0 100px 100px;
+}
+
+.daftar_left{
+    width:60%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.daftar_left h2{
+    font-size:48px;
+    font-weight:700;
+    margin-bottom:30px;
+}
+
+.daftar form{
+    width:350px;
+}
+
+.daftar_form{
+    margin-bottom:15px;
+}
+
+.daftar_form label{
+    display:block;
+    margin-bottom:5px;
+    font-size:13px;
+}
+
+.daftar_form input{
+    width:100%;
+    padding:8px;
+    border:1px solid #999;
+    outline:none;
+}
+
+.daftar_form input:focus{
+    border-color:#446b68;
+}
+
+.daftar button{
+    width:100%;
+    padding:10px;
+    border:none;
+    cursor:pointer;
+    background:#446b68;
+    color:white;
+    margin-top:10px;
+}
+
+.daftar button:hover{
+    opacity:.9;
+}
+
+.daftar p{
+    text-align:center;
+    margin-top:15px;
+    font-size:13px;
+}
+
+.daftar p a{
+    color:#446b68;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.daftar p a:hover{
+    text-decoration:underline;
+}
