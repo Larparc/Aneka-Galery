@@ -17,10 +17,7 @@ body{
     display:flex;
 }
 
-/* =====================================
-   WARNA PANEL KIRI
-   GANTI WARNA DI SINI
-   ===================================== */
+/* Ganti warna disini */
 .login_left{
     width:35%;
     background:linear-gradient(
@@ -60,10 +57,12 @@ body{
     text-align:center;
     margin-bottom:40px;
 }
+
 .login form{
     width:420px;
     margin:auto;
 }
+
 .login_form{
     margin-bottom:20px;
 }

@@ -16,10 +16,7 @@ body{
     display:flex;
 }
 
-/* =====================================
-   WARNA PANEL KANAN
-   GANTI WARNA DI SINI
-   ===================================== */
+/* Ganti warna disini */
 .daftar_right{
     width:40%;
     background:linear-gradient(
@@ -28,7 +25,6 @@ body{
         #8fd8d8,
         #c8f6f6
     );
-
     position:relative;
     overflow:hidden;
 }
