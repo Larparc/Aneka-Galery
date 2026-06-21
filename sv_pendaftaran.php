@@ -12,7 +12,6 @@ $sql = "insert into users (username, password, no_phone, email) values(
     '$no_phone',
     '$email')";
 $query = mysqli_query($conn, $sql);
-
 header("Location: index.php");
 exit;
 ?>

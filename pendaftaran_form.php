@@ -16,19 +16,19 @@ include "koneksi.php";
         <form action="sv_pendaftaran.php" method="post" name="form">
             <div class="daftar_form">
                 <label for="username">Username</label>
-                <input type="text" id="username" placeholder="username">
+                <input type="text" name="username" placeholder="username">
             </div>
             <div class="daftar_form">
                 <label for="username">Password</label>
-                <input type="password" id="password" placeholder="password">
+                <input type="password" name="password" placeholder="password">
             </div>
             <div class="daftar_form">
                 <label for="username">Email</label>
-                <input type="email" id="email" placeholder="email">
+                <input type="email" name="email" placeholder="email">
             </div>
             <div class="daftar_form">
                 <label for="username">No Phone</label>
-                <input type="number" id="phone" placeholder="phone">
+                <input type="number" name="phone" placeholder="phone">
             </div>
             <button type="submit">Create Account</button>
             <p>Already have a account? <a href="login.php">Login</a></p>
