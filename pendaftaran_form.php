@@ -19,22 +19,22 @@ include "koneksi.php";
 
             <div class="daftar_form">
                 <label for="username">Username</label>
-                <input type="text" id="username" placeholder="username" required>
+                <input type="text" id="username" placeholder="Masukkan username" required>
             </div>
 
             <div class="daftar_form">
                 <label for="username">Password</label>
-                <input type="password" id="password" placeholder="password" minlength="8" required>
+                <input type="password" id="password" placeholder="Masukkan password" minlength="8" required>
             </div>
 
             <div class="daftar_form">
                 <label for="username">Email</label>
-                <input type="email" id="email" placeholder="email" required>
+                <input type="email" id="email" placeholder="Masukkan email" required>
             </div>
 
             <div class="daftar_form">
                 <label for="username">No Phone</label>
-                <input type="text" id="phone" placeholder="phone" required>
+                <input type="text" id="phone" placeholder="Masukkan nomor telepon" required>
             </div>
 
             <button type="submit">Create Account</button>
