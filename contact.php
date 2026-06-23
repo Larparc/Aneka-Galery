@@ -17,7 +17,7 @@ include "koneksi.php"
     <body>
 
         <section id="navbar">
-            <a href="index.html">
+            <a href="index.php">
                 <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
             </a>
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
