@@ -33,7 +33,7 @@ if($num > 0){
 
 }else{
 
-    header("Location: index.php");
+    header("Location: login.php");
     exit;
 
 }
