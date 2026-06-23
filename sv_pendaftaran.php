@@ -18,7 +18,7 @@ VALUES
 (
     2,
     '$username',
-    '$password',
+    md5('$password'),
     '$phone',
     '$email'
 )";
