@@ -11,7 +11,7 @@ $sql = "INSERT INTO profiles
     role_id,
     username,
     password,
-    no_phone,
+    phone_number,
     email
 )
 VALUES
@@ -25,6 +25,6 @@ VALUES
 
 $query = mysqli_query($conn, $sql);
 
-header("Location: index.php");
+header("Location: index_login.php");
 exit;
 ?>
