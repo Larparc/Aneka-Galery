@@ -16,7 +16,7 @@
                 width: 100%;
                 z-index: 9999;
                 display: flex;
-                justify-content: space-between;
+                justify-content: center;
                 align-items: center;
                 padding: 10px 15px;
                 border: 1px solid white;
@@ -27,7 +27,7 @@
             .menu a {
                 text-decoration: none;
                 color: black;
-                text-align: left;
+                text-align: center;
                 font-size: 15px;
                 padding: 4px 10px;
                 border-radius: 6px;
@@ -53,7 +53,6 @@
                 text-decoration: underline;
             }
 
-            /* ===== HAMBURGER MOBILE ===== */
             .hamburger {
                 display: none;
                 flex-direction: column;
@@ -114,7 +113,6 @@
                     border-bottom: none;
                 }
 
-                /* Responsive typography */
                 #logo {
                     height: 40px;
                 }
@@ -423,6 +421,7 @@
             #logo {
                 height: 50px;
                 width: auto;
+                justify-content: center;
                 display: block;
             }
 

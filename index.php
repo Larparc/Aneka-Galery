@@ -29,6 +29,14 @@ include "koneksi.php";
                 <a href="service.php">Service</a>
                 <a href="contact.php">Contact</a>
             </nav>
+            <div class="profile">
+                <a href="ubahprofile.php">
+                    <p>Selamat datang , nama</p>
+                </a>
+                <a href="ubahprofile.php">
+                    <img src="img/foto.jpg" alt="profile">
+                </a>
+            </div>
         </section>
 
         <div class="slider">

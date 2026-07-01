@@ -4,6 +4,6 @@ session_start();
 $username = $_SESSION['username'];
 
 if($username == ""){
-    header("Location: ../index.php");
+    header("Location: ../login.php");
     exit;
 }
