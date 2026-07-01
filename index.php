@@ -30,10 +30,10 @@ include "koneksi.php";
                 <a href="contact.php">Contact</a>
             </nav>
             <div class="profile">
-                <a href="ubahprofile.php">
+                <a href="profile.php">
                     <p>Selamat datang , nama</p>
                 </a>
-                <a href="ubahprofile.php">
+                <a href="profile.php">
                     <img src="img/foto.jpg" alt="profile">
                 </a>
             </div>
