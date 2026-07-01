@@ -1,5 +1,6 @@
 <?php
 include "koneksi.php";
+include "admin/security.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,11 +31,9 @@ include "koneksi.php";
                 <a href="contact.php">Contact</a>
             </nav>
             <div class="profile">
-                <a href="profile.php">
-                    <p>Selamat datang , nama</p>
-                </a>
-                <a href="profile.php">
-                    <img src="img/foto.jpg" alt="profile">
+                <b><?php echo $username; ?></b>
+                <a href="profil.php">
+                    <img src="img/foto.jpg" class="profile-img" alt="Profile Picture"/>
                 </a>
             </div>
         </section>
@@ -116,7 +115,7 @@ include "koneksi.php";
         <br/>
         <br/>
         <br/>
-         <div
+        <div
             style="width: 60%; margin: 0 auto; height: 2px; background: linear-gradient(to right, transparent, #1f8a8a, transparent);"></div>
 
         <section class="features">
@@ -136,8 +135,6 @@ include "koneksi.php";
                 <p>Layanan cepat, tepat, dan bergaransi</p>
             </div>
         </section>
-
-
 
         <footer class="footer">
             <div class="footer-container">
@@ -180,15 +177,24 @@ include "koneksi.php";
 
                 <div class="footer-contact">
                     <h3>Contact</h3>
-                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7"><p>📍 Pontianak Barat</p></a>
-                    <a href="https://wa.me/6282254068851"><p>📞 +62 822-5406-8851</p></a>
-                    <a href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><p> <i class="fa-brands fa-instagram" style="color: palevioletred;"></i> @anekagalery</p></a>
+                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7">
+                        <p>📍 Pontianak Barat</p>
+                    </a>
+                    <a href="https://wa.me/6282254068851">
+                        <p>📞 +62 822-5406-8851</p>
+                    </a>
+                    <a
+                        href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                        <p>
+                            <i class="fa-brands fa-instagram" style="color: palevioletred;"></i>
+                            @anekagalery</p>
+                    </a>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
-                <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
+                <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo"/>
             </div>
         </footer>
 

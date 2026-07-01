@@ -61,6 +61,22 @@ a {
     text-decoration: underline;
 }
 
+.profile {
+    position: absolute;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #1f8a8a;
+}
+
 /* ===== HAMBURGER MOBILE ===== */
 .hamburger {
     display: none;

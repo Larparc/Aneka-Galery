@@ -1,5 +1,6 @@
 <?php
-include "koneksi.php"
+include "koneksi.php";
+include "admin/security.php";
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +32,12 @@ include "koneksi.php"
                 <a href="service.php">Service</a>
                 <a href="contact.php">Contact</a>
             </nav>
+            <div class="profile">
+                <b><?php echo $username; ?></b>
+                <a href="profil.php">
+                    <img src="img/foto.jpg" class="profile-img" alt="Profile Picture"/>
+                </a>
+            </div>
         </section>
 
         <div class="about-hero-wrapper">
