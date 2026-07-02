@@ -1,5 +1,6 @@
 <?php
 include "koneksi.php";
+include "admin/security.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,8 +11,8 @@ include "koneksi.php";
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-        <title>Home - Aneka Galery</title>
-        <link rel="stylesheet" href="css/index.css">
+        <title>Profile - Aneka Galery</title>
+        <link rel="stylesheet" href="css/profil.css">
     </head>
     <body>
         <section id="navbar">
@@ -31,13 +32,24 @@ include "koneksi.php";
             </nav>
             <div class="profile">
                 <a href="profil.php" class="nickname">
-                    <p>Selamat datang , nama</p>
+                    <p><?php echo $username; ?></p>
                 </a>
-                <a href="profil.php" class="profile">
+                <a href="profil.php" class="profile" id="profile">
                     <img src="img/foto.jpg" alt="profile">
                 </a>
             </div>
         </section>
+        <div class="profileedit">
+            <Form id="edit">
+                <div class="select">
+                        <label for="nama"><?php echo $username; ?></label>
+                        <label for="nama"><?php echo $email; ?></label>
+                        <label for="nama"><?php echo $password; ?></label>
+                        <label for="nama"><?php echo $no_phone; ?></label>
+
+                    </div>
+            </Form>
+        </div>
 
         <footer class="footer">
             <div class="footer-container">
