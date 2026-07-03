@@ -37,37 +37,55 @@ include "admin/security.php";
                 </a>
             </div>
         </section>
-                <div class="profileedit">
+        <div class="profileedit">
 
             <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
-                <p style="color:green;">Profil berhasil diperbarui.</p>
-            <?php elseif (isset($_GET['status']) && $_GET['status'] == 'error'): ?>
-                <p style="color:red;">Gagal update: <?php echo htmlspecialchars($_GET['msg'] ?? 'Terjadi kesalahan'); ?></p>
+            <p style="color:green;">Profil berhasil diperbarui.</p>
+        <?php elseif (isset($_GET['status']) && $_GET['status'] == 'error'): ?>
+            <p style="color:red;">Gagal update:
+                <?php echo htmlspecialchars($_GET['msg'] ?? 'Terjadi kesalahan'); ?></p>
             <?php endif; ?>
 
             <form id="edit" action="sv_update_profil.php" method="POST">
                 <div class="select">
-
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username"
-                        value="<?php echo htmlspecialchars($username); ?>" required>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        value="<?php echo htmlspecialchars($username); ?>"
+                        required="required">
 
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email"
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
                         value="<?php echo htmlspecialchars($email); ?>">
 
                     <label for="no_phone">No HP</label>
-                    <input type="text" id="no_phone" name="no_phone"
+                    <input
+                        type="text"
+                        id="no_phone"
+                        name="no_phone"
                         value="<?php echo htmlspecialchars($no_phone); ?>">
 
                     <label for="password">Password Baru</label>
-                    <input type="password" id="password" name="password"
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
                         placeholder="Kosongkan jika tidak ingin mengganti password">
 
-                    <button type="submit">Simpan Perubahan</button>
-                    <a href="admin/logout.php" class="btn light">
-                    Logout
-                    </a>
+                    <div class="actions">
+                        <button type="submit" class="btn save">Simpan Perubahan</button>
+                        <button type="reset" class="btn reset">Reset</button>
+                    </div>
+                    <div class="actions">
+                        <a href="admin/logout.php" class="btn logout">
+                            Logout
+                        </a>
+                    </div>
                 </div>
             </form>
         </div>
@@ -112,21 +130,28 @@ include "admin/security.php";
 
                 <div class="footer-contact">
                     <h3>Contact</h3>
-                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7"><p>📍 Pontianak Barat</p></a>
-                    <a href="https://wa.me/6282254068851"><p>📞 +62 822-5406-8851</p></a>
-                    <a href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><p> <i class="fa-brands fa-instagram" style="color: palevioletred;"></i> @anekagalery</p></a>
+                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7">
+                        <p>📍 Pontianak Barat</p>
+                    </a>
+                    <a href="https://wa.me/6282254068851">
+                        <p>📞 +62 822-5406-8851</p>
+                    </a>
+                    <a
+                        href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                        <p>
+                            <i class="fa-brands fa-instagram" style="color: palevioletred;"></i>
+                            @anekagalery</p>
+                    </a>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
-                <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
+                <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo"/>
             </div>
         </footer>
 
-        <script>
-           
-        </script>
+        <script></script>
         <a href="https://wa.me/6282254068851" target="_blank" class="wa-float">
             <div class="wa-pulse"></div>
             <div class="wa-pulse wa-pulse2"></div>

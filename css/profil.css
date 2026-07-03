@@ -280,6 +280,22 @@ a {
     gap: 20px;
 }
 
+.profileedit #edit input {
+    background: #b2ebf2;
+    border: 1px solid #d1d5db;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.profileedit #edit input:focus {
+    background-color: #fff;
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(31, 138, 138, 0.1);
+}
+
 .profileedit .select {
     display: flex;
     flex-direction: column;
@@ -293,6 +309,54 @@ a {
     text-align: center;
     padding: 10px 0;
     border-bottom: 2px solid #e0f5f5;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    border: none;
+    border-radius: 14px;
+    padding: 14px 18px;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.save {
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    color: #ffffff;
+    box-shadow: 0 12px 22px rgba(37, 99, 235, 0.25);
+}
+
+.save:hover {
+    transform: translateY(-2px);
+}
+
+.reset {
+    background: linear-gradient(135deg, #6B6B6B, #898989);
+    color: #ffffff;
+    box-shadow: 0 12px 22px rgba(239, 68, 68, 0.25);
+}
+
+.reset:hover {
+    transform: translateY(-2px);
+}
+
+.logout {
+    background: linear-gradient(135deg, #f87171, #ef4444);
+    color: #ffffff;
+    box-shadow: 0 12px 22px rgba(239, 68, 68, 0.25);
+}
+
+.logout:hover {
+    transform: translateY(-2px);
 }
 
 .footer {
