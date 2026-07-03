@@ -21,9 +21,9 @@ include "koneksi.php";
 
     <nav class="menu" id="navMenu">
         <a href="index_login.php">Home</a>
-        <a href="aboutus.php">About</a>
-        <a href="service.php">Service</a>
-        <a href="contact.php">Contact</a>
+        <a href="aboutus_login.php">About</a>
+        <a href="service_login.php">Service</a>
+        <a href="contact_login.php">Contact</a>
     </nav>
 
     <div class="navbar-user">
@@ -247,6 +247,6 @@ include "koneksi.php";
                 <i class="fab fa-whatsapp"></i>
             </div>
         </a>
-        <script src="js/index_login.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>
