@@ -48,10 +48,12 @@ include "security.php";
         <button class="btn round" id="menu-btn" aria-label="Buka menu">
         </button>
         <img src="../img/foto.jpg" alt="Avatar" class="user-avatar">
+        <a href="account.php">
         <div>
           <b><?php echo "welcome, ".$username; ?></b>
           <span>Administrator</span>
         </div>
+      </a>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
         <div class="notif-wrap" id="notif-wrap">

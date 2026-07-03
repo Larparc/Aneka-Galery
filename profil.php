@@ -31,26 +31,46 @@ include "admin/security.php";
                 <a href="contact.php">Contact</a>
             </nav>
             <div class="profile">
-                <a href="profil.php" class="nickname">
-                    <p><?php echo $username; ?></p>
-                </a>
-                <a href="profil.php" class="profile" id="profile">
-                    <img src="img/foto.jpg" alt="profile">
+                <b><?php echo $username; ?></b>
+                <a href="profil.php">
+                    <img src="img/foto.jpg" class="profile-img" alt="Profile Picture"/>
                 </a>
             </div>
         </section>
-        <div class="profileedit">
-            <Form id="edit">
+                <div class="profileedit">
+
+            <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
+                <p style="color:green;">Profil berhasil diperbarui.</p>
+            <?php elseif (isset($_GET['status']) && $_GET['status'] == 'error'): ?>
+                <p style="color:red;">Gagal update: <?php echo htmlspecialchars($_GET['msg'] ?? 'Terjadi kesalahan'); ?></p>
+            <?php endif; ?>
+
+            <form id="edit" action="sv_update_profil.php" method="POST">
                 <div class="select">
-                        <label for="nama"><?php echo $username; ?></label>
-                        <label for="nama"><?php echo $email; ?></label>
-                        <label for="nama"><?php echo $password; ?></label>
-                        <label for="nama"><?php echo $no_phone; ?></label>
 
-                    </div>
-            </Form>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username"
+                        value="<?php echo htmlspecialchars($username); ?>" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"
+                        value="<?php echo htmlspecialchars($email); ?>">
+
+                    <label for="no_phone">No HP</label>
+                    <input type="text" id="no_phone" name="no_phone"
+                        value="<?php echo htmlspecialchars($no_phone); ?>">
+
+                    <label for="password">Password Baru</label>
+                    <input type="password" id="password" name="password"
+                        placeholder="Kosongkan jika tidak ingin mengganti password">
+
+                    <button type="submit">Simpan Perubahan</button>
+                    <a href="admin/logout.php" class="btn light">
+                    Logout
+                    </a>
+                </div>
+            </form>
         </div>
-
         <footer class="footer">
             <div class="footer-container">
                 <div class="footer-brand">
