@@ -37,15 +37,22 @@ include "admin/security.php";
                 </a>
             </div>
         </section>
-        <div class="profileedit">
 
-            <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
-            <p style="color:green;">Profil berhasil diperbarui.</p>
-        <?php elseif (isset($_GET['status']) && $_GET['status'] == 'error'): ?>
-            <p style="color:red;">Gagal update:
-                <?php echo htmlspecialchars($_GET['msg'] ?? 'Terjadi kesalahan'); ?></p>
+        <?php if (isset($_GET['status'])): ?>
+        <div
+            class="profiletoast"
+            id="profiletoast"
+            style="color: <?php echo $_GET['status'] == 'success' ? 'green' : 'red'; ?>;">
+            <?php if ($_GET['status'] == 'success'): ?>
+            Profil berhasil diperbarui.
+        <?php elseif ($_GET['status'] == 'error'): ?>
+            Gagal update:
+            <?php echo htmlspecialchars($_GET['msg'] ?? 'Terjadi kesalahan'); ?>
             <?php endif; ?>
+        </div>
+        <?php endif; ?>
 
+        <div class="profileedit">
             <form id="edit" action="sv_update_profil.php" method="POST">
                 <div class="select">
                     <label for="username">Username</label>
@@ -151,7 +158,33 @@ include "admin/security.php";
             </div>
         </footer>
 
-        <script></script>
+        <script>
+            function toggleMenu() {
+                const hamburger = document.getElementById('hamburger');
+                const navMenu = document.getElementById('navMenu');
+                hamburger
+                    .classList
+                    .toggle('open');
+                navMenu
+                    .classList
+                    .toggle('open');
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const toast = document.getElementById('profiletoast');
+                if (toast) {
+                    toast
+                        .classList
+                        .add('show');
+                    setTimeout(function () {
+                        toast
+                            .classList
+                            .remove('show');
+                    }, 3000);
+                }
+            });
+        </script>
+
         <a href="https://wa.me/6282254068851" target="_blank" class="wa-float">
             <div class="wa-pulse"></div>
             <div class="wa-pulse wa-pulse2"></div>

@@ -258,7 +258,39 @@ a {
     display: block;
 }
 
-/* ===== PROFILE EDIT SECTION ===== */
+.profiletoast {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 14px 16px;
+    border-radius: 14px;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+    font-size: 14px;
+    display: none;
+    z-index: 99;
+    max-width: 320px;
+    bottom: 100px;
+    right: 28px;
+}
+
+.profiletoast.show {
+    display: block;
+    animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(14px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .profileedit {
     display: flex;
     justify-content: center;

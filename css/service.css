@@ -560,6 +560,8 @@ a {
     display: none;
     z-index: 99;
     max-width: 320px;
+    bottom: 100px;
+    right: 28px;
 }
 
 .toast.show {

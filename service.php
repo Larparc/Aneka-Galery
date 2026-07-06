@@ -1,6 +1,7 @@
 <?php
 include "koneksi.php";
 include "admin/security.php";
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +86,7 @@ include "admin/security.php";
                         <label for="number">Nomor Telephone</label>
                         <input
                             type="number"
-                            id="nama"
+                            id="no_phone"
                             placeholder="Masukkan Nomor telephone kamu"
                             required="required"/>
                     </div>
