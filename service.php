@@ -1,7 +1,6 @@
 <?php
 include "koneksi.php";
 include "admin/security.php";
-session_start();
 ?>
 
 <!DOCTYPE html>
