@@ -448,6 +448,25 @@ a {
     border-radius: 16px;
     padding: 30px 28px;
 }
+.display-text {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    color: #334155;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    letter-spacing: 0.3px;
+}
+
+.display-text i {
+    font-size: 16px;
+    opacity: 0.8;
+}
 .form-group {
     margin-bottom: 18px;
 }

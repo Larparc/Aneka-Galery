@@ -87,7 +87,7 @@ include "admin/security.php";
         </div>
 
         <br/>
-         <div
+        <div
             style="width: 60%; margin: 0 auto; height: 2px; background: linear-gradient(to right, transparent, #1f8a8a, transparent);"></div>
 
         <br/>
@@ -99,22 +99,33 @@ include "admin/security.php";
             </div>
             <div class="form-outer">
                 <div class="form-inner">
-                    <form>
+                    <form action="sv_contact.php" method="post" name="form">
+                        <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                        <input type="hidden" name="date" value="<?php echo date('Y-m-d'); ?>">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" placeholder="Masukkan nama Anda"/>
+                            <label>Nama</label>
+                            <div class="display-text">
+                                <i class="fas fa-user" style="color: #1f8a8a; margin-right: 8px;"></i>
+                                <?php echo $username; ?>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" placeholder="Masukkan email Anda"/>
+                            <div class="display-text">
+                                <i class="fas fa-envelope" style="color: #1f8a8a; margin-right: 8px;"></i>
+                                <?php echo $email; ?>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Nomor Telephone</label>
-                            <input type="tel" placeholder="Contoh: 08xx-xxxx-xxxx"/>
+                            <div class="display-text">
+                                <i class="fas fa-phone" style="color: #1f8a8a; margin-right: 8px;"></i>
+                                <?php echo $no_phone; ?>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Message</label>
-                            <textarea placeholder="Tulis pesan Anda..."></textarea>
+                            <label for="pesan">Message</label>
+                            <textarea name="pesan" id="pesan" placeholder="Tulis pesan Anda..."></textarea>
                         </div>
                         <button type="submit" class="submit-btn">Submit</button>
                     </form>
@@ -184,16 +195,25 @@ include "admin/security.php";
 
                 <div class="footer-contact">
                     <h3>Contact</h3>
-                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7"><p>📍 Pontianak Barat</p></a>
-                    <a href="https://wa.me/6282254068851"><p>📞 +62 822-5406-8851</p></a>
-                    <a href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><p> <i class="fa-brands fa-instagram" style="color: palevioletred;"></i> @anekagalery</p></a>
+                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7">
+                        <p>📍 Pontianak Barat</p>
+                    </a>
+                    <a href="https://wa.me/6282254068851">
+                        <p>📞 +62 822-5406-8851</p>
+                    </a>
+                    <a
+                        href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                        <p>
+                            <i class="fa-brands fa-instagram" style="color: palevioletred;"></i>
+                            @anekagalery</p>
+                    </a>
                 </div>
-                </div>
+            </div>
 
-                <div class="footer-bottom">
-                    <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
-                    <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
-                </div>
+            <div class="footer-bottom">
+                <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
+                <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo"/>
+            </div>
         </footer>
 
         <script>
