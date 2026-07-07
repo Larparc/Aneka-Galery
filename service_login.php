@@ -1,6 +1,11 @@
 <?php
 include "koneksi.php";
 include "admin/security.php";
+
+$query_service = mysqli_query($conn, "SELECT * FROM services");
+$query_size = mysqli_query($conn, "SELECT * FROM sizes");
+$query_type = mysqli_query($conn, "SELECT * FROM types");
+$query_output = mysqli_query($conn, "SELECT * FROM outputs");
 ?>
 
 <!DOCTYPE html>
@@ -72,34 +77,35 @@ include "admin/security.php";
 
             <form id="orderForm">
                 <div class="form-grid">
-                    <div class="input-group">
+                     <div class="input-group">
                         <label for="nama">Nama</label>
-                        <input
-                            type="text"
-                            id="nama"
-                            placeholder="Masukkan nama kamu"
-                            required="required"/>
+                        <div class="display-text">
+                            <i class="fas fa-user" style="color: #1f8a8a; margin-right: 8px;"></i>
+                            <?php echo $username; ?>
+                        </div>
                     </div>
                     
                     <div class="input-group">
                         <label for="number">Nomor Telephone</label>
-                        <input
-                            type="number"
-                            id="no_phone"
-                            placeholder="Masukkan Nomor telephone kamu"
-                            required="required"/>
-                    </div>
-
-                    <div class="row-2">
-                        <div class="input-group">
-                            <label for="layanan">Layanan</label>
-                            <select id="layanan" required="required">
-                                <option value="printing">Print Hvs</option>
-                                <option value="photocopy">Print Foto</option>
-                                <option value="design">Sticker</option>
-                                <option value="finishing">Banner</option>
-                            </select>
+                        <div class="display-text">
+                            <i class="fas fa-phone" style="color: #1f8a8a; margin-right: 8px;"></i>
+                            <?php echo $no_phone; ?>
                         </div>
+                    </div>
+                        <div class="row-2">
+                            <div class="input-group">
+                                <label for="layanan">Layanan</label>
+                                <select id="layanan" name="service_id" required>
+                                    <option value="" disabled selected>
+                                    -- Pilih Layanan --
+                                    </option>
+                                        <?php while($service = mysqli_fetch_assoc($query_service)){ ?>
+                                    <option value="<?= $service['service_id']; ?>">
+                                        <?= $service['service_name']; ?>
+                                    </option>
+                                        <?php } ?>
+                                </select>
+                            </div>
 
                         <div class="input-group">
                             <label for="jumlah">Jumlah</label>
@@ -115,29 +121,43 @@ include "admin/security.php";
                     <div class="row-3" id="dynamicFields">
                         <div class="input-group">
                             <label for="ukuran">Ukuran</label>
-                            <select id="ukuran" required="required">
-                                <option>A4</option>
-                                <option>A5</option>
-                                <option>F4</option>
-                                <option>Custom</option>
+                            <select id="ukuran" name="size_id" required>
+                                <option value="" disabled selected>
+                                -- Pilih Ukuran --
+                                </option>
+                                    <?php while($size = mysqli_fetch_assoc($query_size)){ ?>
+                                <option value="<?= $size['size_id']; ?>">
+                                    <?= $size['size_name']; ?>
+                                </option>
+                                    <?php } ?>
                             </select>
                         </div>
 
                         <div class="input-group">
                             <label for="jenis">Jenis</label>
-                            <select id="jenis" required="required">
-                                <option>Hitam Putih</option>
-                                <option>Full Color</option>
+                            <select id="jenis" name="type_id" required>
+                                <option value="" disabled selected>
+                                -- Pilih Jenis --
+                                </option>
+                                    <?php while($type = mysqli_fetch_assoc($query_type)){ ?>
+                                <option value="<?= $type['type_id']; ?>">
+                                    <?= $type['colour_type']; ?>
+                                </option>
+                                    <?php } ?>
                             </select>
                         </div>
 
                         <div class="input-group">
                             <label for="finish">Jenis Kertas</label>
-                            <select id="finish" required="required">
-                                <option>Cetak foto</option>
-                                <option>Hvs</option>
-                                <option>Paper glossy</option>
-                                <option>matte</option>
+                            <select id="finish" name="output_id" required>
+                                <option value="" disabled selected>
+                                -- Pilih Kertas --
+                                </option>
+                                    <?php while($output = mysqli_fetch_assoc($query_output)){ ?>
+                                <option value="<?= $output['output_id']; ?>">
+                                    <?= $output['output_name']; ?>
+                                </option>
+                                    <?php } ?>
                             </select>
                         </div>
                     </div>

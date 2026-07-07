@@ -173,7 +173,7 @@ function setActiveService(service) {
     const data = serviceData[service];
 
     layananSelect.value = service;
-    dynamicFields.innerHTML = data.fields;
+//    dynamicFields.innerHTML = data.fields;
 }
 
 serviceButtons.forEach((btn) => {
@@ -231,4 +231,4 @@ document.getElementById('resetBtn').addEventListener('click', () => {
     }, 0);
 });
 
-setActiveService('printing');
+// setActiveService('printing');
