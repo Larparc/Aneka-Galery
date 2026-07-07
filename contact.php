@@ -1,5 +1,5 @@
 <?php
-include "koneksi.php"
+include "koneksi.php";
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +31,10 @@ include "koneksi.php"
                 <a href="service.php">Service</a>
                 <a href="contact.php">Contact</a>
             </nav>
+            <a href="login.php" class="login-btn">
+                <i class="fa-solid fa-user-lock"></i>
+                <span>Login</span>
+            </a>
         </section>
 
         <div class="contact-hero-wrapper">

@@ -51,10 +51,12 @@ include "security.php";
         <button class="btn round" id="menu-btn" aria-label="Buka menu">
         </button>
         <img src="../img/foto.jpg" alt="Avatar" class="user-avatar">
+        <a href="account.php">
         <div>
           <b><?php echo "welcome, ".$username; ?></b>
           <span>Administrator</span>
         </div>
+      </a>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
         <button class="btn round" aria-label="Notifikasi">
@@ -70,6 +72,8 @@ include "security.php";
       <div class="account">
         <img src="../img/foto.jpg" alt="Avatar" class="account-avatar">
         <p><span>Nama</span><span><?php echo "".$username; ?></span></p>
+        <p><span>Email</span><span><?php echo htmlspecialchars($email); ?></span></p>
+        <p><span>No Phone</span><span><?php echo htmlspecialchars($no_phone); ?></span></p>
         <p><span>Role</span><span>Administrator</span></p>
         <p><span>Toko</span><span>Aneka Galeri Printing</span></p>
         <p><span>Status</span><span style="color:#147a4f;">Aktif</span></p>

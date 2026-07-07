@@ -1,5 +1,6 @@
 <?php
 include "koneksi.php";
+include "admin/security.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,34 +16,27 @@ include "koneksi.php";
     </head>
     <body>
         <section id="navbar">
-    <a href="index_login.php" class="navbar-logo">
-        <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo">
-    </a>
-
-    <nav class="menu" id="navMenu">
-        <a href="index_login.php">Home</a>
-        <a href="aboutus_login.php">About</a>
-        <a href="service_login.php">Service</a>
-        <a href="contact_login.php">Contact</a>
-    </nav>
-
-    <div class="navbar-user">
-
-        <span class="user-name">
-            Steven
-        </span>
-
-        <div class="user-photo">
-            <img src="img/profile.jpg" alt="Profile">
-        </div>
-    </div>
-
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</section>
+            <a href="index_login.php">
+                <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
+            </a>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="menu" id="navMenu">
+                <a href="index_login.php">Home</a>
+                <a href="aboutus_login.php">About</a>
+                <a href="service_login.php">Service</a>
+                <a href="contact_login.php">Contact</a>
+            </nav>
+            <div class="profile">
+                <b><?php echo $username; ?></b>
+                <a href="profil.php">
+                    <img src="img/foto.jpg" class="profile-img" alt="Profile Picture"/>
+                </a>
+            </div>
+        </section>
 
         <div class="slider">
 
@@ -65,7 +59,7 @@ include "koneksi.php";
                 <div class="title">Your Trusted Digital Printing Partner</div>
             </div>
 
-            <button class="btn" onclick="window.location.href='service.php'">
+            <button class="btn" onclick="window.location.href='service_login.php'">
                 See more
                 <i class="fas fa-external-link-alt"></i>
             </button>
@@ -121,7 +115,7 @@ include "koneksi.php";
         <br/>
         <br/>
         <br/>
-         <div
+        <div
             style="width: 60%; margin: 0 auto; height: 2px; background: linear-gradient(to right, transparent, #1f8a8a, transparent);"></div>
 
         <section class="features">
@@ -142,8 +136,6 @@ include "koneksi.php";
             </div>
         </section>
 
-
-
         <footer class="footer">
             <div class="footer-container">
                 <div class="footer-brand">
@@ -162,13 +154,13 @@ include "koneksi.php";
                             <a href="index_login.php">Home</a>
                         </li>
                         <li>
-                            <a href="aboutus.php">About</a>
+                            <a href="aboutus_login.php">About</a>
                         </li>
                         <li>
-                            <a href="service.php">Service</a>
+                            <a href="service_login.php">Service</a>
                         </li>
                         <li>
-                            <a href="contact.php">Contact</a>
+                            <a href="contact_login.php">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -185,15 +177,24 @@ include "koneksi.php";
 
                 <div class="footer-contact">
                     <h3>Contact</h3>
-                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7"><p>📍 Pontianak Barat</p></a>
-                    <a href="https://wa.me/6282254068851"><p>📞 +62 822-5406-8851</p></a>
-                    <a href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><p> <i class="fa-brands fa-instagram" style="color: palevioletred;"></i> @anekagalery</p></a>
+                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7">
+                        <p>📍 Pontianak Barat</p>
+                    </a>
+                    <a href="https://wa.me/6282254068851">
+                        <p>📞 +62 822-5406-8851</p>
+                    </a>
+                    <a
+                        href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                        <p>
+                            <i class="fa-brands fa-instagram" style="color: palevioletred;"></i>
+                            @anekagalery</p>
+                    </a>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
-                <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
+                <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo"/>
             </div>
         </footer>
 

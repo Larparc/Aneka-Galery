@@ -1,5 +1,6 @@
 <?php
-include "koneksi.php"
+include "koneksi.php";
+include "admin/security.php";
 ?>
 
 <!DOCTYPE html>
@@ -16,34 +17,27 @@ include "koneksi.php"
     </head>
     <body>
         <section id="navbar">
-    <a href="index_login.php" class="navbar-logo">
-        <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo">
-    </a>
-
-    <nav class="menu" id="navMenu">
-        <a href="index_login.php">Home</a>
-        <a href="aboutus_login.php">About</a>
-        <a href="service_login.php">Service</a>
-        <a href="contact_login.php">Contact</a>
-    </nav>
-
-    <div class="navbar-user">
-
-        <span class="user-name">
-            Steven
-        </span>
-
-        <div class="user-photo">
-            <img src="img/profile.jpg" alt="Profile">
-        </div>
-    </div>
-
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</section>
+            <a href="index_login.php">
+                <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
+            </a>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="menu" id="navMenu">
+                <a href="index_login.php">Home</a>
+                <a href="aboutus_login.php">About</a>
+                <a href="service_login.php">Service</a>
+                <a href="contact_login.php">Contact</a>
+            </nav>
+            <div class="profile">
+                <b><?php echo $username; ?></b>
+                <a href="profil.php">
+                    <img src="img/foto.jpg" class="profile-img" alt="Profile Picture"/>
+                </a>
+            </div>
+        </section>
 
         <div class="service-hero-wrapper">
             <div class="service-slider">
@@ -91,7 +85,7 @@ include "koneksi.php"
                         <label for="number">Nomor Telephone</label>
                         <input
                             type="number"
-                            id="nama"
+                            id="no_phone"
                             placeholder="Masukkan Nomor telephone kamu"
                             required="required"/>
                     </div>
@@ -196,16 +190,16 @@ include "koneksi.php"
                     <h3>Navigation</h3>
                     <ul>
                         <li>
-                            <a href="index.php">Home</a>
+                            <a href="index_login.php">Home</a>
                         </li>
                         <li>
-                            <a href="aboutus.php">About</a>
+                            <a href="aboutus_login.php">About</a>
                         </li>
                         <li>
-                            <a href="service.php">Service</a>
+                            <a href="service_login.php">Service</a>
                         </li>
                         <li>
-                            <a href="contact.php">Contact</a>
+                            <a href="contact_login.php">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -257,7 +251,7 @@ include "koneksi.php"
             const currentPage = location
                 .pathname
                 .split('/')
-                .pop() || 'index.php';
+                .pop() || 'index_login.php';
             navLinks.forEach(link => {
                 if (link.getAttribute('href') === currentPage) 
                     link

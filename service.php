@@ -1,5 +1,5 @@
 <?php
-include "koneksi.php"
+include "koneksi.php";
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +30,10 @@ include "koneksi.php"
                 <a href="service.php">Service</a>
                 <a href="contact.php">Contact</a>
             </nav>
+            <a href="login.php" class="login-btn">
+                <i class="fa-solid fa-user-lock"></i>
+                <span>Login</span>
+            </a>
         </section>
 
         <div class="service-hero-wrapper">
@@ -78,7 +82,7 @@ include "koneksi.php"
                         <label for="number">Nomor Telephone</label>
                         <input
                             type="number"
-                            id="nama"
+                            id="no_phone"
                             placeholder="Masukkan Nomor telephone kamu"
                             required="required"/>
                     </div>

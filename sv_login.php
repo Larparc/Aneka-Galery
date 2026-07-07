@@ -22,6 +22,8 @@ if($num > 0){
     $_SESSION['username'] = $username;
     $_SESSION['user_id']  = $row['user_id'];
     $_SESSION['role_id']  = $row['role_id'];
+    $_SESSION['no_phone'] = $row['no_phone'];
+    $_SESSION['email']    = $row['email'];
 
     if($row['role_id'] == 1){
         header("Location: admin/panel.php");

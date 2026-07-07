@@ -50,10 +50,12 @@ include "security.php";
         <button class="btn round" id="menu-btn" aria-label="Buka menu">
         </button>
         <i><img src="../img/foto.jpg" alt="profile" class="user-avatar"></i>
+        <a href="account.php">
         <div>
           <b><?php echo "welcome, ".$username; ?></b>
           <span>Administrator</span>
         </div>
+      </a>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
         <button class="btn round" aria-label="Notifikasi">
