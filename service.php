@@ -53,7 +53,7 @@ include "admin/security.php";
                 <div class="service-overlay"></div>
             </div>
             <div class="service-hero">
-                <h1>Service</h1>    
+                <h1>Service</h1>
             </div>
         </div>
 
@@ -74,20 +74,17 @@ include "admin/security.php";
                 <div class="form-grid">
                     <div class="input-group">
                         <label for="nama">Nama</label>
-                        <input
-                            type="text"
-                            id="nama"
-                            placeholder="Masukkan nama kamu"
-                            required="required"/>
+                        <div class="display-text">
+                            <i class="fas fa-user" style="color: #1f8a8a; margin-right: 8px;"></i>
+                            <?php echo $username; ?>
+                        </div>
                     </div>
-                    
                     <div class="input-group">
                         <label for="number">Nomor Telephone</label>
-                        <input
-                            type="number"
-                            id="no_phone"
-                            placeholder="Masukkan Nomor telephone kamu"
-                            required="required"/>
+                        <div class="display-text">
+                            <i class="fas fa-phone" style="color: #1f8a8a; margin-right: 8px;"></i>
+                            <?php echo $no_phone; ?>
+                        </div>
                     </div>
 
                     <div class="row-2">
@@ -214,18 +211,30 @@ include "admin/security.php";
                     </ul>
                 </div>
 
-                 <div class="footer-contact">
+                <div class="footer-contact">
                     <h3>Contact</h3>
-                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7"><p>📍 Pontianak Barat</p></a>
-                    <a href="https://wa.me/6282254068851"><p>📞 +62 822-5406-8851</p></a>
-                    <a href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><p> <i class="fa-brands fa-instagram" style="color: palevioletred;"></i> @anekagalery</p></a>
+                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7">
+                        <p>📍 Pontianak Barat</p>
+                    </a>
+                    <a href="https://wa.me/6282254068851">
+                        <p>📞 +62 822-5406-8851</p>
+                    </a>
+                    <a
+                        href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                        <p>
+                            <i class="fa-brands fa-instagram" style="color: palevioletred;"></i>
+                            @anekagalery</p>
+                    </a>
                 </div>
-                </div>
+            </div>
 
-                <div class="footer-bottom">
-                    <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
-                    <img src="../img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
-                </div>
+            <div class="footer-bottom">
+                <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
+                <img
+                    src="../img/LOGO ANEKA GALERI PRINTING.png"
+                    alt="Logo"
+                    class="footer-logo"/>
+            </div>
         </footer>
 
         <div class="toast" id="toast">

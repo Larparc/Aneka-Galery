@@ -262,25 +262,22 @@ a {
 .service-hero {
     position: relative;
     z-index: 2;
-    background: rgba(255, 255, 255, 0.92);
+    background: white;
     border-radius: 16px;
     padding: 28px 97px;
     text-align: center;
     box-shadow: 0 4px 24px rgba(0,0,0,0.2);
     margin-top: 60px;
-    align-self: flex-end;
-    margin-bottom: 72px;
+    margin-bottom: 30px;
 }
-
 .service-hero h1 {
-    font-size: 30px;
+    font-size: 29px;
     font-weight: bold;
     color: #111;
     position: relative;
     display: inline-block;
     padding-bottom: 10px;
 }
-
 .service-hero h1::after {
     content: '';
     position: absolute;
@@ -437,6 +434,25 @@ a {
     font-weight: 700;
     color: #334155;
     margin-bottom: 7px;
+}
+.display-text {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    border-radius: 14px;
+    padding: 13px 14px;
+    font-size: 14px;
+    color: #334155;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    letter-spacing: 0.3px;
+}
+
+.display-text i {
+    font-size: 16px;
+    opacity: 0.8;
 }
 
 .input-group input,
