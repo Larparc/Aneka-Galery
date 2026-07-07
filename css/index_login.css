@@ -61,41 +61,20 @@ a {
     text-decoration: underline;
 }
 
-/* Tempat Login (tombol) */
-.login-btn{
-    position:absolute;
-    right:20px;
-    top:50%;
-    transform:translateY(-50%);
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:#1f8a8a;
-    color:#fff;
-    padding:10px 18px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
+.profile {
+    position: absolute;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.login-btn i{
-    font-size:15px;
-    transition:.35s;
-}
-
-.login-btn:hover{
-    background:linear-gradient(135deg,#167474,#26c6c6);
-    transform:translateY(-50%) translateY(-2px);
-    box-shadow:0 10px 24px rgba(31,138,138,.45);
-}
-
-.login-btn:hover i{
-    transform:translateX(4px);
-}
-
-.login-btn:active{
-    transform:scale(.96);
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #1f8a8a;
 }
 
 /* ===== HAMBURGER MOBILE ===== */
@@ -157,12 +136,6 @@ a {
 
     .menu a:last-child {
         border-bottom: none;
-    }
-
-    .login-btn{
-        right:60px;
-        padding:8px 14px;
-        font-size:13px;
     }
 
     /* Responsive typography */

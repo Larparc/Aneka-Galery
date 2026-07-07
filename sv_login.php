@@ -29,7 +29,7 @@ if($num > 0){
         header("Location: admin/panel.php");
         exit;
     }else{
-        header("Location: index.php");
+        header("Location: index_login.php");
         exit;
     }
 

@@ -1,5 +1,6 @@
 <?php
 include "koneksi.php";
+include "admin/security.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,11 +13,11 @@ include "koneksi.php";
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
         <title>Service - Aneka Galery</title>
-        <link rel="stylesheet" href="css/service.css">
+        <link rel="stylesheet" href="css/service_login.css">
     </head>
     <body>
         <section id="navbar">
-            <a href="index.php">
+            <a href="index_login.php">
                 <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
             </a>
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -25,15 +26,17 @@ include "koneksi.php";
                 <span></span>
             </div>
             <nav class="menu" id="navMenu">
-                <a href="index.php">Home</a>
-                <a href="aboutus.php">About</a>
-                <a href="service.php">Service</a>
-                <a href="contact.php">Contact</a>
+                <a href="index_login.php">Home</a>
+                <a href="aboutus_login.php">About</a>
+                <a href="service_login.php">Service</a>
+                <a href="contact_login.php">Contact</a>
             </nav>
-            <a href="login.php" class="login-btn">
-                <i class="fa-solid fa-user-lock"></i>
-                <span>Login</span>
-            </a>
+            <div class="profile">
+                <b><?php echo $username; ?></b>
+                <a href="profil.php">
+                    <img src="img/foto.jpg" class="profile-img" alt="Profile Picture"/>
+                </a>
+            </div>
         </section>
 
         <div class="service-hero-wrapper">
@@ -187,16 +190,16 @@ include "koneksi.php";
                     <h3>Navigation</h3>
                     <ul>
                         <li>
-                            <a href="index.php">Home</a>
+                            <a href="index_login.php">Home</a>
                         </li>
                         <li>
-                            <a href="aboutus.php">About</a>
+                            <a href="aboutus_login.php">About</a>
                         </li>
                         <li>
-                            <a href="service.php">Service</a>
+                            <a href="service_login.php">Service</a>
                         </li>
                         <li>
-                            <a href="contact.php">Contact</a>
+                            <a href="contact_login.php">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -248,7 +251,7 @@ include "koneksi.php";
             const currentPage = location
                 .pathname
                 .split('/')
-                .pop() || 'index.php';
+                .pop() || 'index_login.php';
             navLinks.forEach(link => {
                 if (link.getAttribute('href') === currentPage) 
                     link

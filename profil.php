@@ -16,7 +16,7 @@ include "admin/security.php";
     </head>
     <body>
         <section id="navbar">
-            <a href="index.php">
+            <a href="index_login.php">
                 <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
             </a>
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -25,10 +25,10 @@ include "admin/security.php";
                 <span></span>
             </div>
             <nav class="menu" id="navMenu">
-                <a href="index.php">Home</a>
-                <a href="aboutus.php">About</a>
-                <a href="service.php">Service</a>
-                <a href="contact.php">Contact</a>
+                <a href="index_login.php">Home</a>
+                <a href="aboutus_login.php">About</a>
+                <a href="service_login.php">Service</a>
+                <a href="contact_login.php">Contact</a>
             </nav>
             <div class="profile">
                 <b><?php echo $username; ?></b>
@@ -111,16 +111,16 @@ include "admin/security.php";
                     <h3>Navigation</h3>
                     <ul>
                         <li>
-                            <a href="index.php">Home</a>
+                            <a href="index_login.php">Home</a>
                         </li>
                         <li>
-                            <a href="aboutus.php">About</a>
+                            <a href="aboutus_login.php">About</a>
                         </li>
                         <li>
-                            <a href="service.php">Service</a>
+                            <a href="service_login.php">Service</a>
                         </li>
                         <li>
-                            <a href="contact.php">Contact</a>
+                            <a href="contact_login.php">Contact</a>
                         </li>
                     </ul>
                 </div>
