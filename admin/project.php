@@ -7,6 +7,7 @@ include "security.php";
   <meta charset="UTF-8">
   <title>Project - Aneka Galery</title>
   <link rel="stylesheet" href="../css/account.css">
+  <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
 </head>
 <body>
   

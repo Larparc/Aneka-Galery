@@ -6,6 +6,7 @@ include "security.php";
 <head>
   <meta charset="UTF-8">
   <title>Account - Aneka Galery</title>
+  <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
   <link rel="stylesheet" href="../css/account.css">
 </head>
 <body>

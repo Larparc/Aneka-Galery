@@ -6,6 +6,7 @@ include "security.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
     <title>OrderComplete</title>
     <link rel="stylesheet" href="../css/ordercomplete.css">
 </head>
