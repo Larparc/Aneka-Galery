@@ -91,10 +91,12 @@ include "admin/security.php";
                         <div class="input-group">
                             <label for="layanan">Layanan</label>
                             <select id="layanan" required="required">
-                                <option value="printing">Print Hvs</option>
-                                <option value="photocopy">Print Foto</option>
-                                <option value="design">Sticker</option>
-                                <option value="finishing">Banner</option>
+                                <?php
+                                $result = $conn->query("SELECT service_id, service_name FROM services");
+                                while ($row = $result->fetch_assoc()) {
+                                echo "<option value='{$row['service_id']}'>{$row['service_name']}</option>";
+                                }
+                                ?>
                             </select>
                         </div>
 
@@ -111,30 +113,40 @@ include "admin/security.php";
 
                     <div class="row-3" id="dynamicFields">
                         <div class="input-group">
+                            
                             <label for="ukuran">Ukuran</label>
                             <select id="ukuran" required="required">
-                                <option>A4</option>
-                                <option>A5</option>
-                                <option>F4</option>
-                                <option>Custom</option>
+                                <?php
+                                $result = $conn->query("SELECT service_id, service_name FROM services");
+                                while ($row = $result->fetch_assoc()) {
+                                echo "<option value='{$row['service_id']}'>{$row['service_name']}</option>";
+                                }
+                                ?>
                             </select>
+                            
                         </div>
 
                         <div class="input-group">
                             <label for="jenis">Jenis</label>
                             <select id="jenis" required="required">
-                                <option>Hitam Putih</option>
-                                <option>Full Color</option>
+                                <?php
+                                $result = $conn->query("SELECT service_id, service_name FROM services");
+                                while ($row = $result->fetch_assoc()) {
+                                echo "<option value='{$row['service_id']}'>{$row['service_name']}</option>";
+                                }
+                                ?>
                             </select>
                         </div>
 
                         <div class="input-group">
                             <label for="finish">Jenis Kertas</label>
                             <select id="finish" required="required">
-                                <option>Cetak foto</option>
-                                <option>Hvs</option>
-                                <option>Paper glossy</option>
-                                <option>matte</option>
+                                <?php
+                                $result = $conn->query("SELECT service_id, service_name FROM services");
+                                while ($row = $result->fetch_assoc()) {
+                                echo "<option value='{$row['service_id']}'>{$row['service_name']}</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>
