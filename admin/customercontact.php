@@ -1,12 +1,19 @@
 <?php
 include "security.php";
+include "../koneksi.php";
+
+$sql = "SELECT c.no_contact, c.date, c.message, p.username, p.email, p.no_phone
+        FROM contacts c
+        JOIN profiles p ON c.user_id = p.user_id
+        ORDER BY c.date DESC";
+$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Account - Aneka Galery</title>
-  <link rel="stylesheet" href="../css/account.css">
+  <title>Customer Contact - Aneka Galery</title>
+  <link rel="stylesheet" href="../css/customercontact.css">
   <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
 </head>
 <body>
@@ -28,7 +35,7 @@ include "security.php";
       <a href="panel.php">
         Dashboard
       </a>
-      <a href="account.php" class="active">
+      <a href="account.php">
         Account
       </a>
 
@@ -43,7 +50,7 @@ include "security.php";
       <a href="ordercomplete.php">
         Order Complete
       </a>
-      <a href="customercontact.php">
+      <a href="customercontact.php" class="active">
         customer Contact
       </a>
     </nav>
@@ -72,17 +79,36 @@ include "security.php";
     </header>
 
     <main class="content">
-      <h1>Account</h1>
-      <div class="account">
-        <img src="../img/foto.jpg" alt="Avatar" class="account-avatar">
-        <p><span>Nama</span><span><?php echo "".$username; ?></span></p>
-        <p><span>Email</span><span><?php echo htmlspecialchars($email); ?></span></p>
-        <p><span>No Phone</span><span><?php echo htmlspecialchars($no_phone); ?></span></p>
-        <p><span>Role</span><span>Administrator</span></p>
-        <p><span>Toko</span><span>Aneka Galeri Printing</span></p>
-        <p><span>Status</span><span style="color:#147a4f;">Aktif</span></p>
-        <button action="../profil.php">Edit</button>
-      </div>
+      <h1>Customer Contact</h1>
+
+      <table class="contact-table">
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>No. Telp</th>
+            <th>Pesan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php if ($result && $result->num_rows > 0): ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
+              <tr>
+                <td><?php echo htmlspecialchars(date('d M Y H:i', strtotime($row['date']))); ?></td>
+                <td><?php echo htmlspecialchars($row['username']); ?></td>
+                <td><?php echo htmlspecialchars($row['email']); ?></td>
+                <td><?php echo htmlspecialchars($row['no_phone']); ?></td>
+                <td><?php echo nl2br(htmlspecialchars($row['message'])); ?></td>
+              </tr>
+            <?php endwhile; ?>
+          <?php else: ?>
+            <tr>
+              <td colspan="5" style="text-align:center; color:#888;">Belum ada pesan masuk.</td>
+            </tr>
+          <?php endif; ?>
+        </tbody>
+      </table>
     </main>
   </div>
 </div>

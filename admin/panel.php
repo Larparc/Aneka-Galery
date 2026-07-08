@@ -1,5 +1,13 @@
 <?php
 include "security.php";
+include "../koneksi.php";
+
+$sql = "SELECT c.no_contact, c.date, c.message, p.username, p.email, p.no_phone
+        FROM contacts c
+        JOIN profiles p ON c.user_id = p.user_id
+        ORDER BY c.date DESC
+        LIMIT 5";
+$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <head>
@@ -40,6 +48,9 @@ include "security.php";
       <a href="ordercomplete.php">
         Order Complete
       </a>
+      <a href="customercontact.php">
+        customer Contact
+      </a>
     </nav>
   </aside>
 <div class="main">
@@ -65,7 +76,6 @@ include "security.php";
             <span class="notif-badge" id="notif-badge">3</span>
           </button>
           <div class="notif-dropdown" id="notif-dropdown">
-            </ul>
             <a href="orderpending.php" class="notif-footer">Lihat semua order →</a>
           </div>
         </div>
@@ -108,6 +118,33 @@ include "security.php";
         </div>
         <div class="list" id="dash-complete"></div>
       </div>
+
+      <div class="block">
+        <div class="head">
+          <h2>Customer Contact</h2>
+          <a href="customercontact.php">Lihat semua</a>
+        </div>
+        <div class="list" id="dash-contact">
+          <?php if ($result && $result->num_rows > 0): ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
+              <div class="row">
+                <div class="left">
+                  <i></i>
+                  <div>
+                    <b><?php echo htmlspecialchars($row['username']); ?></b>
+                    <span><?php echo htmlspecialchars($row['message']); ?></span>
+                  </div>
+                </div>
+                <div class="right">
+                  <span><?php echo htmlspecialchars(date('d M Y H:i', strtotime($row['date']))); ?></span>
+                </div>
+              </div>
+            <?php endwhile; ?>
+          <?php else: ?>
+            <div class="empty">Belum ada pesan masuk.</div>
+          <?php endif; ?>
+        </div>
+      </div>
     </main>
   </div>
 </div>
@@ -116,7 +153,6 @@ include "security.php";
   const notifBtn  = document.getElementById('notif-btn');
   const notifDrop = document.getElementById('notif-dropdown');
   const notifBadge = document.getElementById('notif-badge');
-  const notifClear = document.getElementById('notif-clear');
 
   notifBtn.addEventListener('click', function(e){
     e.stopPropagation();
@@ -128,13 +164,6 @@ include "security.php";
   });
 
   notifDrop.addEventListener('click', function(e){ e.stopPropagation(); });
-
-  notifClear.addEventListener('click', function(){
-    document.querySelectorAll('.notif-item.unread').forEach(function(el){
-      el.classList.remove('unread');
-    });
-    notifBadge.style.display = 'none';
-  });
 </script>
 </body>
 </html>
