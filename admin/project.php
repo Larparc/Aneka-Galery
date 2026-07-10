@@ -7,6 +7,7 @@ include "security.php";
   <meta charset="UTF-8">
   <title>Project - Aneka Galery</title>
   <link rel="stylesheet" href="../css/account.css">
+  <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
 </head>
 <body>
   
@@ -42,6 +43,9 @@ include "security.php";
       <a href="ordercomplete.php">
         Order Complete
       </a>
+      <a href="customercontact.php">
+        customer Contact
+      </a>
     </nav>
   </aside>
 
@@ -70,29 +74,6 @@ include "security.php";
 
 <div class="content">
 
-<?php
-include "koneksi.php";
-$qry = $koneksi->query("SELECT * FROM user");
-?>
-
-<div class="container">
-    <a href="tambahData.php" class="add">Tambah Data</a>
-    <div class="content">
-        <?php if($qry->num_rows > 0){
-            while($data = $qry->fetch_assoc()){?>
-                <div class="card">
-                    <img src="assets/images/<?= $data['profile'];?>" alt="">
-                    <div class="card-body">
-                        <p class="title"><?= $data['name'];?></p>
-                        <a href="detail.php?id=<?= $data['id_user'];?>" class="detail">Detail</a>
-                        <a href="delete.php?id=<?= $data['id_user'];?>" class="detail">Hapus</a>
-                    </div>
-                </div>
-            <?php }?>
-        <?php }else{ 
-            echo "Tidak Ada Data";
-        }?>
-    </div>
 </div>
 </div>
 </div>
