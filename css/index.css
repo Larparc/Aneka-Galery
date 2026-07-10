@@ -84,7 +84,6 @@ a {
     border: 2px solid #1f8a8a;
 }
 
-/* ===== HAMBURGER MOBILE ===== */
 .hamburger {
     display: none;
     flex-direction: column;
