@@ -101,7 +101,7 @@ include "admin/security.php";
                 <div class="form-inner">
                     <form action="sv_contact.php" method="post" name="form">
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-                        <input type="hidden" name="date" value="<?php echo date('Y-m-d'); ?>">
+                        <input type="hidden" name="date" value="<?php echo date('d M Y'); ?>">
                         <div class="form-group">
                             <label>Nama</label>
                             <div class="display-text">
