@@ -95,7 +95,7 @@ $result = $conn->query($sql);
           <?php if ($result && $result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
               <tr>
-                <td><?php echo htmlspecialchars(date('d M Y H:i', strtotime($row['date']))); ?></td>
+                <td><?php echo htmlspecialchars(date('d M Y', strtotime($row['date']))); ?></td>
                 <td><?php echo htmlspecialchars($row['username']); ?></td>
                 <td><?php echo htmlspecialchars($row['email']); ?></td>
                 <td><?php echo htmlspecialchars($row['no_phone']); ?></td>
