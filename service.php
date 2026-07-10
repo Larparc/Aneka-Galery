@@ -1,6 +1,11 @@
 <?php
 include "koneksi.php";
 include "admin/security.php";
+
+$query_service = mysqli_query($conn, "SELECT * FROM services");
+$query_size = mysqli_query($conn, "SELECT * FROM sizes");
+$query_type = mysqli_query($conn, "SELECT * FROM types");
+$query_output = mysqli_query($conn, "SELECT * FROM outputs");
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +58,7 @@ include "admin/security.php";
                 <div class="service-overlay"></div>
             </div>
             <div class="service-hero">
-                <h1>Service</h1>
+                <h1>Service</h1>    
             </div>
         </div>
 
@@ -72,13 +77,14 @@ include "admin/security.php";
 
             <form id="orderForm">
                 <div class="form-grid">
-                    <div class="input-group">
+                     <div class="input-group">
                         <label for="nama">Nama</label>
                         <div class="display-text">
                             <i class="fas fa-user" style="color: #1f8a8a; margin-right: 8px;"></i>
                             <?php echo $username; ?>
                         </div>
                     </div>
+                    
                     <div class="input-group">
                         <label for="number">Nomor Telephone</label>
                         <div class="display-text">
@@ -86,19 +92,20 @@ include "admin/security.php";
                             <?php echo $no_phone; ?>
                         </div>
                     </div>
-
-                    <div class="row-2">
-                        <div class="input-group">
-                            <label for="layanan">Layanan</label>
-                            <select id="layanan" required="required">
-                                <?php
-                                $result = $conn->query("SELECT service_id, service_name FROM services");
-                                while ($row = $result->fetch_assoc()) {
-                                echo "<option value='{$row['service_id']}'>{$row['service_name']}</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
+                        <div class="row-2">
+                            <div class="input-group">
+                                <label for="layanan">Layanan</label>
+                                <select id="layanan" name="service_id" required>
+                                    <option value="" disabled selected>
+                                    -- Pilih Layanan --
+                                    </option>
+                                        <?php while($service = mysqli_fetch_assoc($query_service)){ ?>
+                                    <option value="<?= $service['service_id']; ?>">
+                                        <?= $service['service_name']; ?>
+                                    </option>
+                                        <?php } ?>
+                                </select>
+                            </div>
 
                         <div class="input-group">
                             <label for="jumlah">Jumlah</label>
@@ -113,40 +120,44 @@ include "admin/security.php";
 
                     <div class="row-3" id="dynamicFields">
                         <div class="input-group">
-                            
                             <label for="ukuran">Ukuran</label>
-                            <select id="ukuran" required="required">
-                                <?php
-                                $result = $conn->query("SELECT service_id, service_name FROM services");
-                                while ($row = $result->fetch_assoc()) {
-                                echo "<option value='{$row['service_id']}'>{$row['service_name']}</option>";
-                                }
-                                ?>
+                            <select id="ukuran" name="size_id" required>
+                                <option value="" disabled selected>
+                                -- Pilih Ukuran --
+                                </option>
+                                    <?php while($size = mysqli_fetch_assoc($query_size)){ ?>
+                                <option value="<?= $size['size_id']; ?>">
+                                    <?= $size['size_name']; ?>
+                                </option>
+                                    <?php } ?>
                             </select>
-                            
                         </div>
 
                         <div class="input-group">
                             <label for="jenis">Jenis</label>
-                            <select id="jenis" required="required">
-                                <?php
-                                $result = $conn->query("SELECT service_id, service_name FROM services");
-                                while ($row = $result->fetch_assoc()) {
-                                echo "<option value='{$row['service_id']}'>{$row['service_name']}</option>";
-                                }
-                                ?>
+                            <select id="jenis" name="type_id" required>
+                                <option value="" disabled selected>
+                                -- Pilih Jenis --
+                                </option>
+                                    <?php while($type = mysqli_fetch_assoc($query_type)){ ?>
+                                <option value="<?= $type['type_id']; ?>">
+                                    <?= $type['colour_type']; ?>
+                                </option>
+                                    <?php } ?>
                             </select>
                         </div>
 
                         <div class="input-group">
                             <label for="finish">Jenis Kertas</label>
-                            <select id="finish" required="required">
-                                <?php
-                                $result = $conn->query("SELECT service_id, service_name FROM services");
-                                while ($row = $result->fetch_assoc()) {
-                                echo "<option value='{$row['service_id']}'>{$row['service_name']}</option>";
-                                }
-                                ?>
+                            <select id="finish" name="output_id" required>
+                                <option value="" disabled selected>
+                                -- Pilih Kertas --
+                                </option>
+                                    <?php while($output = mysqli_fetch_assoc($query_output)){ ?>
+                                <option value="<?= $output['output_id']; ?>">
+                                    <?= $output['output_name']; ?>
+                                </option>
+                                    <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -199,16 +210,16 @@ include "admin/security.php";
                     <h3>Navigation</h3>
                     <ul>
                         <li>
-                            <a href="index.php">Home</a>
+                            <a href="index_login.php">Home</a>
                         </li>
                         <li>
-                            <a href="aboutus.php">About</a>
+                            <a href="aboutus_login.php">About</a>
                         </li>
                         <li>
-                            <a href="service.php">Service</a>
+                            <a href="service_login.php">Service</a>
                         </li>
                         <li>
-                            <a href="contact.php">Contact</a>
+                            <a href="contact_login.php">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -223,30 +234,18 @@ include "admin/security.php";
                     </ul>
                 </div>
 
-                <div class="footer-contact">
+                 <div class="footer-contact">
                     <h3>Contact</h3>
-                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7">
-                        <p>📍 Pontianak Barat</p>
-                    </a>
-                    <a href="https://wa.me/6282254068851">
-                        <p>📞 +62 822-5406-8851</p>
-                    </a>
-                    <a
-                        href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
-                        <p>
-                            <i class="fa-brands fa-instagram" style="color: palevioletred;"></i>
-                            @anekagalery</p>
-                    </a>
+                    <a href="https://maps.app.goo.gl/2bwvWDF4fZMi2M7X7"><p>📍 Pontianak Barat</p></a>
+                    <a href="https://wa.me/6282254068851"><p>📞 +62 822-5406-8851</p></a>
+                    <a href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><p> <i class="fa-brands fa-instagram" style="color: palevioletred;"></i> @anekagalery</p></a>
                 </div>
-            </div>
+                </div>
 
-            <div class="footer-bottom">
-                <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
-                <img
-                    src="../img/LOGO ANEKA GALERI PRINTING.png"
-                    alt="Logo"
-                    class="footer-logo"/>
-            </div>
+                <div class="footer-bottom">
+                    <p>© 2026 Aneka Galeri. All Rights Reserved.</p>
+                    <img src="../img/LOGO ANEKA GALERI PRINTING.png" alt="Logo" class="footer-logo" />
+                </div>
         </footer>
 
         <div class="toast" id="toast">
@@ -272,7 +271,7 @@ include "admin/security.php";
             const currentPage = location
                 .pathname
                 .split('/')
-                .pop() || 'index.php';
+                .pop() || 'index_login.php';
             navLinks.forEach(link => {
                 if (link.getAttribute('href') === currentPage) 
                     link
