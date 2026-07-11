@@ -1,5 +1,10 @@
 <?php
 include "koneksi.php";
+
+$query_service = mysqli_query($conn, "SELECT * FROM services");
+$query_size = mysqli_query($conn, "SELECT * FROM sizes");
+$query_type = mysqli_query($conn, "SELECT * FROM types");
+$query_output = mysqli_query($conn, "SELECT * FROM outputs");
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +21,7 @@ include "koneksi.php";
     </head>
     <body>
         <section id="navbar">
-            <a href="index.php">
+            <a href="index_login.php">
                 <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
             </a>
             <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -86,17 +91,20 @@ include "koneksi.php";
                             placeholder="Masukkan Nomor telephone kamu"
                             required="required"/>
                     </div>
-
-                    <div class="row-2">
-                        <div class="input-group">
-                            <label for="layanan">Layanan</label>
-                            <select id="layanan" required="required">
-                                <option value="printing">Print Hvs</option>
-                                <option value="photocopy">Print Foto</option>
-                                <option value="design">Sticker</option>
-                                <option value="finishing">Banner</option>
-                            </select>
-                        </div>
+                        <div class="row-2">
+                            <div class="input-group">
+                                <label for="layanan">Layanan</label>
+                                <select id="layanan" name="service_id" required>
+                                    <option value="" disabled selected>
+                                    -- Pilih Layanan --
+                                    </option>
+                                        <?php while($service = mysqli_fetch_assoc($query_service)){ ?>
+                                    <option value="<?= $service['service_id']; ?>">
+                                        <?= $service['service_name']; ?>
+                                    </option>
+                                        <?php } ?>
+                                </select>
+                            </div>
 
                         <div class="input-group">
                             <label for="jumlah">Jumlah</label>
@@ -112,29 +120,43 @@ include "koneksi.php";
                     <div class="row-3" id="dynamicFields">
                         <div class="input-group">
                             <label for="ukuran">Ukuran</label>
-                            <select id="ukuran" required="required">
-                                <option>A4</option>
-                                <option>A5</option>
-                                <option>F4</option>
-                                <option>Custom</option>
+                            <select id="ukuran" name="size_id" required>
+                                <option value="" disabled selected>
+                                -- Pilih Ukuran --
+                                </option>
+                                    <?php while($size = mysqli_fetch_assoc($query_size)){ ?>
+                                <option value="<?= $size['size_id']; ?>">
+                                    <?= $size['size_name']; ?>
+                                </option>
+                                    <?php } ?>
                             </select>
                         </div>
 
                         <div class="input-group">
                             <label for="jenis">Jenis</label>
-                            <select id="jenis" required="required">
-                                <option>Hitam Putih</option>
-                                <option>Full Color</option>
+                            <select id="jenis" name="type_id" required>
+                                <option value="" disabled selected>
+                                -- Pilih Jenis --
+                                </option>
+                                    <?php while($type = mysqli_fetch_assoc($query_type)){ ?>
+                                <option value="<?= $type['type_id']; ?>">
+                                    <?= $type['colour_type']; ?>
+                                </option>
+                                    <?php } ?>
                             </select>
                         </div>
 
                         <div class="input-group">
                             <label for="finish">Jenis Kertas</label>
-                            <select id="finish" required="required">
-                                <option>Cetak foto</option>
-                                <option>Hvs</option>
-                                <option>Paper glossy</option>
-                                <option>matte</option>
+                            <select id="finish" name="output_id" required>
+                                <option value="" disabled selected>
+                                -- Pilih Kertas --
+                                </option>
+                                    <?php while($output = mysqli_fetch_assoc($query_output)){ ?>
+                                <option value="<?= $output['output_id']; ?>">
+                                    <?= $output['output_name']; ?>
+                                </option>
+                                    <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -187,16 +209,16 @@ include "koneksi.php";
                     <h3>Navigation</h3>
                     <ul>
                         <li>
-                            <a href="index.php">Home</a>
+                            <a href="index_login.php">Home</a>
                         </li>
                         <li>
-                            <a href="aboutus.php">About</a>
+                            <a href="aboutus_login.php">About</a>
                         </li>
                         <li>
-                            <a href="service.php">Service</a>
+                            <a href="service_login.php">Service</a>
                         </li>
                         <li>
-                            <a href="contact.php">Contact</a>
+                            <a href="contact_login.php">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -248,7 +270,7 @@ include "koneksi.php";
             const currentPage = location
                 .pathname
                 .split('/')
-                .pop() || 'index.php';
+                .pop() || 'index_login.php';
             navLinks.forEach(link => {
                 if (link.getAttribute('href') === currentPage) 
                     link
