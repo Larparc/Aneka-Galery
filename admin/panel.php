@@ -8,6 +8,12 @@ $sql = "SELECT c.no_contact, c.date, c.message, p.username, p.email, p.no_phone
         ORDER BY c.date DESC
         LIMIT 5";
 $result = $conn->query($sql);
+
+$sql = "SELECT pr.*, p.username
+        FROM projects pr
+        JOIN profiles p ON pr.user_id = p.user_id
+        ORDER BY pr.created_at DESC";
+$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,26 +103,20 @@ $result = $conn->query($sql);
                 <main class="content">
                     <h1>Dashboard</h1>
 
-                    <div class="cards">
-                        <a href="project.php" class="card">
-                            <i></i>
-                            <div>
-                                <b>0</b>
-                                <span>Total Project</span></div>
-                        </a>
-                        <a href="orderpending.php" class="card">
-                            <i></i>
-                            <div>
-                                <b>0</b>
-                                <span>Order Pending</span></div>
-                        </a>
-                        <a href="ordercomplete.php" class="card">
-                            <i></i>
-                            <div>
-                                <b>0</b>
-                                <span>Order Complete</span></div>
-                        </a>
-                    </div>
+      <div class="cards">
+        <a href="project.php" class="card">
+          <i></i>
+          <div><b>0</b><span>Total Project</span></div>
+        </a>
+        <a href="orderpending.php" class="card">
+          <i></i>
+          <div><b>0</b><span>Order Pending</span></div>
+        </a>
+        <a href="ordercomplete.php" class="card">
+          <i></i>
+          <div><b>0</b><span>Order Complete</span></div>
+        </a>
+      </div>
 
                     <div class="block">
                         <div class="head">
