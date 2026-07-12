@@ -162,6 +162,7 @@ include "admin/security.php";
 <br/>
 <br/>
 <br/>
+<a href="portofolio.php" class="btn-primary" style="display: block; text-align: center; width: 200px; margin: 0 auto;">Lihat Portofolio</a>
 <br/>
 <br/>
 <div

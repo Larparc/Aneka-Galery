@@ -296,7 +296,29 @@ a {
     background: #1f8a8a;
     border-radius: 2px;
 }
-
+.service-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+.service-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card img {
+    max-width: 50%;
+    border-radius: 14px;
+    margin-bottom: 12px;
+}
 .content {
     max-width: 1100px;
     margin: 0 auto;
