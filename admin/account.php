@@ -7,7 +7,6 @@ include "security.php";
   <meta charset="UTF-8">
   <title>Account - Aneka Galery</title>
   <link rel="stylesheet" href="../css/account.css">
-  <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
 </head>
 <body>
   
@@ -81,7 +80,6 @@ include "security.php";
         <p><span>Role</span><span>Administrator</span></p>
         <p><span>Toko</span><span>Aneka Galeri Printing</span></p>
         <p><span>Status</span><span style="color:#147a4f;">Aktif</span></p>
-        <button action="../profil.php">Edit</button>
       </div>
     </main>
   </div>

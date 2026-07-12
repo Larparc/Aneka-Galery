@@ -7,7 +7,7 @@
 :root {
     --top: #0f3538;
     --bottom: #5fe5dc;
-    --bar: #156161;
+    --bar: #3c6e6c;
     --teal: #0c5d59;
     --bg: #e6e6e4;
     --surface: #fff;
@@ -29,12 +29,8 @@ body {
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
     animation: fadeIn 0.4s ease;
-    zoom: 125%;
 }
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+
 h1, h2, .logo b {
     font-family: 'Sora', sans-serif;
 }
@@ -195,7 +191,7 @@ nav small {
 
 .user b {
     display: block;
-    font-size: 17 px;
+    font-size: 13.5px;
 }
 
 .user span {

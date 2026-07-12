@@ -2,6 +2,11 @@
 include "koneksi.php";
 include "admin/security.php";
 
+$showToast = false;
+if(isset($_GET['success'])){
+    $showToast = true;
+}
+
 $query_service = mysqli_query($conn, "SELECT * FROM services");
 $query_size = mysqli_query($conn, "SELECT * FROM sizes");
 $query_type = mysqli_query($conn, "SELECT * FROM types");
@@ -75,23 +80,29 @@ $query_output = mysqli_query($conn, "SELECT * FROM outputs");
                 </div>
             </div>
 
-            <form id="orderForm">
-                <div class="form-grid">
-                     <div class="input-group">
-                        <label for="nama">Nama</label>
-                        <div class="display-text">
-                            <i class="fas fa-user" style="color: #1f8a8a; margin-right: 8px;"></i>
-                            <?php echo $username; ?>
-                        </div>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="number">Nomor Telephone</label>
-                        <div class="display-text">
-                            <i class="fas fa-phone" style="color: #1f8a8a; margin-right: 8px;"></i>
-                            <?php echo $no_phone; ?>
-                        </div>
-                    </div>
+                    <form
+                        id="orderForm"
+                        action="sv_order.php"
+                        method="POST"
+                        enctype="multipart/form-data">
+                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                            <div class="form-grid">
+                                <div class="input-group">
+                                    <label for="nama">Nama</label>
+                                    <div class="display-text">
+                                        <i class="fas fa-user" style="color: #1f8a8a; margin-right: 8px;"></i>
+                                            <?php echo $username; ?>
+                                    </div>
+                                </div>
+
+                            <div class="input-group">
+                                <label for="number">Nomor Telephone</label>
+                                    <div class="display-text">
+                                        <i class="fas fa-phone" style="color: #1f8a8a; margin-right: 8px;"></i>
+                                        <?php echo $no_phone; ?>
+                                    </div>
+                                
+                                </div>
                         <div class="row-2">
                             <div class="input-group">
                                 <label for="layanan">Layanan</label>
@@ -112,6 +123,7 @@ $query_output = mysqli_query($conn, "SELECT * FROM outputs");
                             <input
                                 type="number"
                                 id="jumlah"
+                                name="total_paper"
                                 min="1"
                                 placeholder="Contoh: 10"
                                 required="required"/>
@@ -141,7 +153,7 @@ $query_output = mysqli_query($conn, "SELECT * FROM outputs");
                                 </option>
                                     <?php while($type = mysqli_fetch_assoc($query_type)){ ?>
                                 <option value="<?= $type['type_id']; ?>">
-                                    <?= $type['colour_type']; ?>
+                                    <?= $type['type_name']; ?>
                                 </option>
                                     <?php } ?>
                             </select>
@@ -167,17 +179,18 @@ $query_output = mysqli_query($conn, "SELECT * FROM outputs");
                         <textarea
                             id="deskripsi"
                             rows="4"
+                            name="description"
                             placeholder="background biru, laminating, etc"
                             required="required"></textarea>
                     </div>
 
                     <div class="input-group upload-box">
                         <label for="fileUpload">Upload File / Gambar</label>
-                        <input type="file" id="fileUpload" accept="image/*,.pdf,.doc,.docx"/>
+                        <input type="file" id="fileUpload" name="file" accept="image/*,.pdf,.doc,.docx"/>
                         <div class="helper-text">
                             Upload file desain, foto, atau dokumen yang ingin diproses.
                         </div>
-                        <img id="preview" class="upload-preview" alt="Preview upload"/>
+                        <img id="preview" class="preview" alt="Preview upload"/>
                     </div>
 
                     <div class="actions">
@@ -248,7 +261,7 @@ $query_output = mysqli_query($conn, "SELECT * FROM outputs");
                 </div>
         </footer>
 
-        <div class="toast" id="toast">
+        <div class="toast <?php echo $showToast ? 'show' : ''; ?>" id="toast">
             Order berhasil dikirim. Tim kami akan segera memproses pesananmu.
         </div>
 
@@ -264,6 +277,19 @@ $query_output = mysqli_query($conn, "SELECT * FROM outputs");
                 serviceIndex = (serviceIndex + 1) % serviceSlides.length;
             }
             setInterval(showServiceSlide, 3000);
+        </script>
+        
+        <script>
+           const toast = document.getElementById("toast");
+            if (toast && toast.classList.contains("show")) {
+            setTimeout(function(){
+                toast.classList.remove("show");
+                window.history.replaceState(
+                null,
+                null,
+                "service_login.php");
+                }, 3000);
+            }
         </script>
 
         <script>
