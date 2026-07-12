@@ -3,7 +3,7 @@ date_default_timezone_set('Asia/Jakarta');
 include 'koneksi.php';
 
 $user_id = trim($_POST['user_id'] ?? '');
-$date = date('Y-m-d');
+$date = date('Y-m-d H:i:s');
 $pesan = mysqli_real_escape_string($conn, $_POST['pesan']);
 
 $sql = "INSERT INTO contacts
