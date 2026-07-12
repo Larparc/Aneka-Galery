@@ -633,11 +633,8 @@ td:last-child {
     transition: transform 0.2s;
 }
 /* --- Gambar pada Project Card --- */
-.project-card-img {
-    display: block;
-    width: 100%;
-    height: 160px; /* Bisa disesuaikan, misal 160px atau 200px */
-    object-fit: cover; /* Memastikan gambar memenuhi kotak tanpa terdistorsi */
+.project-card img {
+    width: 50%;
     border-radius: 8px 8px 8px 8px;
     margin-bottom: 12px; /* Jarak antara gambar dan judul */
     background-color: #e6e6e4; /* Warna background placeholder jika gambar gagal load */
