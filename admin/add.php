@@ -71,7 +71,8 @@ include "security.php";
 
         <div class="form-group">
           <label for="image">Gambar</label>
-          <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/webp,image/pdf" required>
+          <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/webp" required>
+          <img id="imagePreview" class="image-preview" alt="Preview gambar">
         </div>
 
         <button type="submit" class="btn-submit-project">Post Project</button>
@@ -79,5 +80,24 @@ include "security.php";
     </main>
   </div>
 </div>
+<script>
+  const imageInput = document.getElementById('image');
+  const imagePreview = document.getElementById('imagePreview');
+
+  imageInput.addEventListener('change', function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        imagePreview.src = e.target.result;
+        imagePreview.classList.add('show');
+      };
+      reader.readAsDataURL(file);
+    } else {
+      imagePreview.classList.remove('show');
+      imagePreview.removeAttribute('src');
+    }
+  });
+</script>
 </body>
 </html>

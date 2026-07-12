@@ -25,7 +25,10 @@ $totalOrder = $stats['total'] ?? 0;
 $pendingCount = $stats['pending'] ?? 0;
 $completeCount = $stats['complete'] ?? 0;
 
-$sql = "SELECT * FROM projects";
+$sql = "SELECT projects.*, profiles.username AS username
+        FROM projects
+        LEFT JOIN profiles ON projects.user_id = profiles.user_id
+        ORDER BY projects.created_at DESC";
 $stmt = $pdo->query($sql);
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -82,11 +85,10 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </header>
 
+        
+
     <main class="content">
-      <div class="project-head">
-        <h1>Project</h1>
-        <a href="add.php" class="btn-add-project">Tambah Project</a>
-      </div>
+     <h1>Project</h1> 
 
       <!-- Statistik -->
       <div class="cards">
@@ -103,6 +105,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <b><?= $completeCount; ?></b>
         </div>
       </div>
+      
+        <a href="add.php" class="btn-add-project">Tambah Project</a>
 
       <div class="project-grid">
         <?php if (!empty($result)): ?>

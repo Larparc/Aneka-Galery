@@ -615,40 +615,7 @@ td:last-child {
 .btn-delete:hover {
     background: #b71c1c;
 }
-
-/* --- Daftar Project --- */
-.project-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.project-card {
-    background: #ffffff;
-    border: 2px solid #222;
-    /* Bingkai hitam tebal */
-    border-radius: 14px;
-    padding: 18px 22px;
-    transition: transform 0.2s;
-}
-/* --- Gambar pada Project Card --- */
-.project-card img {
-    width: 50%;
-    border-radius: 8px 8px 8px 8px;
-    margin-bottom: 12px; /* Jarak antara gambar dan judul */
-    background-color: #e6e6e4; /* Warna background placeholder jika gambar gagal load */
-}
-
-/* Penyesuaian sedikit padding kartu jika gambar full width */
-.project-card {
-    padding: 18px 22px;
-    /* Jika ingin gambar full width ke pinggir kartu, 
-       ganti padding atas menjadi 0 */
-}
-.project-card:hover {
-    transform: translateY(-2px);
-}
-.project-card h4 {
+.project-card h3 {
     margin: 0 0 6px;
     font-size: 17px;
     color: #16201f;
@@ -658,6 +625,99 @@ td:last-child {
     margin: 0;
     font-size: 14px;
     color: #444;
+}
+
+/* --- Header halaman Project (judul + tombol tambah) --- */
+.project-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+/* --- Tombol Tambah Project / Kembali --- */
+.btn-add-project {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--teal);
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    margin: 4px 0 22px;
+    transition: background 0.15s;
+}
+.btn-add-project:hover {
+    background: #094541;
+}
+
+/* --- Grid Daftar Project --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 8px 18px -10px rgba(15,53,56,.18);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 26px -12px rgba(15,53,56,.28);
+}
+.project-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: var(--bg);
+}
+.project-card-body {
+    padding: 16px 18px 18px;
+}
+.project-date {
+    display: block;
+    font-size: 11.5px;
+    color: var(--muted);
+    margin: 10px 0 14px;
+}
+.project-actions {
+    display: flex;
+    gap: 10px;
+}
+.btn-edit,
+.project-actions .btn-delete {
+    flex: 1;
+    text-align: center;
+    padding: 9px 0;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 12.5px;
+    transition: background 0.15s;
+}
+.btn-edit {
+    background: var(--teal);
+    color: #fff;
+}
+.btn-edit:hover {
+    background: #094541;
+}
+.project-actions .btn-delete {
+    background: #fbeaea;
+    color: #b3261e;
+}
+.project-actions .btn-delete:hover {
+    background: #f6d4d4;
 }
 
 /* --- Modal / Pop-up Form --- */
@@ -1102,4 +1162,69 @@ td:last-child {
 }
 .notif-footer:hover {
     background: #f5fafa;
+}
+/* add.php dan edit.php*/
+.project-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 26px 28px;
+    max-width: 520px;
+}
+.project-form .form-group {
+    margin-bottom: 18px;
+}
+.project-form label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+}
+.project-form input[type="text"],
+.project-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    font-size: 13.5px;
+    font-family: inherit;
+    background: #fafafa;
+    resize: vertical;
+}
+.project-form input[type="text"]:focus,
+.project-form textarea:focus {
+    outline: 2px solid #5fe5dc;
+    outline-offset: 1px;
+    border-color: #1f8c8a;
+}
+.project-form input[type="file"] {
+    font-size: 13px;
+    color: var(--ink);
+}
+.btn-submit-project {
+    margin-top: 6px;
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    padding: 11px 26px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 13.5px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.btn-submit-project:hover {
+    background: #094541;
+}
+.image-preview {
+    display: none;
+    max-height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 12px;
+    border: 1px solid var(--border);
+}
+.image-preview.show {
+    display: block;
 }

@@ -26,10 +26,10 @@ include "security.php";
 
         <nav>
             <a href="panel.php"><i class="fas fa-th-large"></i> Dashboard</a>
-            <a href="account.php"><i class="fas fa-user"></i> Account</a>
+            <a href="account.php" class="active"><i class="fas fa-user"></i> Account</a>
             <small>Pages</small>
             <a href="project.php"><i class="fas fa-folder-open"></i> Project</a>
-            <a href="orderpending.php" class="active"><i class="fas fa-clock"></i> Order Pending</a>
+            <a href="orderpending.php"><i class="fas fa-clock"></i> Order Pending</a>
             <a href="ordercomplete.php"><i class="fas fa-check-circle"></i> Order Complete</a>
             <a href="customercontact.php"><i class="fas fa-envelope"></i> Customer Contact</a>
         </nav>
