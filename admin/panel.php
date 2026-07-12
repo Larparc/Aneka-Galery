@@ -2,19 +2,19 @@
 include "security.php";
 include "../koneksi.php";
 
-$sql = "SELECT c.no_contact, c.date, c.message, p.username, p.email, p.no_phone
+$sql_contact = "SELECT c.no_contact, c.date, c.message, p.username, p.email, p.no_phone
         FROM contacts c
         JOIN profiles p ON c.user_id = p.user_id
         ORDER BY c.date DESC
         LIMIT 5";
-$result = $conn->query($sql);
 
-$sql = "SELECT pr.*, p.username
-        FROM projects pr
-        JOIN profiles p ON pr.user_id = p.user_id
-        ORDER BY pr.created_at DESC";
-$result = $conn->query($sql);
+$result_contact = $conn->query($sql_contact);
+$sql_project = "SELECT *
+        FROM projects";
+
+$result_project = $conn->query($sql_project);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -140,8 +140,8 @@ $result = $conn->query($sql);
                             <a href="customercontact.php">Lihat semua</a>
                         </div>
                         <div class="list" id="dash-contact">
-                            <?php if ($result && $result->num_rows > 0): ?>
-                            <?php while ($row = $result->fetch_assoc()): ?>
+                            <?php if ($result_contact && $result_contact->num_rows > 0): ?>
+                            <?php while ($row = $result_contact->fetch_assoc()): ?>
                             <div class="row">
                                 <div class="left">
                                     <i></i>

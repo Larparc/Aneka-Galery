@@ -2,10 +2,9 @@
 include "security.php";
 include "../koneksi.php";
 
-$sql = "SELECT pr.*, p.username
-        FROM projects pr
-        JOIN profiles p ON pr.user_id = p.user_id
-        ORDER BY pr.created_at DESC";
+$sql = "SELECT *
+        FROM projects";
+
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>

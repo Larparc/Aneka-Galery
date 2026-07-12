@@ -23,6 +23,7 @@
     background:var(--bg);
     color:var(--ink);
     -webkit-font-smoothing:antialiased;
+    animation: fadeIn 0.4s ease;
 }
   h1,h2,.logo b{
     font-family:'Sora',sans-serif;

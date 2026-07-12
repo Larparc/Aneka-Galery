@@ -42,6 +42,9 @@ include "security.php";
       <a href="ordercomplete.php">
         Order Complete
       </a>
+      <a href="customercontact.php">
+        customer Contact
+      </a>
     </nav>
   </aside>
 
