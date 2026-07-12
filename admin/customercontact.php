@@ -129,7 +129,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
           <?php else: ?>
             <tr>
-              <td colspan="5" style="text-align:center; color:#888;">Belum ada pesan masuk.</td>
+              <td colspan="5" style="text-align:center; color:#888;">No incoming messages yet.</td>
             </tr>
           <?php endif; ?>
         </tbody>

@@ -18,10 +18,10 @@ include "security.php";
   <aside class="sidebar" id="sidebar">
     <div class="logo">
       <i><img src="../img/anekagalery_32x32.png" alt="logo"></i>
-      <div>
-        <b>ANEKA GALERI</b>
-        <span>Digital Printing</span>
-      </div>
+      <div><a href="../index.php">
+          <b>ANEKA GALERI</b>
+          <span>Digital Printing</span>
+      </div></a>
     </div>
 
         <nav>
@@ -43,17 +43,14 @@ include "security.php";
         <img src="../img/foto.jpg" alt="Avatar" class="user-avatar">
         <a href="account.php">
         <div>
-          <b><?php echo "welcome, ".$username; ?></b>
+          <b><?php echo "Welcome, ".$username; ?></b>
           <span>Administrator</span>
         </div>
       </a>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <button class="btn round" aria-label="Notifikasi">
-        </button>
-        <a href="logout.php" class="btn light">
-          Logout
-        </a>
+        <button class="btn round"><i class="fas fa-bell"></i></button>
+        <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
       </div>
     </header>
 

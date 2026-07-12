@@ -117,7 +117,7 @@ nav small { display: block; margin: 16px 12px 6px; font-size: 10.5px; font-weigh
     justify-content: center;
 }
 .user-avatar { width: 100%; height: 100%; object-fit: cover; border: 2px solid rgba(255,255,255,0.35); }
-.user b { display: block; font-size: 13.5px; }
+.user b { display: block; font-size: 17px; }
 .user span { display: block; font-size: 11.5px; color: #d7efec; }
 
 /* Buttons */

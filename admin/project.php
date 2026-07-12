@@ -48,10 +48,10 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <aside class="sidebar" id="sidebar">
     <div class="logo">
       <i><img src="../img/anekagalery_32x32.png" alt="logo"></i>
-      <div>
-        <b>ANEKA GALERI</b>
-        <span>Digital Printing</span>
-      </div>
+      <div><a href="../index.php">
+          <b>ANEKA GALERI</b>
+          <span>Digital Printing</span>
+      </div></a>
     </div>
 
     <nav>
@@ -106,7 +106,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
       
-        <a href="add.php" class="btn-add-project">Tambah Project</a>
+        <a href="add.php" class="btn-add-project">Add Project</a>
 
       <div class="project-grid">
         <?php if (!empty($result)): ?>
@@ -121,7 +121,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   <a href="edit.php?id=<?php echo $row['project_id']; ?>" class="btn-edit">Edit</a>
                   <a href="delete.php?id=<?php echo $row['project_id']; ?>"
                      class="btn-delete"
-                     onclick="return confirm('Yakin mau hapus project ini?');">Hapus</a>
+                     onclick="return confirm('Yakin mau hapus project ini?');">Delete</a>
                 </div>
               </div>
             </div>

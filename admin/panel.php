@@ -55,12 +55,12 @@ $result_project = $stmt_project->fetchAll(PDO::FETCH_ASSOC);
             <aside class="sidebar" id="sidebar">
                 <div class="logo">
                     <i><img src="../img/anekagalery_32x32.png" alt=""></i>
-                    <div>
+                    <div><a href="../index.php">
                         <b>ANEKA GALERI</b>
                         <span>Digital Printing</span>
-                    </div>
+                    </div></a>
                 </div>
-                <nav>
+            <nav>
                 <a href="panel.php" class="active"><i class="fas fa-th-large"></i> Dashboard</a>
                 <a href="account.php"><i class="fas fa-user"></i> Account</a>
                 <small>Pages</small>
@@ -112,7 +112,9 @@ $result_project = $stmt_project->fetchAll(PDO::FETCH_ASSOC);
                             <h2>Uncomplete order</h2>
                             <a href="orderpending.php">Lihat semua</a>
                         </div>
-                        <div class="list" id="dash-pending"></div>
+                        <div class="list" id="dash-pending">
+                            
+                        </div>
                     </div>
 
                     <div class="block">
@@ -145,7 +147,7 @@ $result_project = $stmt_project->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <?php endforeach; ?>
                         <?php else: ?>
-                            <div class="empty">Belum ada pesan masuk.</div>
+                            <div class="empty">No incoming messages yet.</div>
                             <?php endif; ?>
                         </div>
                     </div>

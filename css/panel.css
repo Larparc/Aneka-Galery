@@ -1,7 +1,7 @@
 :root {
     --top:#0f3538;
     --bottom:#5fe5dc;
-    --bar:#3c6e6c;
+    --bar:#156161;
     --teal:#0c5d59;
     --bg:#e6e6e4;
     --surface:#fff;
@@ -149,7 +149,7 @@
 }
   .user b{
     display:block;
-    font-size:13.5px;
+    font-size:17px;
 }
   .user span{
     display:block;

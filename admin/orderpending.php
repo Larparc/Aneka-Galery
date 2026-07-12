@@ -98,10 +98,10 @@ $ordersPending = array_values($orderList);
     <aside class="sidebar" id="sidebar">
         <div class="logo">
             <i><img src="../img/anekagalery_32x32.png" alt="logo"></i>
-            <div>
+            <div><a href="../index.php">
                 <b>ANEKA GALERI</b>
                 <span>Digital Printing</span>
-            </div>
+            </div></a>
         </div>
         <nav>
             <a href="panel.php"><i class="fas fa-th-large"></i> Dashboard</a>
@@ -159,14 +159,14 @@ $ordersPending = array_values($orderList);
                     <h2 class="pending-title">Pending</h2>
                     <div class="filter-wrapper">
                         <button class="filter-btn" id="filterBtn">
-                            <i class="fas fa-filter"></i> <span id="filterLabel">Terbaru</span>
+                            <i class="fas fa-filter"></i> <span id="filterLabel">Latest</span>
                         </button>
                         <div class="filter-dropdown" id="filterDropdown">
                             <button class="filter-option active" data-sort="date_desc">
-                                <i class="fas fa-arrow-down-wide-short"></i> Terbaru
+                                <i class="fas fa-arrow-down-wide-short"></i> Latest
                             </button>
                             <button class="filter-option" data-sort="date_asc">
-                                <i class="fas fa-arrow-up-wide-short"></i> Terlama
+                                <i class="fas fa-arrow-up-wide-short"></i> Oldest
                             </button>
                             <button class="filter-option" data-sort="username_asc">
                                 <i class="fas fa-sort-alpha-up"></i> A-Z

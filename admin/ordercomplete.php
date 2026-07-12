@@ -97,10 +97,10 @@ $ordersComplete = array_values($orderList);
     <aside class="sidebar" id="sidebar">
         <div class="logo">
             <i><img src="../img/anekagalery_32x32.png" alt="logo"></i>
-            <div>
+            <div><a href="../index.php">
                 <b>ANEKA GALERI</b>
                 <span>Digital Printing</span>
-            </div>
+            </div></a>
         </div>
         <nav>
             <a href="panel.php"><i class="fas fa-th-large"></i> Dashboard</a>
