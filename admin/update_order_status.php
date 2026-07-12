@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 $host = "localhost";
-$dbname = "nyaw";
+$dbname = "aneka_galery";
 $user = "root";
 $pass = "";
 try {

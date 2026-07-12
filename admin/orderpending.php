@@ -1,7 +1,7 @@
 <?php
 include "security.php";
 $host = "localhost";
-$dbname = "nyaw";
+$dbname = "aneka_galery";
 $user = "root";
 $pass = "";
 

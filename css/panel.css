@@ -85,36 +85,26 @@
     text-transform:uppercase;
 }
 
-  nav{
-    display:flex;
-    flex-direction:column;
-    gap:2px;
-}
-  nav a{
-    display:flex;
-    align-items:center;
-    gap:11px;
-    padding:11px 12px;
-    border-radius:10px;
-    font-size:14px;
-    font-weight:600;
-    color:#dff7f3;
-}
-  nav a:hover{
-    background:rgba(255,255,255,.08);
-}
-  nav a.active{
-    background:#0c2628;
-    color:#5fe5dc;
-    box-shadow:0 0 0 1px rgba(95,229,220,.35) inset;
-}
-  nav small{
-    display:block;
-    margin:16px 12px 6px;font-size:10.5px;
-    font-weight:700;
-    letter-spacing:1.3px;color:#9fd9d2;
-    text-transform:uppercase;
-}
+  nav { display: flex; flex-direction: column; gap: 2px; }
+  nav a {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 11px 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #dff7f3;
+  }
+  nav a i { width: 20px; text-align: center; }
+  nav a:hover { background: rgba(255,255,255,.08); }
+  nav a.active {
+      background: #0c2628;
+      color: #5fe5dc;
+      box-shadow: 0 0 0 1px rgba(95,229,220,.35) inset;
+  }
+  nav small { display: block; margin: 16px 12px 6px; font-size: 10.5px; font-weight: 700; letter-spacing: 1.3px; color: #9fd9d2; text-transform: uppercase; }
+
   .overlay{
     display:none;
 }

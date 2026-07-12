@@ -7,6 +7,7 @@ include "security.php";
   <meta charset="UTF-8">
   <title>Account - Aneka Galery</title>
   <link rel="stylesheet" href="../css/account.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
   
@@ -23,29 +24,15 @@ include "security.php";
       </div>
     </div>
 
-    <nav>
-      <a href="panel.php">
-        Dashboard
-      </a>
-      <a href="account.php" class="active">
-        Account
-      </a>
-
-      <small>Pages</small>
-
-      <a href="project.php">
-        Project
-      </a>
-      <a href="orderpending.php">
-        Order Pending
-      </a>
-      <a href="ordercomplete.php">
-        Order Complete
-      </a>
-      <a href="customercontact.php">
-        customer Contact
-      </a>
-    </nav>
+        <nav>
+            <a href="panel.php"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="account.php"><i class="fas fa-user"></i> Account</a>
+            <small>Pages</small>
+            <a href="project.php"><i class="fas fa-folder-open"></i> Project</a>
+            <a href="orderpending.php" class="active"><i class="fas fa-clock"></i> Order Pending</a>
+            <a href="ordercomplete.php"><i class="fas fa-check-circle"></i> Order Complete</a>
+            <a href="customercontact.php"><i class="fas fa-envelope"></i> Customer Contact</a>
+        </nav>
   </aside>
 
   <div class="main">

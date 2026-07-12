@@ -1,6 +1,29 @@
 <?php
 include "security.php";
-include "../koneksi.php";
+$host = "localhost";
+$dbname = "aneka_galery";
+$user = "root";
+$pass = "";
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e){
+    die("Database connection failed : " . $e->getMessage());
+}
+
+// Statistik
+$stmt = $pdo->query("
+    SELECT
+        COUNT(*) AS total,
+        SUM(order_status='pending') AS pending,
+        SUM(order_status='complete') AS complete
+    FROM orders
+");
+$stats = $stmt->fetch(PDO::FETCH_ASSOC);
+$totalOrder = $stats['total'] ?? 0;
+$pendingCount = $stats['pending'] ?? 0;
+$completeCount = $stats['complete'] ?? 0;
 
 $sql_contact = "SELECT c.no_contact, c.date, c.message, p.username, p.email, p.no_phone
         FROM contacts c
@@ -8,11 +31,12 @@ $sql_contact = "SELECT c.no_contact, c.date, c.message, p.username, p.email, p.n
         ORDER BY c.date DESC
         LIMIT 5";
 
-$result_contact = $conn->query($sql_contact);
-$sql_project = "SELECT *
-        FROM projects";
+$stmt_contact = $pdo->query($sql_contact);
+$result_contact = $stmt_contact->fetchAll(PDO::FETCH_ASSOC);
 
-$result_project = $conn->query($sql_project);
+$sql_project = "SELECT * FROM projects";
+$stmt_project = $pdo->query($sql_project);
+$result_project = $stmt_project->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +46,7 @@ $result_project = $conn->query($sql_project);
         <title>Panel - Admin</title>
         <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
         <link rel="stylesheet" href="../css/panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
         <div class="app">
@@ -35,89 +60,53 @@ $result_project = $conn->query($sql_project);
                         <span>Digital Printing</span>
                     </div>
                 </div>
-
                 <nav>
-                    <a href="panel.php" class="active">
-                        Dashboard
-                    </a>
-                    <a href="account.php">
-                        Account
-                    </a>
-
-                    <small>Pages</small>
-
-                    <a href="project.php">
-                        Project
-                    </a>
-                    <a href="orderpending.php">
-                        Order Pending
-                    </a>
-                    <a href="ordercomplete.php">
-                        Order Complete
-                    </a>
-                    <a href="customercontact.php">
-                        customer Contact
-                    </a>
-                </nav>
+                <a href="panel.php" class="active"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="account.php"><i class="fas fa-user"></i> Account</a>
+                <small>Pages</small>
+                <a href="project.php"><i class="fas fa-folder-open"></i> Project</a>
+                <a href="orderpending.php"><i class="fas fa-clock"></i> Order Pending</a>
+                <a href="ordercomplete.php"><i class="fas fa-check-circle"></i> Order Complete</a>
+                <a href="customercontact.php"><i class="fas fa-envelope"></i> Customer Contact</a>
+            </nav> 
             </aside>
             <div class="main">
                 <header class="topbar">
                     <div class="user">
-                        <button class="btn round" id="menu-btn" aria-label="Buka menu"></button>
-                        <img src="../img/foto.jpg" alt="Avatar" class="user-avatar">
+                        <button class="btn round" id="menu-btn"><i class="fas fa-bars"></i></button>
+                        <div class="user-avatar-wrapper">
+                            <img src="../img/foto.jpg" class="user-avatar" alt="avatar">
+                        </div>
                         <a href="account.php">
                             <div>
-                                <b><?php echo "welcome, ".$username; ?></b>
+                                <b><?= "Welcome, " . htmlspecialchars($username ?? "Admin"); ?></b>
                                 <span>Administrator</span>
                             </div>
                         </a>
                     </div>
                     <div style="display:flex;align-items:center;gap:10px;">
-                        <div class="notif-wrap" id="notif-wrap">
-                            <button class="btn round notif-btn" id="notif-btn" aria-label="Notifikasi">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="18"
-                                    height="18"
-                                    viewbox="0 0 24 24"
-                                    fill="none"
-                                    stroke="#fff"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
-                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-                                </svg>
-                                <span class="notif-badge" id="notif-badge">3</span>
-                            </button>
-                            <div class="notif-dropdown" id="notif-dropdown">
-                                <a href="orderpending.php" class="notif-footer">Lihat semua order →</a>
-                            </div>
-                        </div>
-                        <a href="logout.php" class="btn light">
-                            Logout
-                        </a>
+                        <button class="btn round"><i class="fas fa-bell"></i></button>
+                        <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </div>
                 </header>
 
                 <main class="content">
                     <h1>Dashboard</h1>
 
-      <div class="cards">
-        <a href="project.php" class="card">
-          <i></i>
-          <div><b>0</b><span>Total Project</span></div>
-        </a>
-        <a href="orderpending.php" class="card">
-          <i></i>
-          <div><b>0</b><span>Order Pending</span></div>
-        </a>
-        <a href="ordercomplete.php" class="card">
-          <i></i>
-          <div><b>0</b><span>Order Complete</span></div>
-        </a>
-      </div>
-
+                <div class="cards">
+                    <div class="card">
+                        <div><i class="fas fa-shopping-cart"></i><span>Total Order</span></div>
+                        <b><?= $totalOrder; ?></b>
+                    </div>
+                    <div class="card">
+                        <div><i class="fas fa-hourglass-half"></i><span>Order Pending</span></div>
+                        <b><?= $pendingCount; ?></b>
+                    </div>
+                    <div class="card">
+                        <div><i class="fas fa-check-circle"></i><span>Order Complete</span></div>
+                        <b><?= $completeCount; ?></b>
+                    </div>
+                </div>
                     <div class="block">
                         <div class="head">
                             <h2>Uncomplete order</h2>
@@ -140,8 +129,8 @@ $result_project = $conn->query($sql_project);
                             <a href="customercontact.php">Lihat semua</a>
                         </div>
                         <div class="list" id="dash-contact">
-                            <?php if ($result_contact && $result_contact->num_rows > 0): ?>
-                            <?php while ($row = $result_contact->fetch_assoc()): ?>
+                            <?php if (!empty($result_contact)): ?>
+                            <?php foreach ($result_contact as $row): ?>
                             <div class="row">
                                 <div class="left">
                                     <i></i>
@@ -154,7 +143,7 @@ $result_project = $conn->query($sql_project);
                                     <span><?php echo htmlspecialchars(date('d M Y H:i', strtotime($row['date']))); ?></span>
                                 </div>
                             </div>
-                            <?php endwhile; ?>
+                            <?php endforeach; ?>
                         <?php else: ?>
                             <div class="empty">Belum ada pesan masuk.</div>
                             <?php endif; ?>
@@ -164,27 +153,6 @@ $result_project = $conn->query($sql_project);
             </div>
         </div>
 
-        <script>
-            const notifBtn = document.getElementById('notif-btn');
-            const notifDrop = document.getElementById('notif-dropdown');
-            const notifBadge = document.getElementById('notif-badge');
-
-            notifBtn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                notifDrop
-                    .classList
-                    .toggle('show');
-            });
-
-            document.addEventListener('click', function () {
-                notifDrop
-                    .classList
-                    .remove('show');
-            });
-
-            notifDrop.addEventListener('click', function (e) {
-                e.stopPropagation();
-            });
-        </script>
+        <script src="../js/panel.js"></script>
     </body>
 </html>
