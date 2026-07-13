@@ -39,6 +39,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
+    <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
     </head>
     <body></body>
     <div class="app">
@@ -108,12 +109,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </a>
                 </div>
                 <div style="display:flex;align-items:center;gap:10px;">
-                    <button class="btn round">
-                        <i class="fas fa-bell"></i>
-                    </button>
-                    <a href="logout.php" class="btn light">
-                        <i class="fas fa-sign-out-alt"></i>
-                        Logout</a>
+                    <?php include "notif_widget.php"; ?>
+                    <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </div>
             </header>
 

@@ -122,21 +122,23 @@ if ($result && $result->num_rows > 0) {
                 <i class="fas fa-user"></i> Account</a>
                 
             <small>Pages</small>
-            <a href="project.php"><i class="fas fa-folder-open"></i> 
+            <a href="project.php">
+                <i class="fas fa-folder-open"></i> 
                 Project</a>
             <a>
                 <i class="fas fa-pencil-alt"></i> 
                 Service</a>
             <a href="editlayanan.php" class="sub active">
                 <i class="fas fa-cogs"></i> 
-                Edit Layanan</a>
+                Edit Services</a>
             <a href="editukuran.php" class="sub">
                 <i class="fas fa-ruler"></i> 
-                Edit Ukuran</a>
-            <a href="editjenis.php" class="sub">
+                Edit Sizes</a>
+            <a href="editjenis.php" class="sub" >
                 <i class="fas fa-palette"></i> 
-                Edit Jenis</a>
-            <a href="editoutput.php" class="sub"><i class="fas fa-print"></i> 
+                Edit Types</a>
+            <a href="editoutput.php" class="sub" >
+                <i class="fas fa-print"></i> 
                 Edit Output</a>
             <a href="orderpending.php">
                 <i class="fas fa-clock"></i> 
@@ -165,13 +167,13 @@ if ($result && $result->num_rows > 0) {
                 </a>
             </div>
             <div style="display:flex;align-items:center;gap:10px;">
-                <button class="btn round"><i class="fas fa-bell"></i></button>
+                <?php include "notif_widget.php"; ?>
                 <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </header>
 
         <main class="content">
-            <h1>Layanan</h1>
+            <h1>Services</h1>
 
             <?php if ($message): ?>
                 <div class="alert alert-<?= $messageType ?>">
@@ -181,7 +183,7 @@ if ($result && $result->num_rows > 0) {
 
             <div class="layanan-toolbar">
                 <button class="btn-add-layanan" id="btnAddLayanan">
-                    <i class="fas fa-plus-circle"></i> Add Layanan
+                    <i class="fas fa-plus-circle"></i> Add Service
                 </button>
                 <div class="search-box">
                     <input type="text" id="searchLayanan" placeholder="Cari layanan..." onkeyup="filterTable()">
@@ -193,7 +195,7 @@ if ($result && $result->num_rows > 0) {
                 <thead>
                     <tr>
                         <th style="width:60px;">No</th>
-                        <th>Nama Layanan</th>
+                        <th>Nama Service</th>
                         <th style="width:180px; text-align:center;">Action</th>
                     </tr>
                 </thead>
@@ -214,7 +216,7 @@ if ($result && $result->num_rows > 0) {
                         </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <tr><td colspan="3" class="no-data">Belum ada layanan.</td></tr>
+                        <tr><td colspan="3" class="no-data">No have data service yet.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>

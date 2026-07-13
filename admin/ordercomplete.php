@@ -141,7 +141,7 @@ $ordersComplete = array_values($orderList);
                 </a>
             </div>
             <div style="display:flex;align-items:center;gap:10px;">
-                <button class="btn round"><i class="fas fa-bell"></i></button>
+                <?php include "notif_widget.php"; ?>
                 <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </header>

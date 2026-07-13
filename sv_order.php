@@ -14,54 +14,17 @@ $order_status = "Pending";
 $total = 0;
 
 $file_name = "";
-if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
-
-    // --- Validasi tipe file gambar ---
-    $allowedExt  = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'pdf', 'doc', 'docx'];
-    $allowedMime = [
-        'image/jpeg',
-        'image/png',
-        'image/webp',
-        'image/gif',
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'application/zip',
-    ];
-
-    $ext = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
-    $mime = mime_content_type($tmp_name); 
-
-    $mimeOk = in_array($mime, $allowedMime);
-    if (!$mimeOk && $ext === 'docx' && $mime === 'application/zip') {
-        $mimeOk = true;
-    }
-
-    if (!in_array($ext, $allowedExt) || !$mimeOk) {
-        echo "<script>
-            alert('File harus berupa gambar (JPG, PNG, WEBP, GIF), PDF, atau dokumen Word (DOC/DOCX).');
-            window.location.href = 'service.php';
-        </script>";
-        exit;
-    }
-
-    // batasi ukuran file, misal maksimal 5MB
-    if ($_FILES['file']['size'] > 5 * 1024 * 1024) {
-        echo "<script>
-            alert('Ukuran file maksimal 5MB.');
-            window.location.href = 'service.php';
-        </script>";
-        exit;
-    }
-
-    // bikin nama file unik biar nggak bentrok/ketimpa file lain
-    $file_name = uniqid('order_', true) . '.' . $ext;
-
+if(isset($_FILES['file']) && $_FILES['file']['error'] == 0){
+    $file_name = $_FILES['file']['name'];
+    $tmp_name = $_FILES['file']['tmp_name'];
     $folder = "uploads/";
-    if (!is_dir($folder)) {
+    if(!is_dir($folder)){
         mkdir($folder);
     }
-    move_uploaded_file($tmp_name, $folder . $file_name);
+    move_uploaded_file(
+        $tmp_name,
+        $folder . $file_name
+    );
 }
 
 $query_order = "
@@ -81,7 +44,7 @@ VALUES
     '$total'
 )";
 
-if (mysqli_query($conn, $query_order)) {
+if(mysqli_query($conn,$query_order)){
     $order_id = mysqli_insert_id($conn);
     $query_detail = "
     INSERT INTO orders_detail
@@ -108,16 +71,17 @@ if (mysqli_query($conn, $query_order)) {
         '$file_name'
     )";
 
-    if (mysqli_query($conn, $query_detail)) {
-        echo "
-        <script>
-            window.location='service.php?success=1';
-        </script>
-        ";
-    } else {
+    if(mysqli_query($conn,$query_detail)){
+    echo "
+    <script>
+        window.location='service.php?success=1';
+    </script>
+    ";
+}else{
+
         echo "Detail order gagal : " . mysqli_error($conn);
     }
-} else {
+}else{
     echo "Order gagal : " . mysqli_error($conn);
 }
 ?>

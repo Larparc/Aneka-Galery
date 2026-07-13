@@ -115,11 +115,11 @@ if ($result && $result->num_rows > 0) {
         <nav>
             <a href="panel.php">
                 <i class="fas fa-th-large"></i> 
-            Dashboard</a>
+                Dashboard</a>
             <a href="account.php">
                 <i class="fas fa-user"></i> 
-            Account</a>
-            
+                Account</a>
+
             <small>Pages</small>
             <a href="project.php">
                 <i class="fas fa-folder-open"></i> 
@@ -129,13 +129,13 @@ if ($result && $result->num_rows > 0) {
                 Service</a>
             <a href="editlayanan.php" class="sub">
                 <i class="fas fa-cogs"></i> 
-                Edit Layanan</a>
+                Edit Services</a>
             <a href="editukuran.php" class="sub">
                 <i class="fas fa-ruler"></i> 
-                Edit Ukuran</a>
-            <a href="editjenis.php" class="sub">
+                Edit Sizes</a>
+            <a href="editjenis.php" class="sub" >
                 <i class="fas fa-palette"></i> 
-                Edit Jenis</a>
+                Edit Types</a>
             <a href="editoutput.php" class="sub active">
                 <i class="fas fa-print"></i> 
                 Edit Output</a>
@@ -166,7 +166,7 @@ if ($result && $result->num_rows > 0) {
                 </a>
             </div>
             <div style="display:flex;align-items:center;gap:10px;">
-                <button class="btn round"><i class="fas fa-bell"></i></button>
+                <?php include "notif_widget.php"; ?>
                 <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </header>
@@ -215,7 +215,7 @@ if ($result && $result->num_rows > 0) {
                         </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <tr><td colspan="3" class="no-data">Belum ada output.</td></tr>
+                        <tr><td colspan="3" class="no-data">No have data output yet.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>

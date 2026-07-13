@@ -129,14 +129,14 @@ if ($result && $result->num_rows > 0) {
                 Service</a>
             <a href="editlayanan.php" class="sub">
                 <i class="fas fa-cogs"></i> 
-                Edit Layanan</a>
+                Edit Services</a>
             <a href="editukuran.php" class="sub">
                 <i class="fas fa-ruler"></i> 
-                Edit Ukuran</a>
-            <a href="editjenis.php" class="sub active">
+                Edit Sizes</a>
+            <a href="editjenis.php" class="sub active"  >
                 <i class="fas fa-palette"></i> 
-                Edit Jenis</a>
-            <a href="editoutput.php" class="sub">
+                Edit Types</a>
+            <a href="editoutput.php" class="sub" >
                 <i class="fas fa-print"></i> 
                 Edit Output</a>
             <a href="orderpending.php">
@@ -166,13 +166,13 @@ if ($result && $result->num_rows > 0) {
                 </a>
             </div>
             <div style="display:flex;align-items:center;gap:10px;">
-                <button class="btn round"><i class="fas fa-bell"></i></button>
+                <?php include "notif_widget.php"; ?>
                 <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </header>
 
         <main class="content">
-            <h1>Jenis</h1>
+            <h1>Types</h1>
 
             <?php if ($message): ?>
                 <div class="alert alert-<?= $messageType ?>">
@@ -182,7 +182,7 @@ if ($result && $result->num_rows > 0) {
 
             <div class="toolbar">
                 <button class="btn-add" id="btnAdd">
-                    <i class="fas fa-plus-circle"></i> Add Jenis
+                    <i class="fas fa-plus-circle"></i> Add Types
                 </button>
                 <div class="search-box">
                     <input type="text" id="searchInput" placeholder="Cari jenis..." onkeyup="filterTable()">
@@ -194,7 +194,7 @@ if ($result && $result->num_rows > 0) {
                 <thead>
                     <tr>
                         <th style="width:60px;">No</th>
-                        <th>Nama Jenis</th>
+                        <th>Type Name</th>
                         <th style="width:180px; text-align:center;">Action</th>
                     </tr>
                 </thead>
@@ -215,7 +215,7 @@ if ($result && $result->num_rows > 0) {
                         </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <tr><td colspan="3" class="no-data">Belum ada jenis.</td></tr>
+                        <tr><td colspan="3" class="no-data">No have data type yet.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>

@@ -144,6 +144,7 @@ $completeOrders = array_values($completeOrders);
         <title>Panel - Admin</title>
         <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
         <link rel="stylesheet" href="../css/panel.css">
+        <link rel="stylesheet" href="../css/notif.css">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -216,13 +217,10 @@ $completeOrders = array_values($completeOrders);
                         </a>
                     </div>
                     <div style="display:flex;align-items:center;gap:10px;">
-                        <button class="btn round">
-                            <i class="fas fa-bell"></i>
-                        </button>
-                        <a href="logout.php" class="btn light">
-                            <i class="fas fa-sign-out-alt"></i>
-                            Logout</a>
+                        <?php include "notif_widget.php"; ?>
+                        <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </div>
+        </div>
                 </header>
 
                 <main class="content">
