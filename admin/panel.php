@@ -1,12 +1,9 @@
 <?php
 include "security.php";
-$host = "localhost";
-$dbname = "aneka_galery";
-$user = "root";
-$pass = "";
+include "../koneksi.php";
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $pass);
+    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e){
     die("Database connection failed : " . $e->getMessage());
@@ -147,7 +144,9 @@ $completeOrders = array_values($completeOrders);
         <title>Panel - Admin</title>
         <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
         <link rel="stylesheet" href="../css/panel.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
         <div class="app">
@@ -156,25 +155,56 @@ $completeOrders = array_values($completeOrders);
             <aside class="sidebar" id="sidebar">
                 <div class="logo">
                     <i><img src="../img/anekagalery_32x32.png" alt=""></i>
-                    <div><a href="../index.php">
-                        <b>ANEKA GALERI</b>
-                        <span>Digital Printing</span>
-                    </div></a>
+                    <div>
+                        <a href="../index.php">
+                            <b>ANEKA GALERI</b>
+                            <span>Digital Printing</span>
+                        </div>
+                    </a>
                 </div>
-            <nav>
-                <a href="panel.php" class="active"><i class="fas fa-th-large"></i> Dashboard</a>
-                <a href="account.php"><i class="fas fa-user"></i> Account</a>
-                <small>Pages</small>
-                <a href="project.php"><i class="fas fa-folder-open"></i> Project</a>
-                <a href="orderpending.php"><i class="fas fa-clock"></i> Order Pending</a>
-                <a href="ordercomplete.php"><i class="fas fa-check-circle"></i> Order Complete</a>
-                <a href="customercontact.php"><i class="fas fa-envelope"></i> Customer Contact</a>
-            </nav> 
+                <nav>
+                    <a href="panel.php" class="active">
+                        <i class="fas fa-th-large"></i>
+                        Dashboard</a>
+                    <a href="account.php">
+                        <i class="fas fa-user"></i>
+                        Account</a>
+                    <small>Pages</small>
+                    <a href="project.php">
+                        <i class="fas fa-folder-open"></i>
+                        Project</a>
+                    <a>
+                        <i class="fas fa-pencil-alt"></i>
+                        Service</a>
+                    <a href="editlayanan.php" class="sub">
+                        <i class="fas fa-cogs"></i>
+                        Edit Layanan</a>
+                    <a href="editukuran.php" class="sub">
+                        <i class="fas fa-ruler"></i>
+                        Edit Ukuran</a>
+                    <a href="editjenis.php" class="sub">
+                        <i class="fas fa-palette"></i>
+                        Edit Jenis</a>
+                    <a href="editoutput.php" class="sub">
+                        <i class="fas fa-print"></i>
+                        Edit Output</a>
+                    <a href="orderpending.php">
+                        <i class="fas fa-clock"></i>
+                        Order Pending</a>
+                    <a href="ordercomplete.php">
+                        <i class="fas fa-check-circle"></i>
+                        Order Complete</a>
+                    <a href="customercontact.php">
+                        <i class="fas fa-envelope"></i>
+                        Customer Contact</a>
+                </nav>
             </aside>
             <div class="main">
                 <header class="topbar">
                     <div class="user">
-                        <button class="btn round" id="menu-btn"><i class="fas fa-bars"></i></button>
+                        <button class="btn round" id="menu-btn">
+                            <i class="fas fa-bars"></i>
+                        </button>
                         <div class="user-avatar-wrapper">
                             <img src="../img/foto.jpg" class="user-avatar" alt="avatar">
                         </div>
@@ -186,38 +216,48 @@ $completeOrders = array_values($completeOrders);
                         </a>
                     </div>
                     <div style="display:flex;align-items:center;gap:10px;">
-                        <button class="btn round"><i class="fas fa-bell"></i></button>
-                        <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <button class="btn round">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <a href="logout.php" class="btn light">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout</a>
                     </div>
                 </header>
 
                 <main class="content">
                     <h1>Dashboard</h1>
 
-                <div class="cards">
-                    <div class="card">
-                        <div><i class="fas fa-shopping-cart"></i><span>Total Order</span></div>
-                        <b><?= $totalOrder; ?></b>
+                    <div class="cards">
+                        <div class="card">
+                            <div>
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Total Order</span></div>
+                            <b><?= $totalOrder; ?></b>
+                        </div>
+                        <div class="card">
+                            <div>
+                                <i class="fas fa-hourglass-half"></i>
+                                <span>Order Pending</span></div>
+                            <b><?= $pendingCount; ?></b>
+                        </div>
+                        <div class="card">
+                            <div>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Order Complete</span></div>
+                            <b><?= $completeCount; ?></b>
+                        </div>
                     </div>
-                    <div class="card">
-                        <div><i class="fas fa-hourglass-half"></i><span>Order Pending</span></div>
-                        <b><?= $pendingCount; ?></b>
-                    </div>
-                    <div class="card">
-                        <div><i class="fas fa-check-circle"></i><span>Order Complete</span></div>
-                        <b><?= $completeCount; ?></b>
-                    </div>
-                </div>
                     <!-- Uncomplete order (Pending) -->
                     <div class="block">
                         <div class="head">
                             <h2>Uncomplete order</h2>
                             <a href="orderpending.php">Lihat semua</a>
                         </div>
-                    <div class="list" id="dash-pending">
-        <?php if (!empty($pendingOrders)): ?>
-            <?php foreach ($pendingOrders as $order): ?>
-                <?php
+                        <div class="list" id="dash-pending">
+                            <?php if (!empty($pendingOrders)): ?>
+                            <?php foreach ($pendingOrders as $order): ?>
+                        <?php
                     $date = new DateTime($order['date']);
                     $formattedDate = $date->format('d M Y H:i');
                     $avatarChar = strtoupper(substr($order['username'], 0, 1));
@@ -234,28 +274,33 @@ $completeOrders = array_values($completeOrders);
                         $detailText = 'Tidak ada detail';
                     }
                 ?>
-                <div class="dash-order-card">
-                    <img src="https://ui-avatars.com/api/?name=<?= urlencode($order['username']) ?>&background=0c5d59&color=fff&size=44" alt="<?= htmlspecialchars($order['username']) ?>" class="avatar-img">
-                    <div class="body">
-                        <div class="top">
-                            <span class="name"><?= htmlspecialchars($order['username']) ?></span>
-                            <span class="meta">
-                                <span class="order-id">#<?= $order['order_id'] ?></span>
-                                <span><i class="far fa-calendar-alt"></i> <?= $formattedDate ?></span>
-                            </span>
-                        </div>
-                        <div class="details">
-                            <span class="tag"><?= htmlspecialchars($detailText) ?></span>
+                            <div class="dash-order-card">
+                                <img
+                                    src="https://ui-avatars.com/api/?name=<?= urlencode($order['username']) ?>&background=0c5d59&color=fff&size=44"
+                                    alt="<?= htmlspecialchars($order['username']) ?>"
+                                    class="avatar-img">
+                                <div class="body">
+                                    <div class="top">
+                                        <span class="name"><?= htmlspecialchars($order['username']) ?></span>
+                                        <span class="meta">
+                                            <span class="order-id">#<?= $order['order_id'] ?></span>
+                                            <span>
+                                                <i class="far fa-calendar-alt"></i>
+                                                <?= $formattedDate ?></span>
+                                        </span>
+                                    </div>
+                                    <div class="details">
+                                        <span class="tag"><?= htmlspecialchars($detailText) ?></span>
+                                    </div>
+                                </div>
+                                <span class="status-badge pending">Pending</span>
+                            </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="empty-order">Tidak ada order pending.</div>
+                            <?php endif; ?>
                         </div>
                     </div>
-                        <span class="status-badge pending">Pending</span>
-                    </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-                    <div class="empty-order">Tidak ada order pending.</div>
-        <?php endif; ?>
-                </div>
-            </div>
 
                     <!-- Complete Order -->
                     <div class="block">
@@ -263,10 +308,10 @@ $completeOrders = array_values($completeOrders);
                             <h2>Complete Order</h2>
                             <a href="ordercomplete.php">Lihat semua</a>
                         </div>
-                    <div class="list" id="dash-complete">
-        <?php if (!empty($completeOrders)): ?>
-            <?php foreach ($completeOrders as $order): ?>
-                <?php
+                        <div class="list" id="dash-complete">
+                            <?php if (!empty($completeOrders)): ?>
+                            <?php foreach ($completeOrders as $order): ?>
+                        <?php
                     $date = new DateTime($order['date']);
                     $formattedDate = $date->format('d M Y H:i');
                     $avatarChar = strtoupper(substr($order['username'], 0, 1));
@@ -282,28 +327,33 @@ $completeOrders = array_values($completeOrders);
                         $detailText = 'Tidak ada detail';
                     }
                 ?>
-                <div class="dash-order-card">
-                    <img src="https://ui-avatars.com/api/?name=<?= urlencode($order['username']) ?>&background=0c5d59&color=fff&size=44" alt="<?= htmlspecialchars($order['username']) ?>" class="avatar-img">
-                    <div class="body">
-                        <div class="top">
-                            <span class="name"><?= htmlspecialchars($order['username']) ?></span>
-                            <span class="meta">
-                                <span class="order-id">#<?= $order['order_id'] ?></span>
-                                <span><i class="far fa-calendar-alt"></i> <?= $formattedDate ?></span>
-                            </span>
-                        </div>
-                        <div class="details">
-                            <span class="tag"><?= htmlspecialchars($detailText) ?></span>
+                            <div class="dash-order-card">
+                                <img
+                                    src="https://ui-avatars.com/api/?name=<?= urlencode($order['username']) ?>&background=0c5d59&color=fff&size=44"
+                                    alt="<?= htmlspecialchars($order['username']) ?>"
+                                    class="avatar-img">
+                                <div class="body">
+                                    <div class="top">
+                                        <span class="name"><?= htmlspecialchars($order['username']) ?></span>
+                                        <span class="meta">
+                                            <span class="order-id">#<?= $order['order_id'] ?></span>
+                                            <span>
+                                                <i class="far fa-calendar-alt"></i>
+                                                <?= $formattedDate ?></span>
+                                        </span>
+                                    </div>
+                                    <div class="details">
+                                        <span class="tag"><?= htmlspecialchars($detailText) ?></span>
+                                    </div>
+                                </div>
+                                <span class="status-badge complete">Complete</span>
+                            </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="empty-order">Tidak ada order complete.</div>
+                            <?php endif; ?>
                         </div>
                     </div>
-                        <span class="status-badge complete">Complete</span>
-                    </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-                <div class="empty-order">Tidak ada order complete.</div>
-        <?php endif; ?>
-            </div>
-        </div>
 
                     <div class="block">
                         <div class="head">

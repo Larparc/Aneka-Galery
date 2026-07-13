@@ -25,6 +25,9 @@ body {
     color: var(--ink);
     -webkit-font-smoothing: antialiased;
 }
+body::-webkit-scrollbar {
+    display: none;
+}
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -113,6 +116,10 @@ nav a {
     font-weight: 600;
     color: #dff7f3;
 }
+nav a i {
+    width: 20px;
+    text-align: center;
+}
 nav a:hover {
     background: rgba(255,255,255,.08);
 }
@@ -129,6 +136,19 @@ nav small {
     letter-spacing: 1.3px;
     color: #9fd9d2;
     text-transform: uppercase;
+}
+nav a.sub {
+    font-size: 12px;
+    padding-left: 40px;
+    color: #c9eae5;
+}
+nav a.sub:hover {
+    background: rgba(255,255,255,.08);
+}
+nav a.sub.active {
+    background: rgba(255,255,255,.08);
+    color: #5fe5dc;
+    box-shadow: 0 0 0 1px rgba(95,229,220,.35) inset;
 }
 .overlay {
     display: none;
@@ -761,7 +781,11 @@ td:last-child {
 .form-group {
     margin-bottom: 15px;
 }
-
+.form-group img {
+    width: 80%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
 .modal-input {
     width: 100%;
     padding: 12px 15px;
