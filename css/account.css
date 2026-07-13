@@ -251,6 +251,22 @@ nav a.sub.active {
     padding: 8px 13px;
     border-radius: 8px;
 }
+.btn-add-admin {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--teal);
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    margin: 4px 0 22px;
+    transition: background 0.15s;
+}
+.btn-add-admin:hover {
+    background: #094541;
+}
 .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -496,14 +512,22 @@ td:last-child {
     align-items: center;
     justify-content: center;
 }
-.account {
+.account-cards {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.account-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--r);
     padding: 26px;
-    max-width: 460px;
+    max-width: 50%px;
 }
-.account i {
+
+.account-card i {
     display: block;
     width: 64px;
     height: 64px;
@@ -522,7 +546,7 @@ td:last-child {
     border: 3px solid var(--border);
 }
 
-.account p {
+.account-card p {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
@@ -531,14 +555,14 @@ td:last-child {
     margin: 0;
 }
 
-.account p:first-of-type {
+.account-card p:first-of-type {
     border-top: none;
 }
 
-.account p span:first-child {
+.account-card p span:first-child {
     color: var(--muted);
 }
-.account p span:last-child {
+.account-card p span:last-child {
     font-weight: 600;
 }
 .overlay {
@@ -583,4 +607,58 @@ td:last-child {
         width: 100%;
         justify-content: space-between;
     }
+}
+.admin-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 26px 28px;
+    max-width: 520px;
+}
+.admin-form .form-group {
+    margin-bottom: 18px;
+}
+.admin-form label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+}
+.admin-form input[type="text"],
+.admin-form input[type="password"],
+.admin-form input[type="email"],
+.admin-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    font-size: 13.5px;
+    font-family: inherit;
+    background: #fafafa;
+    resize: vertical;
+}
+.admin-form input[type="text"]:focus,
+.admin-form input[type="password"]:focus,
+.admin-form input[type="email"]:focus,
+.admin-form textarea:focus {
+    outline: 2px solid #5fe5dc;
+    outline-offset: 1px;
+    border-color: #1f8c8a;
+}
+
+.admin-form .btn-submit-admin {
+    margin-top: 6px;
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    padding: 11px 26px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 13.5px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.btn-submit-admin:hover {
+    background: #094541;
 }

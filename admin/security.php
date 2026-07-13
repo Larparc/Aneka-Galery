@@ -8,6 +8,9 @@ $user_id = $_SESSION['user_id'] ?? '';
 
 
 if($username == ""){
-    header("Location: ../login.php");
+    echo "<script>
+    alert('Anda belum login, silakan login terlebih dahulu!');
+    window.location.href = '../login.php';
+    </script>";
     exit;
 }

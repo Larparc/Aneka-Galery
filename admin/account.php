@@ -1,5 +1,19 @@
 <?php
-include "security.php";
+include "securityadmin.php";
+include "../koneksi.php";
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e){
+    die("Database connection failed : " . $e->getMessage());
+}
+
+$sql = "SELECT user_id, role_id, username, password, no_phone, email 
+        FROM profiles 
+        ORDER BY user_id ASC";
+$stmt = $pdo->query($sql);
+$profiles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,20 +102,45 @@ include "security.php";
 
             <main class="content">
                 <h1>Account</h1>
-                <div class="account">
-                    <img src="../img/foto.jpg" alt="Avatar" class="account-avatar">
-                    <p>
-                        <span>Nama</span><span><?php echo "".$username; ?></span></p>
-                    <p>
-                        <span>Email</span><span><?php echo htmlspecialchars($email); ?></span></p>
-                    <p>
-                        <span>No Phone</span><span><?php echo htmlspecialchars($no_phone); ?></span></p>
-                    <p>
-                        <span>Role</span><span>Administrator</span></p>
-                    <p>
-                        <span>Toko</span><span>Aneka Galeri Printing</span></p>
-                    <p>
-                        <span>Status</span><span style="color:#147a4f;">Aktif</span></p>
+                <a href="addadmin.php" class="btn-add-admin">Add Admin</a>
+                <div class="account-cards">
+                    <?php foreach ($profiles as $row): ?>
+                    <div class="account-card">
+                        <!-- Avatar: bisa pakai ikon default atau foto jika ada -->
+                        <i class="account-avatar">
+                            <img
+                                src="../img/foto.jpg"
+                                alt="Avatar"
+                                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+                        </i>
+
+                        <p>
+                            <span>User ID</span>
+                            <span><?php echo (int)$row['user_id']; ?></span>
+                        </p>
+                        <p>
+                            <span>Role ID</span>
+                            <span><?php echo (int)$row['role_id']; ?></span>
+                        </p>
+                        <p>
+                            <span>Username</span>
+                            <span><?php echo htmlspecialchars($row['username']); ?></span>
+                        </p>
+                        <!-- Menampilkan password TIDAK disarankan, tapi jika diperlukan: -->
+                        <p>
+                            <span>Password</span>
+                            <span><?php echo htmlspecialchars($row['password']); // ! Hanya jika benar-benar perlu ?></span>
+                        </p>
+                        <p>
+                            <span>No. Phone</span>
+                            <span><?php echo htmlspecialchars($row['no_phone']); ?></span>
+                        </p>
+                        <p>
+                            <span>Email</span>
+                            <span><?php echo htmlspecialchars($row['email']); ?></span>
+                        </p>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
             </main>
         </div>

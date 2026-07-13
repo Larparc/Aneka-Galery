@@ -106,6 +106,21 @@ $ordersPending = array_values($orderList);
             <a href="account.php"><i class="fas fa-user"></i> Account</a>
             <small>Pages</small>
             <a href="project.php"><i class="fas fa-folder-open"></i> Project</a>
+            <a>
+                    <i class="fas fa-pencil-alt"></i>
+                    Service</a>
+                <a href="editlayanan.php" class="sub">
+                    <i class="fas fa-cogs"></i>
+                    Edit Layanan</a>
+                <a href="editukuran.php" class="sub">
+                    <i class="fas fa-ruler"></i>
+                    Edit Ukuran</a>
+                <a href="editjenis.php" class="sub">
+                    <i class="fas fa-palette"></i>
+                    Edit Jenis</a>
+                <a href="editoutput.php" class="sub">
+                    <i class="fas fa-print"></i>
+                    Edit Output</a>
             <a href="orderpending.php" class="active"><i class="fas fa-clock"></i> Order Pending</a>
             <a href="ordercomplete.php"><i class="fas fa-check-circle"></i> Order Complete</a>
             <a href="customercontact.php"><i class="fas fa-envelope"></i> Customer Contact</a>
