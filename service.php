@@ -280,16 +280,13 @@ $query_output = mysqli_query($conn, "SELECT * FROM outputs");
         </script>
         
         <script>
-           const toast = document.getElementById("toast");
-            if (toast && toast.classList.contains("show")) {
+           const toastEl = document.getElementById("toast");
+            if (toastEl && toastEl.classList.contains("show")) {
             setTimeout(function(){
-                toast.classList.remove("show");
-                window.history.replaceState(
-                null,
-                null,
-                "service_login.php");
-                }, 3000);
-            }
+            toastEl.classList.remove("show");
+            window.history.replaceState(null, null, "service_login.php");
+    }, 3000);
+}
         </script>
 
         <script>

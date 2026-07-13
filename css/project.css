@@ -792,9 +792,8 @@ td:last-child {
     flex: 1;
     padding: 10px;
     border: none;
-    border-radius: 30px;
-    background: #0084ff;
-    /* Tombol Biru */
+    border-radius: 999px;
+    background: var(--teal);
     color: #fff;
     font-weight: 700;
     font-size: 14px;
@@ -802,24 +801,24 @@ td:last-child {
     transition: 0.2s;
 }
 .btn-modal-confirm:hover {
-    background: #0066cc;
+    background: #106b65;
 }
 
 .btn-modal-cancel {
     flex: 1;
     padding: 10px;
-    border: none;
-    border-radius: 30px;
-    background: #474747;
-    /* Tombol Abu-abu gelap */
-    color: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--bar);
     font-weight: 700;
     font-size: 14px;
     cursor: pointer;
     transition: 0.2s;
 }
 .btn-modal-cancel:hover {
-    background: #333;
+    border-color: var(--teal);
+    background: rgba(12,93,89,0.08);
 }
 
 /* --- Edit Modal Layout --- */
@@ -843,9 +842,8 @@ td:last-child {
     width: 100%;
     max-width: 750px;
     padding: 20px;
-    border-radius: 24px;
-    border: 3px solid #000000;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border-radius: var(--r);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -861,7 +859,8 @@ td:last-child {
 }
 
 .edit-back-btn {
-    background: #ff8a8a; /* Merah muda */
+    background: rgba(12,93,89,0.08);
+    color: var(--teal);
     border: none;
     border-radius: 12px;
     width: 48px;
@@ -871,7 +870,9 @@ td:last-child {
     justify-content: center;
     cursor: pointer;
     flex-shrink: 0;
+    transition: 0.2s;
 }
+.edit-back-btn:hover { background: rgba(12,93,89,0.16); }
 
 .edit-title-group {
     flex: 1;
@@ -977,7 +978,7 @@ td:last-child {
 .btn-edit-confirm {
     flex: 1;
     padding: 12px 0;
-    background: #19847d; /* Teal gelap */
+    background: var(--teal);
     color: #fff;
     border: none;
     border-radius: 999px;
@@ -990,15 +991,16 @@ td:last-child {
 .btn-edit-delete {
     flex: 1;
     padding: 12px 0;
-    background: #ec1c24; /* Merah */
-    color: #fff;
-    border: none;
+    background: #fff;
+    color: var(--bar);
+    border: 2px solid #e0e0e0;
     border-radius: 999px;
     font-weight: 700;
     font-size: 15px;
     cursor: pointer;
+    transition: 0.2s;
 }
-.btn-edit-delete:hover { background: #c4121a; }
+.btn-edit-delete:hover { border-color: var(--teal); background: rgba(12,93,89,0.08); }
 
 /* --- Responsive Edit Modal --- */
 @media (max-width: 600px) {
@@ -1227,4 +1229,31 @@ td:last-child {
 }
 .image-preview.show {
     display: block;
+}
+/* --- Tambahan styling untuk popup Edit & Hapus di project.php --- */
+.modal-warning-text {
+    text-align: center;
+    color: #555;
+    font-size: 13.5px;
+    margin: -8px 0 20px;
+}
+.edit-image-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.edit-title-input {
+    font-size: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 14px;
+}
+.edit-textarea-input {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+.edit-file-input {
+    font-size: 13px;
+    color: var(--ink);
 }

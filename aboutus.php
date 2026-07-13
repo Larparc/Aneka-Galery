@@ -162,7 +162,11 @@ include "admin/security.php";
 <br/>
 <br/>
 <br/>
+<<<<<<< Updated upstream
 <a href="portofolio.php" class="btn-primary" style="display: block; text-align: center; width: 200px; margin: 0 auto;">Lihat Portofolio</a>
+=======
+<a href="portofolio.php">Portofolio</a>
+>>>>>>> Stashed changes
 <br/>
 <br/>
 <div
