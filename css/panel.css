@@ -209,57 +209,75 @@
     margin:2px 0 18px;
   }
 
-  .cards{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-bottom:30px;
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+  .card {
+    border-radius: 14px;
+    padding: 20px 22px;
+    color: #fff;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 18px -10px rgba(15,53,56,.45);
+}
+
+  .card:nth-child(1) { 
+    background: linear-gradient(135deg, #1f8c8a, #0e5957); 
   }
 
-  .card{
-    border-radius:var(--r);
-    padding:20px 22px;
-    color:#fff;
-    min-height:120px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    box-shadow:0 8px 18px -10px rgba(15,53,56,.45);
+  .card:nth-child(2) { 
+  background: linear-gradient(135deg, #1f8c8a, #0c4a4f); 
   }
 
-  .card:nth-child(1){
-    background:linear-gradient(135deg,#1f8c8a,#0e5957);
+  .card:nth-child(3) { 
+  background: linear-gradient(135deg, #156d7c, #0a3a45); 
   }
 
-  .card:nth-child(2){
-    background:linear-gradient(135deg,#1f8c8a,#0c4a4f);
-  }
+/* Stat Cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+.card {
+    border-radius: var(--r);
+    padding: 20px 22px;
+    color: #fff;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 18px -10px rgba(15,53,56,.45);
+}
+.card:nth-child(1) { 
+  background: linear-gradient(135deg, #1f8c8a, #0e5957); 
+}
+.card:nth-child(2) { 
+  background: linear-gradient(135deg, #1f8c8a, #0c4a4f); 
+}
+.card:nth-child(3) { 
+  background: linear-gradient(135deg, #156d7c, #0a3a45); 
+}
 
-  .card:nth-child(3){
-    background:linear-gradient(135deg,#156d7c,#0a3a45);
-  }
-
-  .card i{
-    width:34px;
-    height:34px;
-    border-radius:9px;
-    background:rgba(255,255,255,.18);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-
-  .card b{
-    display:block;
-    font-size:30px;
-    font-family:'Sora',sans-serif;
-  }
-
-  .card span{
-    font-size:12.5px;
-    font-weight:600;
-    color:#dff5f2;
-  }
+.card i {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: rgba(255,255,255,.18);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+.card b { display: block; font-size: 30px; font-family: 'Sora', sans-serif; }
+.card span { font-size: 15px; font-weight: 600; color: #dff5f2; }
 
   .block{
     margin-bottom:30px;
@@ -355,6 +373,90 @@
     border-radius:999px;
     white-space:nowrap;
   }
+
+  /* Order Card Status */
+.dash-order-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 18px;
+    border: 1px solid #e7e7e5;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: 0.2s;
+}
+.dash-order-card:hover {
+    border-color: #0c5d59;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.dash-order-card .avatar-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.dash-order-card .body {
+    flex: 1;
+    min-width: 0;
+}
+.dash-order-card .body .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+}
+.dash-order-card .body .top .name {
+    font-weight: 700;
+    font-size: 15px;
+}
+.dash-order-card .body .top .meta {
+    font-size: 13px;
+    color: #6b7572;
+}
+.dash-order-card .body .top .meta .order-id {
+    font-weight: 600;
+    color: #0c5d59;
+}
+.dash-order-card .body .details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    margin-top: 4px;
+}
+.dash-order-card .body .details .tag {
+    background: #f5f6fa;
+    padding: 2px 12px;
+    border-radius: 30px;
+    font-size: 12px;
+    color: #444;
+}
+.dash-order-card .status-badge {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.dash-order-card .status-badge.pending {
+    background: #fbedd6;
+    color: #b86a07;
+}
+.dash-order-card .status-badge.complete {
+    background: #e0f4e9;
+    color: #147a4f;
+}
+.empty-order {
+    background: #fff;
+    border: 1px dashed #e7e7e5;
+    border-radius: 14px;
+    padding: 26px;
+    text-align: center;
+    color: #6b7572;
+    font-size: 14px;
+}
 
   [data-status="pending"] .badge,.badge[data-status="pending"]{
     background:var(--amber-bg);

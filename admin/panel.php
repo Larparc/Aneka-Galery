@@ -37,6 +37,107 @@ $result_contact = $stmt_contact->fetchAll(PDO::FETCH_ASSOC);
 $sql_project = "SELECT * FROM projects";
 $stmt_project = $pdo->query($sql_project);
 $result_project = $stmt_project->fetchAll(PDO::FETCH_ASSOC);
+
+//Order Limitasi 2 dalam 1 query panel
+$sql_pending = "
+SELECT
+    o.order_id, o.date, o.order_status, o.total,
+    p.user_id, p.username, p.email, p.no_phone,
+    od.no, od.total_paper, od.description, od.file,
+    s.service_name, sz.size_name, t.type_name, outp.output_name
+FROM orders o
+JOIN profiles p ON o.user_id = p.user_id
+LEFT JOIN orders_detail od ON o.order_id = od.order_id
+LEFT JOIN services s ON od.service_id = s.service_id
+LEFT JOIN sizes sz ON od.size_id = sz.size_id
+LEFT JOIN types t ON od.type_id = t.type_id
+LEFT JOIN outputs outp ON od.output_id = outp.output_id
+WHERE o.order_status='pending'
+ORDER BY o.date DESC
+LIMIT 2
+";
+$stmt_pending = $pdo->prepare($sql_pending);
+$stmt_pending->execute();
+$data_pending = $stmt_pending->fetchAll(PDO::FETCH_ASSOC);
+
+// Kelompokkan per order
+$pendingOrders = [];
+foreach($data_pending as $row){
+    $id = $row['order_id'];
+    if(!isset($pendingOrders[$id])){
+        $pendingOrders[$id] = [
+            "order_id"   => $row['order_id'],
+            "date"       => $row['date'],
+            "status"     => $row['order_status'],
+            "username"   => $row['username'],
+            "email"      => $row['email'],
+            "phone"      => $row['no_phone'],
+            "details"    => []
+        ];
+    }
+    if($row['no']){
+        $pendingOrders[$id]['details'][] = [
+            "service"     => $row['service_name'],
+            "paper"       => $row['total_paper'],
+            "size"        => $row['size_name'],
+            "colour"      => $row['type_name'],
+            "output"      => $row['output_name'],
+            "description" => $row['description'],
+            "file"        => $row['file']
+        ];
+    }
+}
+$pendingOrders = array_values($pendingOrders);
+
+// Order limitasi 2 aja versi complete order status
+$sql_complete = "
+SELECT
+    o.order_id, o.date, o.order_status, o.total,
+    p.user_id, p.username, p.email, p.no_phone,
+    od.no, od.total_paper, od.description, od.file,
+    s.service_name, sz.size_name, t.type_name, outp.output_name
+FROM orders o
+JOIN profiles p ON o.user_id = p.user_id
+LEFT JOIN orders_detail od ON o.order_id = od.order_id
+LEFT JOIN services s ON od.service_id = s.service_id
+LEFT JOIN sizes sz ON od.size_id = sz.size_id
+LEFT JOIN types t ON od.type_id = t.type_id
+LEFT JOIN outputs outp ON od.output_id = outp.output_id
+WHERE o.order_status='complete'
+ORDER BY o.date DESC
+LIMIT 2
+";
+$stmt_complete = $pdo->prepare($sql_complete);
+$stmt_complete->execute();
+$data_complete = $stmt_complete->fetchAll(PDO::FETCH_ASSOC);
+
+$completeOrders = [];
+foreach($data_complete as $row){
+    $id = $row['order_id'];
+    if(!isset($completeOrders[$id])){
+        $completeOrders[$id] = [
+            "order_id"   => $row['order_id'],
+            "date"       => $row['date'],
+            "status"     => $row['order_status'],
+            "username"   => $row['username'],
+            "email"      => $row['email'],
+            "phone"      => $row['no_phone'],
+            "details"    => []
+        ];
+    }
+    if($row['no']){
+        $completeOrders[$id]['details'][] = [
+            "service"     => $row['service_name'],
+            "paper"       => $row['total_paper'],
+            "size"        => $row['size_name'],
+            "colour"      => $row['type_name'],
+            "output"      => $row['output_name'],
+            "description" => $row['description'],
+            "file"        => $row['file']
+        ];
+    }
+}
+$completeOrders = array_values($completeOrders);
 ?>
 
 <!DOCTYPE html>
@@ -107,23 +208,102 @@ $result_project = $stmt_project->fetchAll(PDO::FETCH_ASSOC);
                         <b><?= $completeCount; ?></b>
                     </div>
                 </div>
+                    <!-- Uncomplete order (Pending) -->
                     <div class="block">
                         <div class="head">
                             <h2>Uncomplete order</h2>
                             <a href="orderpending.php">Lihat semua</a>
                         </div>
-                        <div class="list" id="dash-pending">
-                            
+                    <div class="list" id="dash-pending">
+        <?php if (!empty($pendingOrders)): ?>
+            <?php foreach ($pendingOrders as $order): ?>
+                <?php
+                    $date = new DateTime($order['date']);
+                    $formattedDate = $date->format('d M Y H:i');
+                    $avatarChar = strtoupper(substr($order['username'], 0, 1));
+                    // Ambil detail pertama untuk ringkasan
+                    $firstDetail = $order['details'][0] ?? null;
+                    $detailText = '';
+                    if ($firstDetail) {
+                        $detailText = ($firstDetail['service'] ?? 'Print') . ' | ' .
+                                      ($firstDetail['paper'] ?? 0) . ' pcs | ' .
+                                      ($firstDetail['size'] ?? '-') . ' | ' .
+                                      ($firstDetail['colour'] ?? '-') . ' | ' .
+                                      ($firstDetail['output'] ?? '-');
+                    } else {
+                        $detailText = 'Tidak ada detail';
+                    }
+                ?>
+                <div class="dash-order-card">
+                    <img src="https://ui-avatars.com/api/?name=<?= urlencode($order['username']) ?>&background=0c5d59&color=fff&size=44" alt="<?= htmlspecialchars($order['username']) ?>" class="avatar-img">
+                    <div class="body">
+                        <div class="top">
+                            <span class="name"><?= htmlspecialchars($order['username']) ?></span>
+                            <span class="meta">
+                                <span class="order-id">#<?= $order['order_id'] ?></span>
+                                <span><i class="far fa-calendar-alt"></i> <?= $formattedDate ?></span>
+                            </span>
+                        </div>
+                        <div class="details">
+                            <span class="tag"><?= htmlspecialchars($detailText) ?></span>
                         </div>
                     </div>
+                        <span class="status-badge pending">Pending</span>
+                    </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+                    <div class="empty-order">Tidak ada order pending.</div>
+        <?php endif; ?>
+                </div>
+            </div>
 
+                    <!-- Complete Order -->
                     <div class="block">
                         <div class="head">
                             <h2>Complete Order</h2>
                             <a href="ordercomplete.php">Lihat semua</a>
                         </div>
-                        <div class="list" id="dash-complete"></div>
+                    <div class="list" id="dash-complete">
+        <?php if (!empty($completeOrders)): ?>
+            <?php foreach ($completeOrders as $order): ?>
+                <?php
+                    $date = new DateTime($order['date']);
+                    $formattedDate = $date->format('d M Y H:i');
+                    $avatarChar = strtoupper(substr($order['username'], 0, 1));
+                    $firstDetail = $order['details'][0] ?? null;
+                    $detailText = '';
+                    if ($firstDetail) {
+                        $detailText = ($firstDetail['service'] ?? 'Print') . ' | ' .
+                                      ($firstDetail['paper'] ?? 0) . ' pcs | ' .
+                                      ($firstDetail['size'] ?? '-') . ' | ' .
+                                      ($firstDetail['colour'] ?? '-') . ' | ' .
+                                      ($firstDetail['output'] ?? '-');
+                    } else {
+                        $detailText = 'Tidak ada detail';
+                    }
+                ?>
+                <div class="dash-order-card">
+                    <img src="https://ui-avatars.com/api/?name=<?= urlencode($order['username']) ?>&background=0c5d59&color=fff&size=44" alt="<?= htmlspecialchars($order['username']) ?>" class="avatar-img">
+                    <div class="body">
+                        <div class="top">
+                            <span class="name"><?= htmlspecialchars($order['username']) ?></span>
+                            <span class="meta">
+                                <span class="order-id">#<?= $order['order_id'] ?></span>
+                                <span><i class="far fa-calendar-alt"></i> <?= $formattedDate ?></span>
+                            </span>
+                        </div>
+                        <div class="details">
+                            <span class="tag"><?= htmlspecialchars($detailText) ?></span>
+                        </div>
                     </div>
+                        <span class="status-badge complete">Complete</span>
+                    </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+                <div class="empty-order">Tidak ada order complete.</div>
+        <?php endif; ?>
+            </div>
+        </div>
 
                     <div class="block">
                         <div class="head">
