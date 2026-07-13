@@ -1,5 +1,5 @@
 <?php
-include "security.php";
+include "securityadmin.php";
 include "../koneksi.php";
 ?>
 

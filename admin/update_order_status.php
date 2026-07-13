@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-include "security.php";
+include "securityadmin.php";
 include "../koneksi.php";
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
