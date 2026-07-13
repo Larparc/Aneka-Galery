@@ -1,5 +1,5 @@
 <?php
-include "security.php";
+include "securityadmin.php";
 include "../koneksi.php";
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -38,6 +38,9 @@ $stmt->bind_param("isss", $user_id, $title, $description, $fileName);
 $stmt->execute();
 $stmt->close();
 
-header("Location: project.php?status=success");
+    echo "<script>
+    alert('Project berhasil ditambahkan!');
+    window.location.href = 'project.php';
+    </script>";
 exit;
 ?>

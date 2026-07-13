@@ -1,30 +1,16 @@
 <?php
 include "securityadmin.php";
-include "../koneksi.php";
-
-$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
-
-$stmt = $conn->prepare("SELECT * FROM projects WHERE project_id = ?");
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$post = $stmt->get_result()->fetch_assoc();
-$stmt->close();
-
-if (!$post) {
-    header("Location: project.php");
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Edit Project - Aneka Galery</title>
+        <title>Tambah Project - Aneka Galery</title>
         <link rel="stylesheet" href="../css/project.css">
+        <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
     </head>
     <body>
         <div class="app">
@@ -34,9 +20,11 @@ if (!$post) {
                 <div class="logo">
                     <i><img src="../img/anekagalery_32x32.png" alt="logo"></i>
                     <div>
-                        <b>ANEKA GALERI</b>
-                        <span>Digital Printing</span>
-                    </div>
+                        <a href="../index.php">
+                            <b>ANEKA GALERI</b>
+                            <span>Digital Printing</span>
+                        </div>
+                    </a>
                 </div>
 
                 <nav>
@@ -90,26 +78,26 @@ if (!$post) {
                         </a>
                     </div>
                     <div style="display:flex;align-items:center;gap:10px;">
-                        <a href="logout.php" class="btn light">Logout</a>
+                        <button class="btn round">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <a href="logout.php" class="btn light">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout</a>
                     </div>
                 </header>
 
                 <main class="content">
                     <div class="project-head">
-                        <h1>Edit Project</h1>
-                        <a href="project.php" class="btn-add-project">← Kembali</a>
+                        <h1>Tambah Project</h1>
+                        <a href="project.php" class="btn-add-project">Kembali</a>
                     </div>
 
                     <form
                         class="project-form"
-                        action="update_project.php"
+                        action="sv_project.php"
                         method="post"
                         enctype="multipart/form-data">
-                        <input
-                            type="hidden"
-                            name="project_id"
-                            value="<?php echo $post['project_id']; ?>">
-
                         <div class="form-group">
                             <label for="title">Judul</label>
                             <input
@@ -118,35 +106,57 @@ if (!$post) {
                                 name="title"
                                 required="required"
                                 maxlength="50"
-                                value="<?php echo htmlspecialchars($post['title']); ?>">
+                                placeholder="Judul project">
                         </div>
 
                         <div class="form-group">
                             <label for="description">Deskripsi</label>
-                            <textarea id="description" name="description" rows="5" required="required"><?php echo htmlspecialchars($post['description']); ?></textarea>
+                            <textarea
+                                id="description"
+                                name="description"
+                                rows="5"
+                                required="required"
+                                placeholder="Ceritakan tentang project ini..."></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label>Gambar Saat Ini</label>
-                            <img
-                                src="../project_upload/<?php echo htmlspecialchars($post['image']); ?>"
-                                class="current-image-preview"
-                                alt="current image">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="image">Ganti Gambar (kosongkan jika tidak ingin ganti)</label>
+                            <label for="image">Gambar</label>
                             <input
                                 type="file"
                                 id="image"
                                 name="image"
-                                accept="image/jpeg,image/png,image/webp">
+                                accept="image/jpeg,image/png,image/webp"
+                                required="required">
+                            <img id="imagePreview" class="image-preview" alt="Preview gambar">
                         </div>
 
-                        <button type="submit" class="btn-submit-project">Simpan Perubahan</button>
+                        <button type="submit" class="btn-submit-project">Post Project</button>
                     </form>
                 </main>
             </div>
         </div>
+        <script>
+            const imageInput = document.getElementById('image');
+            const imagePreview = document.getElementById('imagePreview');
+
+            imageInput.addEventListener('change', function () {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        imagePreview.src = e.target.result;
+                        imagePreview
+                            .classList
+                            .add('show');
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    imagePreview
+                        .classList
+                        .remove('show');
+                    imagePreview.removeAttribute('src');
+                }
+            });
+        </script>
     </body>
 </html>

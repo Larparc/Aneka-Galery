@@ -1,30 +1,16 @@
 <?php
 include "securityadmin.php";
-include "../koneksi.php";
-
-$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
-
-$stmt = $conn->prepare("SELECT * FROM projects WHERE project_id = ?");
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$post = $stmt->get_result()->fetch_assoc();
-$stmt->close();
-
-if (!$post) {
-    header("Location: project.php");
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Edit Project - Aneka Galery</title>
-        <link rel="stylesheet" href="../css/project.css">
+        <title>Tambah Admin - Aneka Galery</title>
+        <link rel="stylesheet" href="../css/account.css">
+        <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
     </head>
     <body>
         <div class="app">
@@ -34,20 +20,22 @@ if (!$post) {
                 <div class="logo">
                     <i><img src="../img/anekagalery_32x32.png" alt="logo"></i>
                     <div>
-                        <b>ANEKA GALERI</b>
-                        <span>Digital Printing</span>
-                    </div>
+                        <a href="../index.php">
+                            <b>ANEKA GALERI</b>
+                            <span>Digital Printing</span>
+                        </div>
+                    </a>
                 </div>
 
                 <nav>
                     <a href="panel.php">
                         <i class="fas fa-th-large"></i>
                         Dashboard</a>
-                    <a href="account.php">
+                    <a href="account.php" class="active">
                         <i class="fas fa-user"></i>
                         Account</a>
                     <small>Pages</small>
-                    <a href="project.php" class="active">
+                    <a href="project.php">
                         <i class="fas fa-folder-open"></i>
                         Project</a>
                     <a>
@@ -84,69 +72,101 @@ if (!$post) {
                         <img src="../img/foto.jpg" alt="Avatar" class="user-avatar">
                         <a href="account.php">
                             <div>
-                                <b><?php echo "welcome, " . $username; ?></b>
+                                <b><?php echo "Welcome, " . $username; ?></b>
                                 <span>Administrator</span>
                             </div>
                         </a>
                     </div>
                     <div style="display:flex;align-items:center;gap:10px;">
-                        <a href="logout.php" class="btn light">Logout</a>
+                        <button class="btn round">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <a href="logout.php" class="btn light">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout</a>
                     </div>
                 </header>
 
                 <main class="content">
-                    <div class="project-head">
-                        <h1>Edit Project</h1>
-                        <a href="project.php" class="btn-add-project">← Kembali</a>
+                    <div class="account-head">
+                        <h1>Tambah Admin</h1>
+                        <a href="account.php" class="btn-add-admin">Kembali</a>
                     </div>
 
                     <form
-                        class="project-form"
-                        action="update_project.php"
+                        class="admin-form"
+                        action="sv_addadmin.php"
                         method="post"
                         enctype="multipart/form-data">
-                        <input
-                            type="hidden"
-                            name="project_id"
-                            value="<?php echo $post['project_id']; ?>">
-
                         <div class="form-group">
-                            <label for="title">Judul</label>
+                            <label for="username">Username</label>
                             <input
                                 type="text"
-                                id="title"
-                                name="title"
+                                id="username"
+                                name="username"
                                 required="required"
                                 maxlength="50"
-                                value="<?php echo htmlspecialchars($post['title']); ?>">
+                                placeholder="Masukkan username">
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Deskripsi</label>
-                            <textarea id="description" name="description" rows="5" required="required"><?php echo htmlspecialchars($post['description']); ?></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Gambar Saat Ini</label>
-                            <img
-                                src="../project_upload/<?php echo htmlspecialchars($post['image']); ?>"
-                                class="current-image-preview"
-                                alt="current image">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="image">Ganti Gambar (kosongkan jika tidak ingin ganti)</label>
+                            <label for="password">Password</label>
                             <input
-                                type="file"
-                                id="image"
-                                name="image"
-                                accept="image/jpeg,image/png,image/webp">
+                                type="password"
+                                id="password"
+                                name="password"
+                                required="required"
+                                minlength="8"
+                                placeholder="Masukkan password">
                         </div>
 
-                        <button type="submit" class="btn-submit-project">Simpan Perubahan</button>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input
+                                type="text"
+                                id="phone"
+                                name="phone"
+                                required="required"
+                                placeholder="Masukkan nomor telepon">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required="required"
+                                placeholder="Masukkan email">
+                        </div>
+
+                        <button type="submit" class="btn-submit-admin">Tambahkan Admin</button>
                     </form>
                 </main>
             </div>
         </div>
+        <script>
+            const imageInput = document.getElementById('image');
+            const imagePreview = document.getElementById('imagePreview');
+
+            imageInput.addEventListener('change', function () {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        imagePreview.src = e.target.result;
+                        imagePreview
+                            .classList
+                            .add('show');
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    imagePreview
+                        .classList
+                        .remove('show');
+                    imagePreview.removeAttribute('src');
+                }
+            });
+        </script>
     </body>
 </html>

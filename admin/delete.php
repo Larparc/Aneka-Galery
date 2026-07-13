@@ -31,7 +31,6 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     $targetPath = "../project_upload/" . $fileName;
 
     if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
-        // hapus gambar lama
         $stmt = $conn->prepare("SELECT image FROM projects WHERE project_id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
