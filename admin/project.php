@@ -9,19 +9,6 @@ try {
     die("Database connection failed : " . $e->getMessage());
 }
 
-// Statistik
-$stmt = $pdo->query("
-    SELECT
-        COUNT(*) AS total,
-        SUM(order_status='pending') AS pending,
-        SUM(order_status='complete') AS complete
-    FROM orders
-");
-$stats = $stmt->fetch(PDO::FETCH_ASSOC);
-$totalOrder = $stats['total'] ?? 0;
-$pendingCount = $stats['pending'] ?? 0;
-$completeCount = $stats['complete'] ?? 0;
-
 $sql = "SELECT projects.*, profiles.username AS username
         FROM projects
         LEFT JOIN profiles ON projects.user_id = profiles.user_id
@@ -92,22 +79,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <main class="content">
             <div class="project-head">
                 <h1>Project</h1>
-            </div>
-
-            <!-- Statistik -->
-            <div class="cards">
-                <div class="card">
-                    <div><i class="fas fa-shopping-cart"></i><span>Total Order</span></div>
-                    <b><?= $totalOrder; ?></b>
-                </div>
-                <div class="card">
-                    <div><i class="fas fa-hourglass-half"></i><span>Order Pending</span></div>
-                    <b><?= $pendingCount; ?></b>
-                </div>
-                <div class="card">
-                    <div><i class="fas fa-check-circle"></i><span>Order Complete</span></div>
-                    <b><?= $completeCount; ?></b>
-                </div>
             </div>
 
             <a href="add.php" class="btn-add-project">Add Project</a>
