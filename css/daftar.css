@@ -12,12 +12,14 @@
 }
 
 body {
-    min-height: 100dvh; 
-    background: #f0fafa;
+    min-height: 100dvh;
+    background: #e9edec;
     animation: fadeIn 0.4s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 body::-webkit-scrollbar {
@@ -29,14 +31,15 @@ body::-webkit-scrollbar {
     to   { opacity: 1; transform: scale(1); }
 }
 
-.daftar{
-    width:100%;
-    min-height:100vh;
-    display:flex;
+.daftar {
+    display: flex;
+    width: 100%;
+    min-height: 100dvh;
+    background: white;
 }
 
-/* Ganti warna disini */
-.daftar_right{
+/* ===== KOLOM KANAN (PUTIH) ===== */
+.daftar_right {
     width: 50%;
     background: white;
     display: flex;
@@ -44,140 +47,377 @@ body::-webkit-scrollbar {
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative;
-    padding: 90px;
+    padding: 40px 30px;
     flex-shrink: 0;
 }
-.daftar_right a{
-    width: 50%;
-    justify-content: center;
-    padding: 16px 20px;
+.daftar_right .daftar_logo {
+    width: 70%;
+    max-width: 280px;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+    margin-bottom: 20px;
+}
+.daftar_right h2 {
+    font-size: 28px;
+    color: #1c2b2a;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+.daftar_right p {
+    font-size: 16px;
+    color: #6b7676;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 400px;
+}
+.daftar_right a {
+    width: 60%;
+    padding: 14px 10px;
     border: none;
     border-radius: 10px;
     background: #446b68;
     color: white;
-    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.25s ease;
-    margin-top: 0.5rem;
     letter-spacing: 0.5px;
     display: flex;
+    justify-content: center;
+    text-decoration: none;
 }
-.daftar_right a:hover{
+.daftar_right a:hover {
     background: #2a4a47;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(68, 107, 104, 0.3);
 }
-.daftar_right h2 {
-    display: flex;
-    justify-content: center;
-    font-size: 30;
-}
-.daftar_right p {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 10px;
-    font-size: 30px;
-}
-.daftar_left{
+
+/* ===== KOLOM KIRI (HIJAU / FORM) ===== */
+.daftar_left {
+    width: 50%;
     background: linear-gradient(135deg, var(--main-light), var(--main));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 4rem;
     border-radius: 0 40px 40px 0;
-    position:relative;
-    overflow:hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    flex-shrink: 0;
-    width:50%;
-    flex-direction:column;
+    position: relative;
+    overflow: hidden;
 }
-.daftar_logo{
-    width:70%;
-    max-width:300px;
-    z-index:2;
-    display: flex;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
-    align-items: center;
-    display: flex;
-    justify-content: center;
+.daftar_left h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+    letter-spacing: -0.5px;
 }
 
-.daftar_right::before{
-    width:180px;
-    border-radius:0 0 100px 100px;
+.daftar form {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
 }
 
-
-.daftar_left h2{
-    font-size:48px;
-    font-weight:700;
-    margin-bottom:30px;
+.daftar_form {
+    margin-bottom: 1.5rem;
+}
+.daftar_form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    font-weight: 600;
     color: white;
 }
-
-.daftar form{
-    width:350px;
-    color: white;
-}
-
-.daftar_form{
-    margin-bottom:15px;
-}
-
-.daftar_form label{
-    display:block;
-    margin-bottom:10px;
-    font-size:20px;
-}
-
-.daftar_form input{
-    width:100%;
-    padding:10px;
-    border:1px solid #999;
-    outline:none;
+.daftar_form input {
+    width: 100%;
+    padding: clamp(0.6rem, 1vw, 0.9rem) 1rem;
+    border: 1.5px solid rgba(255,255,255,0.3);
     border-radius: 10px;
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+    background: rgba(255,255,255,0.9);
+    transition: all 0.25s ease;
+}
+.daftar_form input:focus {
+    border-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.2);
+    background: white;
 }
 
-.daftar_form input:focus{
-    border-color:#446b68;
-}
-
-.daftar button{
-   width: 100%;
-    padding: clamp(0.7rem, 1.2vw, 1rem);
+.daftar button {
+    width: 100%;
+    padding: clamp(0.7rem, 1vw, 1rem);
     border: none;
     border-radius: 10px;
-    background: #7db1ac;
-    color: black;
-    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    background: rgba(255,255,255,0.25);
+    color: white;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
     font-weight: 700;
     cursor: pointer;
     transition: all 0.25s ease;
     margin-top: 0.5rem;
     letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
 }
-
-.daftar button:hover{
-    background: #2a4a47;
+.daftar button:hover {
+    background: rgba(255,255,255,0.4);
     transform: translateY(-2px);
-    color: white;
-    box-shadow: 0 8px 20px rgba(68, 107, 104, 0.3);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.daftar p{
-    text-align:center;
-    margin-top:15px;
-    font-size:14px;
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================= */
+
+/* Tablet Landscape & Desktop Kecil */
+@media (max-width: 1024px) {
+    .daftar_right {
+        width: 35%;
+        padding: 30px 20px;
+    }
+    .daftar_right .daftar_logo {
+        max-width: 200px;
+    }
+    .daftar_right h2 {
+        font-size: 22px;
+    }
+    .daftar_right p {
+        font-size: 14px;
+    }
+    .daftar_right a {
+        width: 70%;
+        font-size: 14px;
+        padding: 12px 10px;
+    }
+    .daftar_left {
+        width: 65%;
+        padding: 2rem 2.5rem;
+        border-radius: 30px 0 0 30px;
+    }
+    .daftar form {
+        max-width: 380px;
+    }
 }
 
-.daftar p a{
-    color:#446b68;
-    text-decoration:none;
-    font-weight:600;
+/* Tablet Portrait & HP Besar */
+@media (max-width: 768px) {
+    .daftar {
+        flex-direction: column-reverse; /* Tumpuk, kanan di atas */
+    }
+    .daftar_right {
+        width: 100%;
+        height: auto;
+        min-height: 160px;
+        padding: 20px 15px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 12px;
+        background: #f5fafa;
+        border-bottom: 2px solid var(--main);
+        border-radius: 0;
+    }
+    .daftar_right .daftar_logo {
+        width: 70px;
+        max-width: 70px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+    .daftar_right h2 {
+        font-size: 16px;
+        margin-bottom: 0;
+        width: auto;
+    }
+    .daftar_right p {
+        font-size: 12px;
+        margin-bottom: 0;
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+        padding: 0 10px;
+    }
+    .daftar_right a {
+        width: auto;
+        padding: 8px 24px;
+        font-size: 13px;
+        flex-shrink: 0;
+        border-radius: 8px;
+    }
+    .daftar_left {
+        width: 100%;
+        padding: 2rem 1.5rem;
+        border-radius: 0;
+        flex: 1;
+        min-height: 60vh;
+    }
+    .daftar_left h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+    }
+    .daftar form {
+        max-width: 100%;
+    }
 }
 
-.daftar p a:hover{
-    text-decoration:underline;
+/* HP Standar */
+@media (max-width: 480px) {
+    .daftar_right {
+        min-height: 130px;
+        padding: 14px 12px;
+        gap: 4px 8px;
+    }
+    .daftar_right .daftar_logo {
+        width: 55px;
+        max-width: 55px;
+    }
+    .daftar_right h2 {
+        font-size: 14px;
+    }
+    .daftar_right p {
+        font-size: 11px;
+        padding: 0 5px;
+    }
+    .daftar_right a {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+    .daftar_left {
+        padding: 1.5rem 1rem;
+        min-height: 50vh;
+    }
+    .daftar_left h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .daftar_form {
+        margin-bottom: 0.9rem;
+    }
+    .daftar_form input {
+        padding: 0.6rem 0.8rem;
+        border-radius: 8px;
+        font-size: 0.95rem;
+    }
+    .daftar button {
+        padding: 0.65rem;
+        border-radius: 8px;
+        font-size: 0.95rem;
+    }
+}
+
+/* HP Kecil (iPhone SE) */
+@media (max-width: 360px) {
+    .daftar_right {
+        min-height: 100px;
+        padding: 10px 8px;
+    }
+    .daftar_right .daftar_logo {
+        width: 45px;
+        max-width: 45px;
+    }
+    .daftar_right h2 {
+        font-size: 12px;
+    }
+    .daftar_right p {
+        font-size: 10px;
+    }
+    .daftar_right a {
+        padding: 5px 12px;
+        font-size: 11px;
+    }
+    .daftar_left {
+        padding: 1rem 0.8rem;
+    }
+    .daftar_left h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+    .daftar_form label {
+        font-size: 0.75rem;
+    }
+    .daftar_form input {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.85rem;
+        border-radius: 6px;
+    }
+    .daftar button {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+        border-radius: 6px;
+    }
+}
+
+/* Mode Landscape HP */
+@media (max-height: 500px) and (orientation: landscape) {
+    .daftar {
+        flex-direction: row;
+    }
+    .daftar_right {
+        width: 25%;
+        height: 100vh;
+        min-height: unset;
+        padding: 20px 12px;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .daftar_right .daftar_logo {
+        width: 60px;
+        max-width: 60px;
+        margin-bottom: 6px;
+    }
+    .daftar_right h2 {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+    .daftar_right p {
+        font-size: 11px;
+        margin-bottom: 6px;
+    }
+    .daftar_right a {
+        font-size: 12px;
+        padding: 6px 16px;
+        width: auto;
+    }
+    .daftar_left {
+        width: 75%;
+        padding: 1rem 1.5rem;
+        border-radius: 0 20px 20px 0;
+        min-height: unset;
+    }
+    .daftar_left h2 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+    }
+    .daftar_form {
+        margin-bottom: 0.5rem;
+    }
+    .daftar_form input {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.85rem;
+    }
+    .daftar button {
+        padding: 0.4rem;
+        font-size: 0.85rem;
+        margin-top: 0;
+    }
+}
+
+/* Layar Sangat Besar */
+@media (min-width: 1440px) {
+    .daftar_right {
+        padding: 60px 50px;
+    }
+    .daftar_left {
+        padding: 3rem 5rem;
+        border-radius: 0 50px 50px 0;
+    }
+    .daftar form {
+        max-width: 500px;
+    }
+    .daftar_right .daftar_logo {
+        max-width: 350px;
+    }
+    .daftar_right p {
+        font-size: 18px;
+    }
 }

@@ -20,27 +20,34 @@ $result = $conn->query($sql);
     </head>
     <body>
         <section id="navbar">
-            <a href="index.php">
-                <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
+    <a href="index.php">
+        <img src="img/LOGO ANEKA GALERI PRINTING.png" id="logo"/>
+    </a>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav class="menu" id="navMenu">
+        <div class="menu-profile">
+            <b><?php echo $username; ?></b>
+            <a href="profil.php">
+                <img src="img/foto.jpg" class="profile-img" alt="Profile Picture"/>
             </a>
-            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <nav class="menu" id="navMenu">
-                <a href="index.php">Home</a>
-                <a href="aboutus.php">About</a>
-                <a href="service.php">Service</a>                
-                <a href="contact.php">Contact</a>
-            </nav>
-            <div class="profile">
-                <b><?php echo $username; ?></b>
-                <a href="profil.php">
-                    <img src="img/foto.jpg" class="profile-img" alt="Profile Picture"/>
-                </a>
-            </div>
-        </section>
+        </div>
+        <!-- ===== LINK NAVIGASI ===== -->
+        <a href="index.php">Home</a>
+        <a href="aboutus.php">About</a>
+        <a href="service.php">Service</a>
+        <a href="contact.php">Contact</a>
+    </nav>
+    <div class="profile">
+        <b><?php echo $username; ?></b>
+        <a href="profil.php">
+            <img src="img/foto.jpg" class="profile-img" alt="Profile Picture"/>
+        </a>
+    </div>
+</section>
 
         <div class="contact-hero-wrapper">
             <div class="contact-slider">

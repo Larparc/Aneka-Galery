@@ -15,7 +15,7 @@ include "koneksi.php";
     <div class="login_left">
          <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Aneka Galeri" class="login_logo">
          <h2>Baru disini?</h2>
-         <p>Ayo Daftar dan dapatkan akses dalam fitur-fitur menarik dan<br>keuntungan tanpa batas. Daftar sekarang dan mulai<br>jelajahi dunia baru dari kami.</p>
+         <p>Ayo Daftar dan dapatkan akses dalam fitur-fitur <br> menarik dan keuntungan tanpa batas. <br>Daftar sekarang dan mulai jelajahi dunia baru dari kami.</p>
          <a href="pendaftaran_form.php">Create Account</a>
     </div>
     <div class="login_right">

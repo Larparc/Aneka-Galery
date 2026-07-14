@@ -9,9 +9,7 @@ body {
     background: #f0fafa;
     zoom: 125%;
     animation: fadeIn 0.4s ease;
-    position: fixed;
     width: 100%;
-    overflow: hidden;
 }
 body::-webkit-scrollbar {
     display: none;
