@@ -88,7 +88,6 @@ while ($row = mysqli_fetch_assoc($res)) {
         </a>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
-          <?php include "notif_widget.php"; ?>
           <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
       </div>
     </header>

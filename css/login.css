@@ -8,7 +8,6 @@
 body{
     min-height:100vh;
     background: #f0fafa;
-    zoom: 125%;
     animation: fadeIn 0.4s ease;
 }
 body::-webkit-scrollbar {
@@ -30,7 +29,8 @@ body::-webkit-scrollbar {
 
 /* Ganti warna disini */
 .login_left{
-    width:35%;
+    width:50%;
+    min-height:100vh;
     background:linear-gradient(
         to bottom,
         #5f8b8e,
@@ -39,18 +39,23 @@ body::-webkit-scrollbar {
     );
     position:relative;
     overflow:hidden;
+    border-radius: 0 40px 40px 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.login_logo{
+    width:70%;
+    max-width:70%;
+    z-index:2;
+    display: flex;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
 }
 
 .login_left::before{
     width:170px;
     border-radius:0 0 90px 90px;
-}
-
-.login_left img{
-    width:300px;
-    max-width:80%;
-    position:relative;
-    z-index:2;
 }
 
 /* AREA ISI FORM */

@@ -13,7 +13,9 @@ include "koneksi.php";
 <body>
     <section class="login">
 
-    <div class="login_left"></div>
+    <div class="login_left">
+         <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Aneka Galeri" class="login_logo">
+    </div>
 
     <div class="login_right">
         <h2>Login</h2>

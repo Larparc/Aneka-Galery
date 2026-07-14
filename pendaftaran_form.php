@@ -45,7 +45,9 @@ include "koneksi.php";
 
         </form>
     </div>
-    <div class="daftar_right"></div>
+    <div class="daftar_right">
+        <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Aneka Galeri" class="daftar_logo">
+    </div>
 
 </section>
 </body>
