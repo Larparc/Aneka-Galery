@@ -36,10 +36,16 @@ $query_output = mysqli_query($conn, "SELECT * FROM outputs");
                 <span></span>
             </div>
             <nav class="menu" id="navMenu">
-                <a href="index.php">Home</a>
-                <a href="aboutus.php">About</a>
-                <a href="service.php">Service</a>
-                <a href="contact.php">Contact</a>
+                <div class="menu-profile">
+                    <b><?php echo $username; ?></b>
+                        <a href="profil.php">
+                            <img src="img/foto.jpg" class="profile-img" alt="Profile Picture"/>
+                        </a>
+                </div>
+                    <a href="index.php">Home</a>
+                    <a href="aboutus.php">About</a>
+                    <a href="service.php">Service</a>
+                    <a href="contact.php">Contact</a>
             </nav>
             <div class="profile">
                 <b><?php echo $username; ?></b>

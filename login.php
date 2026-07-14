@@ -12,9 +12,8 @@ include "koneksi.php";
 </head>
 <body>
     <section class="login">
-
+        
     <div class="login_left"></div>
-
     <div class="login_right">
         <h2>Login</h2>
         <form action="sv_login.php" method="post">

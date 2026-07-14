@@ -1,116 +1,342 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body{
-    min-height:100vh;
+body {
+    min-height: 100dvh; 
     background: #f0fafa;
-    zoom: 125%;
     animation: fadeIn 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 body::-webkit-scrollbar {
     display: none;
 }
+
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: scale(0.98); }
+    to   { opacity: 1; transform: scale(1); }
 }
 
-
-/* FULL SCREEN */
-.login{
-    width:100%;
-    min-height:100vh;
-    display:flex;
-    
+.login {
+    display: flex;
+    width: 100%;
+    min-height: 100dvh;
+    background: white; /* biar rapi di pinggir */
 }
 
-/* Ganti warna disini */
-.login_left{
-    width:35%;
-    background:linear-gradient(
-        to bottom,
-        #5f8b8e,
-        #8fd8d8,
-        #c8f6f6
-    );
-    position:relative;
-    overflow:hidden;
+.login_left {
+    width: 35%;
+    background: linear-gradient(145deg, #5f8b8e, #8fd8d8, #c8f6f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    flex-shrink: 0; /* jangan menyusut */
 }
 
-.login_left::before{
-    width:170px;
-    border-radius:0 0 90px 90px;
+.login_left img {
+    width: 70%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
 }
 
-.login_left img{
-    width:300px;
-    max-width:80%;
-    position:relative;
-    z-index:2;
+.login_right {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 4rem;
+    background: white;
 }
 
-/* AREA ISI FORM */
-.login_right{
-    width:45%;
-    margin:auto;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+.login_right h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2a4745;
+    letter-spacing: -0.5px;
 }
 
-.login_right h2{
-    font-size:42px;
-    font-weight:700;
-    text-align:center;
-    margin-bottom:40px;
+.login form {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
 }
 
-.login form{
-    width:420px;
-    margin:auto;
+.login_form {
+    margin-bottom: 1.5rem;
 }
 
-.login_form{
-    margin-bottom:20px;
+.login_form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: clamp(0.85rem, 1.1vw, 1rem);
+    font-weight: 600;
+    color: #1f3a38;
 }
 
-.login_form label{
-    display:block;
-    margin-bottom:6px;
-    font-size:14px;
+.login_form input {
+    width: 100%;
+    padding: clamp(0.65rem, 1.2vw, 0.9rem) 1rem;
+    border: 1.5px solid #d0dcdc;
+    border-radius: 10px;
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    background: #fafcfc;
+    transition: all 0.25s ease;
 }
 
-.login_form input{
-    width:100%;
-    padding:12px;
-    border:1px solid #999;
+.login_form input:focus {
+    border-color: #446b68;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(68, 107, 104, 0.15);
+    background: white;
 }
 
-button{
-    width:100%;
-    padding:12px;
-    border:none;
-    background:#446b68;
-    color:white;
-    cursor:pointer;
+/* Tombol Sign In */
+button[type="submit"] {
+    width: 100%;
+    padding: clamp(0.7rem, 1.2vw, 1rem);
+    border: none;
+    border-radius: 10px;
+    background: #446b68;
+    color: white;
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-top: 0.5rem;
+    letter-spacing: 0.5px;
 }
 
-.login p{
-    text-align:center;
-    margin-top:18px;
-    font-size:13px;
+button[type="submit"]:hover {
+    background: #2a4a47;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(68, 107, 104, 0.3);
 }
 
-.login p a{
-    text-decoration:none;
-    color:#446b68;
-    font-weight:600;
+.login p {
+    text-align: center;
+    margin-top: 1.8rem;
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    color: #3d5a5a;
 }
 
-button:hover{
-    opacity:.9;
+.login p a {
+    text-decoration: none;
+    color: #446b68;
+    font-weight: 700;
+    border-bottom: 2px solid transparent;
+    transition: 0.2s;
+}
+
+.login p a:hover {
+    border-bottom-color: #446b68;
+}
+
+@media (max-width: 1200px) {
+    .login_left {
+        width: 30%;
+    }
+    .login_right {
+        width: 70%;
+        padding: 2rem 2.5rem;
+    }
+    .login form {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .login_left {
+        width: 25%;
+    }
+    .login_right {
+        width: 75%;
+        padding: 2rem 2rem;
+    }
+    .login form {
+        max-width: 360px;
+    }
+    .login_left img {
+        width: 60%;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login {
+        flex-direction: column; /* Tumpuk ke bawah */
+    }
+
+    .login_left {
+        width: 100%;
+        height: 28vh; /* tinggi 28% dari layar */
+        min-height: 160px;
+        max-height: 220px;
+        background: linear-gradient(135deg, #5f8b8e, #8fd8d8);
+        padding: 10px;
+    }
+
+    .login_left img {
+        width: 25%;
+        max-width: 140px;
+    }
+
+    .login_right {
+        width: 100%;
+        padding: 2rem 2rem;
+        flex: 1; /* ambil sisa tinggi */
+    }
+
+    .login_right h2 {
+        font-size: 2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .login form {
+        max-width: 380px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login_left {
+        height: 22vh;
+        min-height: 120px;
+        max-height: 180px;
+    }
+
+    .login_left img {
+        width: 20%;
+        max-width: 100px;
+    }
+
+    .login_right {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .login_right h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .login_form {
+        margin-bottom: 1rem;
+    }
+
+    .login_form input {
+        padding: 0.7rem 0.9rem;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    button[type="submit"] {
+        padding: 0.75rem;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    .login p {
+        font-size: 0.85rem;
+        margin-top: 1.2rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .login_left {
+        height: 18vh;
+        min-height: 90px;
+        max-height: 140px;
+    }
+
+    .login_left img {
+        width: 18%;
+        max-width: 80px;
+    }
+
+    .login_right {
+        padding: 1rem 0.8rem;
+    }
+
+    .login_right h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .login_form label {
+        font-size: 0.8rem;
+    }
+
+    .login_form input {
+        padding: 0.55rem 0.7rem;
+        font-size: 0.9rem;
+        border-radius: 6px;
+    }
+
+    button[type="submit"] {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+        border-radius: 6px;
+    }
+
+    .login p {
+        font-size: 0.75rem;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .login {
+        flex-direction: row; /* Kembali ke berdampingan */
+    }
+
+    .login_left {
+        width: 22%;
+        height: 100vh;
+        min-height: unset;
+        max-height: unset;
+    }
+
+    .login_left img {
+        width: 40%;
+        max-width: 100px;
+    }
+
+    .login_right {
+        width: 78%;
+        padding: 1.2rem 2rem;
+    }
+
+    .login_right h2 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .login_form {
+        margin-bottom: 0.6rem;
+    }
+
+    .login_form input {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    button[type="submit"] {
+        padding: 0.45rem;
+        font-size: 0.9rem;
+        margin-top: 0;
+    }
+
+    .login p {
+        margin-top: 0.6rem;
+        font-size: 0.8rem;
+    }
 }

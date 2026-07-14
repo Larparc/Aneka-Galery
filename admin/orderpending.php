@@ -87,6 +87,7 @@ $ordersPending = array_values($orderList);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Pending - Aneka Galeri</title>
     <link rel="stylesheet" href="../css/orderpending.css">
+    <link rel="stylesheet" href="../css/notif.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
 </head>
@@ -142,7 +143,10 @@ $ordersPending = array_values($orderList);
                 </a>
             </div>
             <div style="display:flex;align-items:center;gap:10px;">
-                <?php include "notif_widget.php"; ?>
+                <div style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.14);cursor:default;">
+                    <i class="fas fa-bell" style="font-size:18px;color:#fff;"></i>
+                    <span style="position:absolute;top:0;right:0;width:12px;height:12px;border-radius:50%;background:#e84545;border:2px solid #156161;"></span>
+                </div>
                 <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </header>

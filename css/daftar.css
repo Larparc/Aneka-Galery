@@ -1,115 +1,308 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body{
-    min-height:100vh;
+body {
+    min-height: 100dvh; 
     background: #f0fafa;
-    zoom: 125%;
     animation: fadeIn 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 body::-webkit-scrollbar {
     display: none;
 }
+
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: scale(0.98); }
+    to   { opacity: 1; transform: scale(1); }
 }
 
-
-.daftar{
-    width:100%;
-    min-height:100vh;
-    display:flex;
+.daftar {
+    display: flex;
+    width: 100%;
+    min-height: 100dvh;
+    background: white;
 }
 
-/* Ganti warna disini */
-.daftar_right{
-    width:40%;
-    background:linear-gradient(
-        to bottom,
-        #5f8b8e,
-        #8fd8d8,
-        #c8f6f6
-    );
-    position:relative;
-    overflow:hidden;
+.daftar_left {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 2rem;
+    background: white;
 }
 
-.daftar_right::before{
-    width:180px;
-    border-radius:0 0 100px 100px;
+.daftar_left h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: clamp(1.2rem, 2.5vw, 2.5rem);
+    color: #2a4745;
+    text-align: center;
 }
 
-.daftar_left{
-    width:60%;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+.daftar form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
-.daftar_left h2{
-    font-size:48px;
-    font-weight:700;
-    margin-bottom:30px;
+.daftar_form {
+    margin-bottom: 1.2rem;
 }
 
-.daftar form{
-    width:350px;
+.daftar_form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    font-weight: 600;
+    color: #1f3a38;
 }
 
-.daftar_form{
-    margin-bottom:15px;
+.daftar_form input {
+    width: 100%;
+    padding: clamp(0.6rem, 1.2vw, 0.9rem) 1rem;
+    border: 1.5px solid #d0dcdc;
+    border-radius: 10px;
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+    background: #fafcfc;
+    transition: all 0.25s ease;
+    outline: none;
 }
 
-.daftar_form label{
-    display:block;
-    margin-bottom:5px;
-    font-size:13px;
+.daftar_form input:focus {
+    border-color: #446b68;
+    box-shadow: 0 0 0 4px rgba(68, 107, 104, 0.15);
+    background: white;
 }
 
-.daftar_form input{
-    width:100%;
-    padding:8px;
-    border:1px solid #999;
-    outline:none;
+.daftar button[type="submit"] {
+    width: 100%;
+    padding: clamp(0.7rem, 1.2vw, 1rem);
+    border: none;
+    border-radius: 10px;
+    background: #446b68;
+    color: white;
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-top: 0.5rem;
+    letter-spacing: 0.5px;
 }
 
-.daftar_form input:focus{
-    border-color:#446b68;
+.daftar button[type="submit"]:hover {
+    background: #2a4a47;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(68, 107, 104, 0.3);
 }
 
-.daftar button{
-    width:100%;
-    padding:10px;
-    border:none;
-    cursor:pointer;
-    background:#446b68;
-    color:white;
-    margin-top:10px;
+.daftar p {
+    text-align: center;
+    margin-top: 1.8rem;
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    color: #3d5a5a;
 }
 
-.daftar button:hover{
-    opacity:.9;
+.daftar p a {
+    text-decoration: none;
+    color: #446b68;
+    font-weight: 700;
+    border-bottom: 2px solid transparent;
+    transition: 0.2s;
 }
 
-.daftar p{
-    text-align:center;
-    margin-top:15px;
-    font-size:13px;
+.daftar p a:hover {
+    border-bottom-color: #446b68;
 }
 
-.daftar p a{
-    color:#446b68;
-    text-decoration:none;
-    font-weight:600;
+.daftar_right {
+    width: 40%;
+    background: linear-gradient(145deg, #5f8b8e, #8fd8d8, #c8f6f6);
+    flex-shrink: 0;
+    /* tidak ada konten, hanya dekoratif */
 }
 
-.daftar p a:hover{
-    text-decoration:underline;
+@media (max-width: 1200px) {
+    .daftar_left {
+        width: 55%;
+        padding: 2rem 2rem;
+    }
+    .daftar_right {
+        width: 45%;
+    }
+    .daftar form {
+        max-width: 360px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .daftar_left {
+        width: 60%;
+        padding: 2rem 1.5rem;
+    }
+    .daftar_right {
+        width: 40%;
+    }
+    .daftar form {
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .daftar {
+        flex-direction: column; /* tumpuk */
+    }
+
+    .daftar_left {
+        width: 100%;
+        padding: 2rem 1.5rem;
+        order: 2;
+    }
+
+    .daftar_right {
+        width: 100%;
+        height: 25vh; /* tinggi proporsional */
+        min-height: 150px;
+        max-height: 220px;
+        background: linear-gradient(135deg, #5f8b8e, #8fd8d8);
+        order: 1; 
+    }
+
+    .daftar form {
+        max-width: 380px;
+    }
+
+    .daftar_left h2 {
+        font-size: 2rem;
+        margin-bottom: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .daftar_left {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .daftar_right {
+        height: 20vh;
+        min-height: 120px;
+        max-height: 180px;
+    }
+
+    .daftar_left h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .daftar_form {
+        margin-bottom: 0.9rem;
+    }
+
+    .daftar_form input {
+        padding: 0.65rem 0.9rem;
+        border-radius: 8px;
+        font-size: 0.95rem;
+    }
+
+    .daftar button[type="submit"] {
+        padding: 0.7rem;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    .daftar p {
+        font-size: 0.85rem;
+        margin-top: 1.2rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .daftar_left {
+        padding: 1rem 0.8rem;
+    }
+
+    .daftar_right {
+        height: 16vh;
+        min-height: 90px;
+        max-height: 140px;
+    }
+
+    .daftar_left h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .daftar_form label {
+        font-size: 0.8rem;
+    }
+
+    .daftar_form input {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.9rem;
+        border-radius: 6px;
+    }
+
+    .daftar button[type="submit"] {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+        border-radius: 6px;
+    }
+
+    .daftar p {
+        font-size: 0.75rem;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .daftar {
+        flex-direction: row; /* kembali ke berdampingan */
+    }
+
+    .daftar_left {
+        width: 70%;
+        padding: 1rem 1.5rem;
+        order: 0;
+    }
+
+    .daftar_right {
+        width: 30%;
+        height: 100vh;
+        min-height: unset;
+        max-height: unset;
+        order: 0;
+    }
+
+    .daftar_left h2 {
+        font-size: 1.6rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .daftar_form {
+        margin-bottom: 0.6rem;
+    }
+
+    .daftar_form input {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .daftar button[type="submit"] {
+        padding: 0.45rem;
+        font-size: 0.9rem;
+        margin-top: 0;
+    }
+
+    .daftar p {
+        margin-top: 0.6rem;
+        font-size: 0.8rem;
+    }
 }
