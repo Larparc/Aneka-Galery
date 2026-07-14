@@ -1,145 +1,82 @@
 <?php
-/**
- * Widget notifikasi admin (order pending + pesan customer terbaru).
- */
+// Ambil total pending
+$sql_total_pending = "SELECT COUNT(*) as pending FROM orders WHERE order_status='pending'";
+$stmt = $pdo->query($sql_total_pending);
+$pendingCount = $stmt->fetchColumn();
 
-// Debug: Cek koneksi tersedia
-echo "<!-- Debug: PDO=" . (isset($pdo) ? 'YES' : 'NO') . " | CONN=" . (isset($conn) ? 'YES' : 'NO') . " -->";
+// Ambil total order
+$sql_total_all = "SELECT COUNT(*) as total FROM orders";
+$stmt = $pdo->query($sql_total_all);
+$totalOrder = $stmt->fetchColumn();
 
-$notifications = [];
-
-// Support untuk PDO (panel.php) dan MySQLi (file admin lain)
-if (isset($pdo)) {
-    // Menggunakan PDO
-    try {
-        $stmt_notif_order = $pdo->query("
-            SELECT o.order_id, o.date, p.username
-            FROM orders o
-            JOIN profiles p ON o.user_id = p.user_id
-            WHERE o.order_status = 'pending'
-            ORDER BY o.date DESC
-            LIMIT 8
-        ");
-        while ($o = $stmt_notif_order->fetch(PDO::FETCH_ASSOC)) {
-            $notifications[] = [
-                "type"  => "order",
-                "id"    => $o['order_id'],
-                "date"  => $o['date'],
-                "title" => "Order baru dari " . $o['username'],
-                "desc"  => "Order #" . $o['order_id'] . " menunggu diproses",
-                "link"  => "orderpending.php"
-            ];
-        }
-
-        $stmt_notif_contact = $pdo->query("
-            SELECT c.no_contact, c.date, c.message, p.username
-            FROM contacts c
-            JOIN profiles p ON c.user_id = p.user_id
-            ORDER BY c.date DESC
-            LIMIT 8
-        ");
-        while ($c = $stmt_notif_contact->fetch(PDO::FETCH_ASSOC)) {
-            $notifications[] = [
-                "type"  => "contact",
-                "id"    => $c['no_contact'],
-                "date"  => $c['date'],
-                "title" => "Pesan dari " . $c['username'],
-                "desc"  => mb_strimwidth($c['message'], 0, 60, "..."),
-                "link"  => "customercontact.php"
-            ];
-        }
-    } catch (PDOException $e) {
-        // Silent fail untuk notifikasi
-    }
-} elseif (isset($conn)) {
-    // Menggunakan MySQLi
-    $sql_notif_order = "
-        SELECT o.order_id, o.date, p.username
-        FROM orders o
-        JOIN profiles p ON o.user_id = p.user_id
-        WHERE o.order_status = 'pending'
-        ORDER BY o.date DESC
-        LIMIT 8
-    ";
-    $res_notif_order = mysqli_query($conn, $sql_notif_order);
-    if ($res_notif_order) {
-        while ($o = mysqli_fetch_assoc($res_notif_order)) {
-            $notifications[] = [
-                "type"  => "order",
-                "id"    => $o['order_id'],
-                "date"  => $o['date'],
-                "title" => "Order baru dari " . $o['username'],
-                "desc"  => "Order #" . $o['order_id'] . " menunggu diproses",
-                "link"  => "orderpending.php"
-            ];
-        }
-    }
-
-    $sql_notif_contact = "
-        SELECT c.no_contact, c.date, c.message, p.username
-        FROM contacts c
-        JOIN profiles p ON c.user_id = p.user_id
-        ORDER BY c.date DESC
-        LIMIT 8
-    ";
-    $res_notif_contact = mysqli_query($conn, $sql_notif_contact);
-    if ($res_notif_contact) {
-        while ($c = mysqli_fetch_assoc($res_notif_contact)) {
-            $notifications[] = [
-                "type"  => "contact",
-                "id"    => $c['no_contact'],
-                "date"  => $c['date'],
-                "title" => "Pesan dari " . $c['username'],
-                "desc"  => mb_strimwidth($c['message'], 0, 60, "..."),
-                "link"  => "customercontact.php"
-            ];
-        }
-    }
-}
-
-// Sort dan limit notifikasi
-if (!empty($notifications)) {
-    usort($notifications, function ($a, $b) {
-        return strtotime($b['date']) <=> strtotime($a['date']);
-    });
-    $notifications = array_slice($notifications, 0, 8);
-}
+// Ambil 2 order pending terbaru dengan detail lengkap (1 detail per order)
+$sql = "
+SELECT
+    o.order_id,
+    o.date,
+    o.order_status,
+    p.username,
+    od.total_paper,
+    od.description,
+    od.file,
+    s.service_name,
+    sz.size_name,
+    t.type_name,
+    outp.output_name
+FROM orders o
+JOIN profiles p ON o.user_id = p.user_id
+LEFT JOIN orders_detail od ON o.order_id = od.order_id
+LEFT JOIN services s ON od.service_id = s.service_id
+LEFT JOIN sizes sz ON od.size_id = sz.size_id
+LEFT JOIN types t ON od.type_id = t.type_id
+LEFT JOIN outputs outp ON od.output_id = outp.output_id
+WHERE o.order_status = 'pending'
+ORDER BY o.date DESC
+LIMIT 2
+";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$recentPending = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<div class="notif-wrapper" id="notif-wrapper">
-    <button class="btn round" id="notif-btn" type="button">
+<div class="notif-wrapper" id="notifWrapper">
+    <button class="btn round notif-btn" id="notifBtn" aria-label="Notifikasi">
         <i class="fas fa-bell"></i>
-        <?php 
-        $unreadCount = count($notifications);
-        if ($unreadCount > 0): 
-        ?>
-        <span class="notif-badge" id="notif-badge"><?= $unreadCount > 9 ? '9+' : $unreadCount ?></span>
-        <?php else: ?>
-        <span class="notif-badge" id="notif-badge" style="display:none;">0</span>
-        <?php endif; ?>
+        <span class="notif-badge" id="notifBadge" <?= $pendingCount > 0 ? '' : 'style="display:none;"' ?>>
+            <?= $pendingCount > 9 ? '9+' : $pendingCount ?>
+        </span>
     </button>
-    <div class="notif-dropdown" id="notif-dropdown">
-        <div class="notif-head">
+    <div class="notif-dropdown" id="notifDropdown">
+        <div class="notif-header">
             <span>Notifikasi</span>
+            <button class="notif-clear" id="notifClear">Tandai sudah dibaca</button>
         </div>
-        <div class="notif-list" id="notif-list">
-            <?php if (!empty($notifications)): ?>
-                <?php foreach ($notifications as $n): ?>
-                    <a href="<?= htmlspecialchars($n['link']) ?>"
-                       class="notif-item"
-                       data-time="<?= strtotime($n['date']) ?>">
-                        <span class="notif-icon <?= $n['type'] ?>">
-                            <i class="fas <?= $n['type'] === 'order' ? 'fa-shopping-cart' : 'fa-envelope' ?>"></i>
-                        </span>
-                        <span class="notif-body">
-                            <b><?= htmlspecialchars($n['title']) ?></b>
-                            <span><?= htmlspecialchars($n['desc']) ?></span>
-                            <small><?= htmlspecialchars((new DateTime($n['date']))->format('d M Y H:i')) ?></small>
-                        </span>
-                    </a>
+        <div class="notif-list" id="notifList">
+            <?php if ($pendingCount > 0 && !empty($recentPending)): ?>
+                <?php foreach ($recentPending as $order): ?>
+                    <div class="notif-item <?= isset($_SESSION['notif_last_seen']) && strtotime($order['date']) > $_SESSION['notif_last_seen'] ? 'unread' : '' ?>" data-time="<?= strtotime($order['date']) ?>">
+                        <div class="notif-icon order">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="notif-body">
+                            <b><?= htmlspecialchars($order['username']) ?></b>
+                            <span>
+                                <?= htmlspecialchars($order['service_name'] ?? 'Print') ?> · 
+                                <?= (int)($order['total_paper'] ?? 0) ?> pcs
+                                <?php if (!empty($order['size_name'])): ?>
+                                    · <?= htmlspecialchars($order['size_name']) ?>
+                                <?php endif; ?>
+                            </span>
+                            <small><?= date('d M Y H:i', strtotime($order['date'])) ?></small>
+                        </div>
+                    </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <div class="notif-empty">No notification.</div>
+                <div class="notif-empty">Tidak ada order pending.</div>
             <?php endif; ?>
+        </div>
+        <div class="notif-footer">
+            <span>Total Order: <strong><?= $totalOrder ?></strong> &nbsp;|&nbsp; Pending: <strong><?= $pendingCount ?></strong></span>
+            <a href="orderpending.php" class="check-order-btn">Check Order</a>
         </div>
     </div>
 </div>

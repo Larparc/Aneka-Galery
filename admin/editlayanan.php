@@ -5,6 +5,15 @@ include "../koneksi.php";
 $message = '';
 $messageType = '';
 
+// ===== KONEKSI PDO UNTUK NOTIFIKASI =====
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e){
+    // Jika gagal, notifikasi tidak akan muncul, tapi halaman tetap jalan
+    $pdo = null;
+}
+
 // Tambah Layanan
 if (isset($_POST['add_service'])) {
     $name = trim($_POST['service_name']);
@@ -168,11 +177,8 @@ if ($result && $result->num_rows > 0) {
                 </a>
             </div>
             <div style="display:flex;align-items:center;gap:10px;">
-                <div style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.14);cursor:default;">
-                    <i class="fas fa-bell" style="font-size:18px;color:#fff;"></i>
-                    <span style="position:absolute;top:0;right:0;width:12px;height:12px;border-radius:50%;background:#e84545;border:2px solid #156161;"></span>
-                </div>
-                <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <?php include "notif_widget.php"; ?> <!-- NOTIFIKASI DINAMIS -->
+                    <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </header>
 
@@ -369,6 +375,6 @@ if ($result && $result->num_rows > 0) {
         if (alert) alert.style.display = 'none';
     }, 5000);
 </script>
-
+<script src="../js/notif.js" defer></script>
 </body>
 </html>

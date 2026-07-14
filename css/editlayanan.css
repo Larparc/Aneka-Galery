@@ -67,7 +67,6 @@ button {
     z-index: 40;
     padding: 22px 16px 24px;
     color: #eafffb;
-    transition: transform 0.25s ease;
     background: linear-gradient(190deg, var(--top) 0%, #1c6d6a 58%, var(--bottom) 130%);
 }
 .logo {
@@ -561,16 +560,6 @@ h1 {
 }
 .btn-danger:hover {
     background: #b71c1c;
-}
-
-/* ----- Animasi ----- */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ----- Responsive ----- */

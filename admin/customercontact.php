@@ -42,7 +42,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
     <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
     </head>
-    <body></body>
+    <body>
     <div class="app">
         <div class="overlay" id="overlay"></div>
 
@@ -112,11 +112,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </a>
                 </div>
                 <div style="display:flex;align-items:center;gap:10px;">
-                    <div style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.14);cursor:default;">
-                    <i class="fas fa-bell" style="font-size:18px;color:#fff;"></i>
-                    <span style="position:absolute;top:0;right:0;width:12px;height:12px;border-radius:50%;background:#e84545;border:2px solid #156161;"></span>
-                </div>
-                    <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <?php include "notif_widget.php"; ?> <!-- NOTIFIKASI DINAMIS -->
+                        <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </div>
             </header>
 
@@ -176,4 +173,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </main>
         </div>
     </div>
+    <script src="../js/notif.js" defer></script>
+</body>
 </html>

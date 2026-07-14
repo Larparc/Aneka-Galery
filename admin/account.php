@@ -2,6 +2,15 @@
 include "security.php";
 include "../koneksi.php";
 
+// ===== KONEKSI PDO UNTUK NOTIFIKASI =====
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e){
+    // Jika gagal, notifikasi tidak akan muncul, tapi halaman tetap jalan
+    $pdo = null;
+}
+
 $sql = "SELECT user_id, username, email, no_phone, role_id FROM profiles ORDER BY role_id ASC, username ASC";
 $res = mysqli_query($conn, $sql);
 
@@ -21,9 +30,10 @@ while ($row = mysqli_fetch_assoc($res)) {
   <meta charset="UTF-8">
   <title>Account - Aneka Galery</title>
   <link rel="stylesheet" href="../css/account.css">
-  <link rel="stylesheet" href="../css/notif.css">
+  <link rel="stylesheet" href="../css/notif.css"> <!-- NOTIFIKASI CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
+  <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
+  <script src="../js/notif.js" defer></script> <!-- NOTIFIKASI JS -->
 </head>
 <body>
 <div class="app">
@@ -31,51 +41,51 @@ while ($row = mysqli_fetch_assoc($res)) {
 
   <aside class="sidebar" id="sidebar">
     <div class="logo">
-            <i><img src="../img/anekagalery_32x32.png" alt=""></i>
-            <div>
-                <a href="../index.php">
-                    <b>ANEKA GALERI</b>
-                    <span>Digital Printing</span>
-                </a>
-            </div>
-        </div>
+      <i><img src="../img/anekagalery_32x32.png" alt=""></i>
+      <div>
+        <a href="../index.php">
+          <b>ANEKA GALERI</b>
+          <span>Digital Printing</span>
+        </a>
+      </div>
+    </div>
 
     <nav>
-                <a href="panel.php">
-                    <i class="fas fa-th-large"></i>
-                    Dashboard</a>
-                <a href="account.php" class="active">
-                    <i class="fas fa-user"></i>
-                    Account</a>
-                <small>Pages</small>
-                <a href="project.php">
-                    <i class="fas fa-folder-open"></i>
-                    Project</a>
-                                <a>
-                    <i class="fas fa-pencil-alt"></i>
-                    Service</a>
-                <a href="editlayanan.php" class="sub">
-                    <i class="fas fa-cogs"></i>
-                    Edit Layanan</a>
-                <a href="editukuran.php" class="sub">
-                    <i class="fas fa-ruler"></i>
-                    Edit Ukuran</a>
-                <a href="editjenis.php" class="sub">
-                    <i class="fas fa-palette"></i>
-                    Edit Jenis</a>
-                <a href="editoutput.php" class="sub">
-                    <i class="fas fa-print"></i>
-                    Edit Output</a>
-                <a href="orderpending.php">
-                    <i class="fas fa-clock"></i>
-                    Order Pending</a>
-                <a href="ordercomplete.php">
-                    <i class="fas fa-check-circle"></i>
-                    Order Complete</a>
-                <a href="customercontact.php">
-                    <i class="fas fa-envelope"></i>
-                    Customer Contact</a>
-            </nav>
+      <a href="panel.php">
+        <i class="fas fa-th-large"></i>
+        Dashboard</a>
+      <a href="account.php" class="active">
+        <i class="fas fa-user"></i>
+        Account</a>
+      <small>Pages</small>
+      <a href="project.php">
+        <i class="fas fa-folder-open"></i>
+        Project</a>
+      <a>
+        <i class="fas fa-pencil-alt"></i>
+        Service</a>
+      <a href="editlayanan.php" class="sub">
+        <i class="fas fa-cogs"></i>
+        Edit Layanan</a>
+      <a href="editukuran.php" class="sub">
+        <i class="fas fa-ruler"></i>
+        Edit Ukuran</a>
+      <a href="editjenis.php" class="sub">
+        <i class="fas fa-palette"></i>
+        Edit Jenis</a>
+      <a href="editoutput.php" class="sub">
+        <i class="fas fa-print"></i>
+        Edit Output</a>
+      <a href="orderpending.php">
+        <i class="fas fa-clock"></i>
+        Order Pending</a>
+      <a href="ordercomplete.php">
+        <i class="fas fa-check-circle"></i>
+        Order Complete</a>
+      <a href="customercontact.php">
+        <i class="fas fa-envelope"></i>
+        Customer Contact</a>
+    </nav>
   </aside>
 
   <div class="main">
@@ -91,11 +101,8 @@ while ($row = mysqli_fetch_assoc($res)) {
         </a>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <div style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.14);cursor:default;">
-                    <i class="fas fa-bell" style="font-size:18px;color:#fff;"></i>
-                    <span style="position:absolute;top:0;right:0;width:12px;height:12px;border-radius:50%;background:#e84545;border:2px solid #156161;"></span>
-                </div>
-          <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <?php include "notif_widget.php"; ?> <!-- NOTIFIKASI DINAMIS -->
+        <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
       </div>
     </header>
 
@@ -222,7 +229,7 @@ while ($row = mysqli_fetch_assoc($res)) {
           <div class="field" style="grid-column:1 / -1;">
             <label id="accPassLabel">Password</label>
             <input type="password" name="password" id="accPassword" minlength="8" placeholder="Minimal 8 karakter">
-            <small class="field-hint" id="accPassHint">Leave blank if you don't want to change the password..</small>
+            <small class="field-hint" id="accPassHint">Leave blank if you don't want to change the password.</small>
           </div>
         </div>
 
@@ -292,13 +299,11 @@ function closeAccModal() {
 document.getElementById('addAccountBtn').addEventListener('click', openAddAccModal);
 
 document.querySelectorAll('.acc-row').forEach(function (row) {
-  // klik area row (di luar tombol) buka edit
   row.addEventListener('click', function (e) {
     if (e.target.closest('.icon-btn')) return;
     openEditAccModal(row);
   });
 
-  // tombol edit – hanya ada di admin
   const editBtn = row.querySelector('.edit-acc-btn');
   if (editBtn) {
     editBtn.addEventListener('click', function (e) {
@@ -307,7 +312,6 @@ document.querySelectorAll('.acc-row').forEach(function (row) {
     });
   }
 
-  // tombol delete – ada di semua row
   const delBtn = row.querySelector('.del-acc-btn');
   if (delBtn) {
     delBtn.addEventListener('click', function (e) {
