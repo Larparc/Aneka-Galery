@@ -211,6 +211,24 @@ $ordersComplete = array_values($orderList);
 
 <script>
     window.ordersData = <?= json_encode($ordersComplete); ?>;
+
+     document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        if (menuBtn && sidebar && overlay) {
+            menuBtn.addEventListener('click', function() {
+                sidebar.classList.toggle('open');
+                overlay.classList.toggle('show');
+            });
+
+            overlay.addEventListener('click', function() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+            });
+        }
+    });
 </script>
 <script src="../js/ordercomplete.js"></script>
 <script src="../js/notif.js" defer></script>

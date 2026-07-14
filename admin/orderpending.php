@@ -213,6 +213,26 @@ $ordersPending = array_values($orderList);
 <!-- Data untuk JavaScript -->
 <script>
     window.ordersData = <?= json_encode($ordersPending); ?>;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        if (menuBtn && sidebar && overlay) {
+            menuBtn.addEventListener('click', function() {
+                sidebar.classList.toggle('open');
+                overlay.classList.toggle('show');
+            });
+
+            overlay.addEventListener('click', function() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+            });
+        } else {
+            console.log('Element sidebar/overlay/menu-btn tidak ditemukan');
+        }
+    });
 </script>
 <script src="../js/orderpending.js"></script>
 <script src="../js/notif.js" defer></script>

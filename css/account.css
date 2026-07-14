@@ -152,23 +152,18 @@ nav a.sub.active {
     position: sticky;
     top: 0;
     z-index: 30;
+    gap: 10px;
 }
 
 .user {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex: 1;
+    min-width: 0;
 }
 
-.user i {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #cfe9e6;
-    flex-shrink: 0;
-}
-
-.user-avatar {
+.user .user-avatar {
     width: 38px;
     height: 38px;
     border-radius: 50%;
@@ -177,6 +172,13 @@ nav a.sub.active {
     border: 2px solid rgba(255, 255, 255, 0.35);
     background: #cfe9e6;
     display: block;
+}
+
+.user a {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .user b {
@@ -200,6 +202,7 @@ nav a.sub.active {
     gap: 6px;
     background: var(--teal);
     color: #fff;
+    flex-shrink: 0;
 }
 
 .btn.light {
@@ -223,6 +226,7 @@ nav a.sub.active {
     border-radius: 50%;
     background: rgba(255, 255, 255, .14);
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .btn.small {
@@ -282,6 +286,8 @@ nav a.sub.active {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .head h2 {
@@ -512,43 +518,6 @@ td:last-child {
 #menu-btn {
     display: none;
 }
-@media (max-width: 880px) {
-    .sidebar {
-        transform: translateX(-100%);
-    }
-    .sidebar.open {
-        transform: translateX(0);
-        box-shadow: 8px 0 24px rgba(0, 0, 0, .25);
-    }
-    .main {
-        margin-left: 0;
-    }
-    #menu-btn {
-        display: flex;
-    }
-    .cards {
-        grid-template-columns: 1fr;
-    }
-    .overlay.show {
-        display: block;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, .35);
-        z-index: 35;
-    }
-}
-@media (max-width: 520px) {
-    .content {
-        padding: 18px 14px 50px;
-    }
-    .topbar {
-        padding: 10px 14px;
-    }
-    .row .right {
-        width: 100%;
-        justify-content: space-between;
-    }
-}
 
 /* ===== Account management additions ===== */
 @keyframes fadeIn {
@@ -597,7 +566,7 @@ td:last-child {
 .icon-btn.del { background: #fbeaea; color: #b3261e; }
 .icon-btn.del:hover { background: #f6d7d7; }
 
-/* Popup delete (reuse pattern from project.css) */
+/* Popup delete */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -699,7 +668,138 @@ td:last-child {
 }
 .btn-edit-delete:hover { border-color: var(--teal); background: rgba(12,93,89,0.08); }
 
-@media (max-width: 600px) {
-    .acc-form-grid { grid-template-columns: 1fr; }
-    .edit-modal-box { max-width: 92vw; }
+/* ===== RESPONSIVE ===== */
+@media (max-width: 880px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 8px 0 24px rgba(0, 0, 0, .25);
+    }
+    .main {
+        margin-left: 0;
+    }
+    #menu-btn {
+        display: flex !important;
+    }
+    .overlay.show {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .35);
+        z-index: 35;
+    }
+    .cards {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 520px) {
+    .content {
+        padding: 18px 14px 50px !important;
+    }
+    .topbar {
+        padding: 10px 14px !important;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .topbar .user b {
+        font-size: 14px !important;
+    }
+    .topbar .user span {
+        font-size: 10px !important;
+    }
+    .user .user-avatar {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    #menu-btn {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 14px !important;
+        display: flex !important; /* pastikan hamburger muncul */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .account-page-head {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 8px !important;
+    }
+    .account-page-head .btn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    .account {
+        max-width: 100% !important;
+        padding: 18px 16px !important;
+    }
+    .account .account-avatar {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    .account p {
+        font-size: 12px !important;
+        padding: 8px 0 !important;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    .account p span:last-child {
+        text-align: right;
+        word-break: break-all;
+    }
+
+    /* ===== PERBAIKAN UTAMA: tombol aksi tetap di kanan ===== */
+    .row .right {
+        width: auto !important; /* biar tidak full width */
+        justify-content: flex-end !important; /* rata kanan */
+        border-top: none !important; /* hilangkan border atas */
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        flex-wrap: wrap; /* jika tombol tidak muat, mereka turun ke baris baru tapi tetap rata kanan */
+        gap: 6px;
+    }
+    /* Agar jika tombol terlalu banyak, baris pertama tetap kanan */
+    .row {
+        flex-wrap: wrap !important;
+        gap: 8px 12px !important;
+    }
+    .row .left {
+        flex: 1 1 60% !important; /* beri ruang agar tidak terlalu sempit */
+        min-width: 0;
+    }
+
+    .head {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 4px !important;
+    }
+
+    .icon-btn {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 11px !important;
+    }
+
+    .acc-form-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .edit-modal-box {
+        max-width: 92vw !important;
+        padding: 16px !important;
+    }
+    .edit-title {
+        font-size: 18px !important;
+    }
+    .edit-footer {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+    .btn-edit-confirm,
+    .btn-edit-delete {
+        width: 100% !important;
+    }
 }
