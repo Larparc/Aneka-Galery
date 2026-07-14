@@ -229,16 +229,16 @@ $query_output = mysqli_query($conn, "SELECT * FROM outputs");
                     <h3>Navigation</h3>
                     <ul>
                         <li>
-                            <a href="index_login.php">Home</a>
+                            <a href="index.php">Home</a>
                         </li>
                         <li>
-                            <a href="aboutus_login.php">About</a>
+                            <a href="aboutus.php">About</a>
                         </li>
                         <li>
-                            <a href="service_login.php">Service</a>
+                            <a href="service.php">Service</a>
                         </li>
                         <li>
-                            <a href="contact_login.php">Contact</a>
+                            <a href="contact.php">Contact</a>
                         </li>
                     </ul>
                 </div>

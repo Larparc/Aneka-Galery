@@ -190,30 +190,6 @@ include "admin/security.php";
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-            </section>
-<br/>
-<br/>
-<br/>
-<<<<<<< Updated upstream
-<a href="portofolio.php" class="btn-primary" style="display: block; text-align: center; width: 200px; margin: 0 auto;">Lihat Portofolio</a>
-=======
-<a href="portofolio.php">Portofolio</a>
->>>>>>> Stashed changes
-<br/>
-<br/>
-<div
-=======
-        </section>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <div
->>>>>>> dccb1973c99fbf22ecc953fdc961996da2dfd5c1
-            style="width: 60%; margin: 0 auto; height: 2px; background: linear-gradient(to right, transparent, #1f8a8a, transparent);"></div>
-        <br/>
         <br/>
         <div class="owner-section">
             <h2>Owner</h2>

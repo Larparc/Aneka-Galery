@@ -66,7 +66,7 @@ include "admin/security.php";
             </div>
 
             <button class="btn" onclick="window.location.href='service.php'">
-                See more
+                Order Now
                 <i class="fas fa-external-link-alt"></i>
             </button>
 

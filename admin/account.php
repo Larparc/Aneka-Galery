@@ -297,14 +297,24 @@ document.querySelectorAll('.acc-row').forEach(function (row) {
     if (e.target.closest('.icon-btn')) return;
     openEditAccModal(row);
   });
-  row.querySelector('.edit-acc-btn').addEventListener('click', function (e) {
-    e.stopPropagation();
-    openEditAccModal(row);
-  });
-  row.querySelector('.del-acc-btn').addEventListener('click', function (e) {
-    e.stopPropagation();
-    openDeleteAccModal(row.dataset.id, row.dataset.username);
-  });
+
+  // tombol edit – hanya ada di admin
+  const editBtn = row.querySelector('.edit-acc-btn');
+  if (editBtn) {
+    editBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      openEditAccModal(row);
+    });
+  }
+
+  // tombol delete – ada di semua row
+  const delBtn = row.querySelector('.del-acc-btn');
+  if (delBtn) {
+    delBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      openDeleteAccModal(row.dataset.id, row.dataset.username);
+    });
+  }
 });
 
 function openDeleteAccModal(id, uname) {

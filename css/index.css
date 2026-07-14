@@ -291,7 +291,7 @@ a {
 }
 .badge {
     background: #1f8a8a7e;
-    padding: 8px 16px;
+    padding: 10px 16px;
     border-radius: 15px;
     display: inline-block;
     margin-bottom: 12px;
@@ -299,7 +299,7 @@ a {
 }
 
 .title {
-    font-size: 22px;
+    font-size: 40 px;
     font-weight: bold;
 }
 
@@ -369,7 +369,7 @@ a {
 }
 
 .category-header .badge {
-    font-size: 18px;
+    font-size: 25px;
     font-weight: bold;
     color: white;
     background: #1f8a8a;
