@@ -31,7 +31,8 @@ $result = $conn->query($sql);
             <nav class="menu" id="navMenu">
                 <a href="index.php">Home</a>
                 <a href="aboutus.php">About</a>
-                <a href="service.php">Service</a>                <a href="contact.php">Contact</a>
+                <a href="service.php">Service</a>                
+                <a href="contact.php">Contact</a>
             </nav>
             <div class="profile">
                 <b><?php echo $username; ?></b>
@@ -41,22 +42,35 @@ $result = $conn->query($sql);
             </div>
         </section>
 
-        <div class="service-hero">
-            <div class="service-hero-overlay"></div>
-            <div class="service-hero-content">
-                <div class="badge">Our Work</div>
-                <h1>Portfolio</h1>
-                <p>Beberapa hasil project yang sudah kami kerjakan.</p>
+        <div class="contact-hero-wrapper">
+            <div class="contact-slider">
+                <div class="contact-slide active">
+                    <img src="img/contact1.jpeg" alt="slide1">
+                </div>
+                <div class="contact-slide">
+                    <img src="img/contact2.jpeg" alt="slide2">
+                </div>
+                <div class="contact-slide">
+                    <img src="img/contact3.jpeg" alt="slide3">
+                </div>
+                <div class="contact-overlay"></div>
+            </div>
+            <div class="contact-hero">
+                <h1>Portofolio</h1>
             </div>
         </div>
-
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <section class="service-section">
             <div class="service-grid">
                 <?php if ($result && $result->num_rows > 0): ?>
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <div class="service-card">
                             <div class="service-card-img">
-                                <img src="project_upload/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['title']); ?>">
+                                <img src="project_upload/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['title']); ?>" onclick="openLightbox(this.src)">
                             </div>
                             <div class="service-card-body">
                                 <h3><?php echo htmlspecialchars($row['title']); ?></h3>
@@ -73,7 +87,12 @@ $result = $conn->query($sql);
                 <?php endif; ?>
             </div>
         </section>
-
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <div
             style="width: 60%; margin: 0 auto; height: 2px; background: linear-gradient(to right, transparent, #1f8a8a, transparent);"></div>
 
@@ -117,7 +136,7 @@ $result = $conn->query($sql);
                         <p>📞 +62 822-5406-8851</p>
                     </a>
                     
-                        href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                        <a href="https://www.instagram.com/anekagaleri1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
                         <p>
                             <i class="fa-brands fa-instagram" style="color: palevioletred;"></i>
                             @anekagalery</p>
@@ -131,10 +150,36 @@ $result = $conn->query($sql);
             </div>
         </footer>
 
+        <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightboxImg" src="" alt="Preview">
+        </div>
+
         <script>
             function toggleMenu() {
                 document.getElementById('hamburger').classList.toggle('open');
                 document.getElementById('navMenu').classList.toggle('open');
+            }
+        </script>
+        <script>
+            const contactSlides = document.querySelectorAll('.contact-slide');
+            let contactIndex = 0;
+            function showContactSlide() {
+                contactSlides.forEach(s => s.classList.remove('active'));
+                contactSlides[contactIndex]
+                    .classList
+                    .add('active');
+                contactIndex = (contactIndex + 1) % contactSlides.length;
+            }
+            setInterval(showContactSlide, 3000);
+        </script>
+        <script>
+            function openLightbox(src) {
+                document.getElementById('lightboxImg').src = src;
+                document.getElementById('lightboxOverlay').classList.add('active');
+            }
+            function closeLightbox() {
+                document.getElementById('lightboxOverlay').classList.remove('active');
             }
         </script>
         <a href="https://wa.me/6282254068851" target="_blank" class="wa-float">
