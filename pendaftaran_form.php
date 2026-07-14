@@ -38,15 +38,16 @@ include "koneksi.php";
             </div>
 
             <button type="submit">Create Account</button>
-            <p>
-                Already have an account?
-                <a href="login.php">Login</a>
-            </p>
 
         </form>
     </div>
     <div class="daftar_right">
         <img src="img/LOGO ANEKA GALERI PRINTING.png" alt="Aneka Galeri" class="daftar_logo">
+        <h2>Sudah Punya Akun?</h2>
+        <p>Masuk kembali untuk mengakses fitur eksklusif dan<br>
+        seluruh keuntungan yang telah menanti Anda.<br>
+        Yuk, lanjutkan perjalanan Anda bersama kami.</p>
+        <a href="login.php">Login</a>
     </div>
 
 </section>
