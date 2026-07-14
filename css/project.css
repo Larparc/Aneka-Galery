@@ -175,13 +175,6 @@ nav a.sub.active {
     align-items: center;
     gap: 12px;
 }
-.user i {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #cfe9e6;
-    flex-shrink: 0;
-}
 .user .user-avatar {
     width: 38px;
     height: 38px;
@@ -560,58 +553,7 @@ td:last-child {
     font-weight: 600;
 }
 
-@media (max-width:880px) {
-    .sidebar {
-        transform: translateX(-100%);
-    }
-
-    .sidebar.open {
-        transform: translateX(0);
-        box-shadow: 8px 0 24px rgba(0,0,0,.25);
-    }
-
-    .main {
-        margin-left: 0;
-    }
-
-    #menu-btn {
-        display: flex;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .overlay.show {
-        display: block;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,.35);
-        z-index: 35;
-    }
-}
-
-@media (max-width:520px) {
-    .content {
-        padding: 18px 14px 50px;
-    }
-
-    .topbar {
-        padding: 10px 14px;
-    }
-
-    .row .right {
-        width: 100%;
-        justify-content: space-between;
-    }
-}
-
 /* --- Konten Utama --- */
-.content {
-    padding: 26px 28px 60px;
-    max-width: 1180px;
-}
-
 .action-buttons {
     display: flex;
     gap: 14px;
@@ -620,7 +562,6 @@ td:last-child {
 
 .btn-add {
     background: #179c97;
-    /* Cyan gelap sesuai gambar */
     color: #fff;
 }
 .btn-add:hover {
@@ -629,25 +570,12 @@ td:last-child {
 
 .btn-delete {
     background: #d32f2f;
-    /* Merah sesuai gambar */
     color: #fff;
 }
 .btn-delete:hover {
     background: #b71c1c;
 }
-.project-card h3 {
-    margin: 0 0 6px;
-    font-size: 17px;
-    color: #16201f;
-    font-family: 'Sora', sans-serif;
-}
-.project-card p {
-    margin: 0;
-    font-size: 14px;
-    color: #444;
-}
 
-/* --- Header halaman Project (judul + tombol tambah) --- */
 .project-head {
     display: flex;
     align-items: center;
@@ -655,7 +583,6 @@ td:last-child {
     margin-bottom: 4px;
 }
 
-/* --- Tombol Tambah Project / Kembali --- */
 .btn-add-project {
     display: inline-flex;
     align-items: center;
@@ -673,7 +600,6 @@ td:last-child {
     background: #094541;
 }
 
-/* --- Grid Daftar Project --- */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -740,10 +666,9 @@ td:last-child {
     background: #f6d4d4;
 }
 
-/* --- Modal / Pop-up Form --- */
+/* Modal / Pop-up Form */
 .modal-overlay {
     display: none;
-    /* Tersembunyi secara default */
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.4);
@@ -755,12 +680,10 @@ td:last-child {
 
 .modal-overlay.show {
     display: flex;
-    /* Muncul saat class show ditambahkan */
 }
 
 .modal-box {
     background: #e6e6e4;
-    /* Background abu-abu terang */
     padding: 25px 30px;
     border-radius: 20px;
     width: 100%;
@@ -792,7 +715,6 @@ td:last-child {
     border-radius: 12px;
     border: none;
     background: #b3f4f0;
-    /* Cyan muda sesuai gambar */
     font-size: 14px;
     font-family: inherit;
     color: #16201f;
@@ -845,7 +767,7 @@ td:last-child {
     background: rgba(12,93,89,0.08);
 }
 
-/* --- Edit Modal Layout --- */
+/* Edit Modal Layout */
 .modal-overlay-edit {
     display: none;
     position: fixed;
@@ -874,7 +796,6 @@ td:last-child {
     animation: fadeIn 0.3s ease;
 }
 
-/* --- Header --- */
 .edit-header {
     display: flex;
     justify-content: space-between;
@@ -920,14 +841,6 @@ td:last-child {
     margin-top: 2px;
 }
 
-.edit-header-edit-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    margin-top: 8px;
-}
-
-/* --- Body (Image & Description) --- */
 .edit-body {
     display: flex;
     gap: 20px;
@@ -938,12 +851,6 @@ td:last-child {
     background: #d9d9d9;
     border-radius: 12px;
     min-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.edit-image-placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -968,12 +875,6 @@ td:last-child {
     color: #000;
 }
 
-.edit-desc-edit-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-
 .edit-desc-input {
     width: 100%;
     padding: 8px 10px;
@@ -992,7 +893,6 @@ td:last-child {
     background: #f8f8f8;
 }
 
-/* --- Footer --- */
 .edit-footer {
     display: flex;
     gap: 16px;
@@ -1026,7 +926,6 @@ td:last-child {
 }
 .btn-edit-delete:hover { border-color: var(--teal); background: rgba(12,93,89,0.08); }
 
-/* --- Responsive Edit Modal --- */
 @media (max-width: 600px) {
     .edit-body {
         flex-direction: column;
@@ -1043,7 +942,6 @@ td:last-child {
     }
 }
 
-/* Responsive Modal di Mobile */
 @media (max-width: 600px) {
     .modal-box {
         margin: 20px;
@@ -1051,145 +949,56 @@ td:last-child {
     }
 }
 
+@media (max-width:880px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 8px 0 24px rgba(0,0,0,.25);
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    #menu-btn {
+        display: flex;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .overlay.show {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.35);
+        z-index: 35;
+    }
+}
+
+@media (max-width:520px) {
+    .content {
+        padding: 18px 14px 50px;
+    }
+
+    .topbar {
+        padding: 10px 14px;
+    }
+
+    .row .right {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
 #menu-btn {
     display: none;
 }
 
-.notif-wrap {
-    position: relative;
-}
-.notif-btn {
-    position: relative;
-    color: #fff;
-}
-.notif-btn svg {
-    display: block;
-    flex-shrink: 0;
-}
-.notif-badge {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #e84545;
-    color: #fff;
-    font-size: 9px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--bar);
-    line-height: 1;
-}
-.notif-dropdown {
-    display: none;
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    width: 320px;
-    background: #fff;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    box-shadow: 0 12px 32px -6px rgba(15,53,56,.18);
-    overflow: hidden;
-    z-index: 100;
-    animation: notifFadeIn 0.18s ease;
-}
-.notif-dropdown.show {
-    display: block;
-}
-@keyframes notifFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-6px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.notif-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 16px 10px;
-    border-bottom: 1px solid var(--border);
-}
-.notif-header span {
-    font-size: 13.5px;
-    font-weight: 700;
-    color: var(--ink);
-}
-.notif-clear {
-    border: none;
-    background: none;
-    font-size: 11.5px;
-    font-weight: 600;
-    color: var(--teal);
-    cursor: pointer;
-    padding: 0;
-}
-.notif-clear:hover {
-    text-decoration: underline;
-}
-.notif-list {
-    list-style: none;
-    margin: 0;
-    padding: 6px 0;
-    max-height: 280px;
-    overflow-y: auto;
-}
-.notif-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 10px 16px;
-    transition: background 0.15s;
-    cursor: default;
-}
-.notif-item:hover {
-    background: #f5fafa;
-}
-.notif-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--border);
-    flex-shrink: 0;
-    margin-top: 5px;
-    transition: background 0.15s;
-}
-.notif-item.unread {
-    background: #f0faf9;
-}
-.notif-item.unread .notif-dot {
-    background: var(--teal);
-}
-.notif-body p {
-    margin: 0 0 3px;
-    font-size: 13px;
-    color: var(--ink);
-    line-height: 1.45;
-}
-.notif-body span {
-    font-size: 11px;
-    color: var(--muted);
-}
-.notif-footer {
-    display: block;
-    text-align: center;
-    padding: 11px 16px;
-    border-top: 1px solid var(--border);
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--teal);
-}
-.notif-footer:hover {
-    background: #f5fafa;
-}
-/* add.php dan edit.php*/
 .project-form {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -1254,7 +1063,8 @@ td:last-child {
 .image-preview.show {
     display: block;
 }
-/* --- Tambahan styling untuk popup Edit & Hapus di project.php --- */
+
+/* Tambahan styling untuk popup Edit & Hapus */
 .modal-warning-text {
     text-align: center;
     color: #555;

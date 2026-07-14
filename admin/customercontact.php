@@ -35,6 +35,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <meta charset="UTF-8">
         <title>Customer Contact - Aneka Galery</title>
         <link rel="stylesheet" href="../css/customercontact.css">
+        <link rel="stylesheet" href="../css/notif.css">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -47,12 +48,14 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <aside class="sidebar" id="sidebar">
             <div class="logo">
-                <i><img src="../img/anekagalery_32x32.png" alt="logo"></i>
-                <div>
+            <i><img src="../img/anekagalery_32x32.png" alt=""></i>
+            <div>
+                <a href="../index.php">
                     <b>ANEKA GALERI</b>
                     <span>Digital Printing</span>
-                </div>
+                </a>
             </div>
+        </div>
 
             <nav>
                 <a href="panel.php">
@@ -109,7 +112,10 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </a>
                 </div>
                 <div style="display:flex;align-items:center;gap:10px;">
-                    <?php include "notif_widget.php"; ?>
+                    <div style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.14);cursor:default;">
+                    <i class="fas fa-bell" style="font-size:18px;color:#fff;"></i>
+                    <span style="position:absolute;top:0;right:0;width:12px;height:12px;border-radius:50%;background:#e84545;border:2px solid #156161;"></span>
+                </div>
                     <a href="logout.php" class="btn light"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </div>
             </header>

@@ -1,23 +1,27 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body{
-    min-height:100vh;
+body {
+    min-height: 100dvh; 
     background: #f0fafa;
     animation: fadeIn 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 body::-webkit-scrollbar {
     display: none;
 }
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
 
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to   { opacity: 1; transform: scale(1); }
+}
 
 .daftar{
     width:100%;
@@ -27,8 +31,7 @@ body::-webkit-scrollbar {
 
 /* Ganti warna disini */
 .daftar_right{
-    width:50%;
-    min-height:100vh;
+    width:40%;
     background:linear-gradient(
         to bottom,
         #5f8b8e,
@@ -37,14 +40,11 @@ body::-webkit-scrollbar {
     );
     position:relative;
     overflow:hidden;
-    border-radius: 0 40px 40px 0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-.daftar_right::before{
-    width:180px;
-    border-radius:0 0 100px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    flex-shrink: 0;
 }
 .daftar_logo{
     width:70%;
@@ -52,6 +52,12 @@ body::-webkit-scrollbar {
     z-index:2;
     display: flex;
     filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+}
+
+
+.daftar_right::before{
+    width:180px;
+    border-radius:0 0 100px 100px;
 }
 
 .daftar_left{
@@ -69,7 +75,7 @@ body::-webkit-scrollbar {
 }
 
 .daftar form{
-    width:3500px;
+    width:350px;
 }
 
 .daftar_form{

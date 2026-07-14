@@ -536,3 +536,39 @@ a {
         opacity: 0;
     }
 }
+
+.menu-profile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .profile {
+        display: none;
+    }
+
+    .menu-profile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        border-bottom: 1px solid #e0e0e0;
+        background: #fff;
+    }
+
+    .menu-profile b {
+        font-size: 20px !important;
+        font-weight: 700;
+        color: #111;
+    }
+
+    .menu-profile .profile-img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50% !important;
+        object-fit: cover;
+    }
+
+    #navbar > .hamburger {
+        right: 15px;
+    }
+}

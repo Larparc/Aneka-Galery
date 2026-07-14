@@ -225,60 +225,61 @@ $completeOrders = array_values($completeOrders);
                     </div>
                 </header>
 
-                <main class="content">
-                    <h1>Dashboard</h1>
+        <main class="content">
+            <h1>Dashboard</h1>
 
-                    <div class="cards">
-                        <div class="card">
-                            <div>
-                                <i class="fas fa-shopping-cart"></i>
-                                <span>Total Order</span></div>
-                            <b><?= $totalOrder; ?></b>
-                        </div>
-                        <div class="card">
-                            <div>
-                                <i class="fas fa-hourglass-half"></i>
-                                <span>Order Pending</span></div>
-                            <b><?= $pendingCount; ?></b>
-                        </div>
-                        <div class="card">
-                            <div>
-                                <i class="fas fa-check-circle"></i>
-                                <span>Order Complete</span></div>
-                            <b><?= $completeCount; ?></b>
-                        </div>
+            <div class="cards">
+                <div class="card">
+                    <div>
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Total Order</span>
                     </div>
-                    <!-- Uncomplete order (Pending) -->
-                    <div class="block">
-                        <div class="head">
-                            <h2>Uncomplete order</h2>
-                            <a href="orderpending.php">Lihat semua</a>
-                        </div>
-                        <div class="list" id="dash-pending">
-                            <?php if (!empty($pendingOrders)): ?>
-                            <?php foreach ($pendingOrders as $order): ?>
-                        <?php
-                    $date = new DateTime($order['date']);
-                    $formattedDate = $date->format('d M Y H:i');
-                    $avatarChar = strtoupper(substr($order['username'], 0, 1));
-                    // Ambil detail pertama untuk ringkasan
-                    $firstDetail = $order['details'][0] ?? null;
-                    $detailText = '';
-                    if ($firstDetail) {
-                        $detailText = ($firstDetail['service'] ?? 'Print') . ' | ' .
-                                      ($firstDetail['paper'] ?? 0) . ' pcs | ' .
-                                      ($firstDetail['size'] ?? '-') . ' | ' .
-                                      ($firstDetail['colour'] ?? '-') . ' | ' .
-                                      ($firstDetail['output'] ?? '-');
-                    } else {
-                        $detailText = 'Tidak ada detail';
-                    }
-                ?>
+                    <b><?= $totalOrder; ?></b>
+                </div>
+                <div class="card">
+                    <div>
+                        <i class="fas fa-hourglass-half"></i>
+                        <span>Order Pending</span>
+                    </div>
+                    <b><?= $pendingCount; ?></b>
+                </div>
+                <div class="card">
+                    <div>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Order Complete</span>
+                    </div>
+                    <b><?= $completeCount; ?></b>
+                </div>
+            </div>
+
+            <!-- Uncomplete order (Pending) -->
+            <div class="block">
+                <div class="head">
+                    <h2>Uncomplete order</h2>
+                    <a href="orderpending.php">Lihat semua</a>
+                </div>
+                <div class="list" id="dash-pending">
+                    <?php if (!empty($pendingOrders)): ?>
+                        <?php foreach ($pendingOrders as $order): ?>
+                            <?php
+                                $date = new DateTime($order['date']);
+                                $formattedDate = $date->format('d M Y H:i');
+                                $firstDetail = $order['details'][0] ?? null;
+                                $detailText = '';
+                                if ($firstDetail) {
+                                    $detailText = ($firstDetail['service'] ?? 'Print') . ' | ' .
+                                                  ($firstDetail['paper'] ?? 0) . ' pcs | ' .
+                                                  ($firstDetail['size'] ?? '-') . ' | ' .
+                                                  ($firstDetail['colour'] ?? '-') . ' | ' .
+                                                  ($firstDetail['output'] ?? '-');
+                                } else {
+                                    $detailText = 'Tidak ada detail';
+                                }
+                            ?>
                             <div class="dash-order-card">
-                                <img
-                                    src="https://ui-avatars.com/api/?name=<?= urlencode($order['username']) ?>&background=0c5d59&color=fff&size=44"
-                                    alt="<?= htmlspecialchars($order['username']) ?>"
-                                    class="avatar-img">
+                                <img src="https://ui-avatars.com/api/?name=<?= urlencode($order['username']) ?>&background=0c5d59&color=fff&size=44"
+                                     alt="<?= htmlspecialchars($order['username']) ?>"
+                                     class="avatar-img">
                                 <div class="body">
                                     <div class="top">
                                         <span class="name"><?= htmlspecialchars($order['username']) ?></span>
@@ -286,7 +287,8 @@ $completeOrders = array_values($completeOrders);
                                             <span class="order-id">#<?= $order['order_id'] ?></span>
                                             <span>
                                                 <i class="far fa-calendar-alt"></i>
-                                                <?= $formattedDate ?></span>
+                                                <?= $formattedDate ?>
+                                            </span>
                                         </span>
                                     </div>
                                     <div class="details">
@@ -295,43 +297,41 @@ $completeOrders = array_values($completeOrders);
                                 </div>
                                 <span class="status-badge pending">Pending</span>
                             </div>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <div class="empty-order">Tidak ada order pending.</div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="empty-order">Tidak ada order pending.</div>
+                    <?php endif; ?>
+                </div>
+            </div>
 
-                    <!-- Complete Order -->
-                    <div class="block">
-                        <div class="head">
-                            <h2>Complete Order</h2>
-                            <a href="ordercomplete.php">Lihat semua</a>
-                        </div>
-                        <div class="list" id="dash-complete">
-                            <?php if (!empty($completeOrders)): ?>
-                            <?php foreach ($completeOrders as $order): ?>
-                        <?php
-                    $date = new DateTime($order['date']);
-                    $formattedDate = $date->format('d M Y H:i');
-                    $avatarChar = strtoupper(substr($order['username'], 0, 1));
-                    $firstDetail = $order['details'][0] ?? null;
-                    $detailText = '';
-                    if ($firstDetail) {
-                        $detailText = ($firstDetail['service'] ?? 'Print') . ' | ' .
-                                      ($firstDetail['paper'] ?? 0) . ' pcs | ' .
-                                      ($firstDetail['size'] ?? '-') . ' | ' .
-                                      ($firstDetail['colour'] ?? '-') . ' | ' .
-                                      ($firstDetail['output'] ?? '-');
-                    } else {
-                        $detailText = 'Tidak ada detail';
-                    }
-                ?>
+            <!-- Complete Order -->
+            <div class="block">
+                <div class="head">
+                    <h2>Complete Order</h2>
+                    <a href="ordercomplete.php">Lihat semua</a>
+                </div>
+                <div class="list" id="dash-complete">
+                    <?php if (!empty($completeOrders)): ?>
+                        <?php foreach ($completeOrders as $order): ?>
+                            <?php
+                                $date = new DateTime($order['date']);
+                                $formattedDate = $date->format('d M Y H:i');
+                                $firstDetail = $order['details'][0] ?? null;
+                                $detailText = '';
+                                if ($firstDetail) {
+                                    $detailText = ($firstDetail['service'] ?? 'Print') . ' | ' .
+                                                  ($firstDetail['paper'] ?? 0) . ' pcs | ' .
+                                                  ($firstDetail['size'] ?? '-') . ' | ' .
+                                                  ($firstDetail['colour'] ?? '-') . ' | ' .
+                                                  ($firstDetail['output'] ?? '-');
+                                } else {
+                                    $detailText = 'Tidak ada detail';
+                                }
+                            ?>
                             <div class="dash-order-card">
-                                <img
-                                    src="https://ui-avatars.com/api/?name=<?= urlencode($order['username']) ?>&background=0c5d59&color=fff&size=44"
-                                    alt="<?= htmlspecialchars($order['username']) ?>"
-                                    class="avatar-img">
+                                <img src="https://ui-avatars.com/api/?name=<?= urlencode($order['username']) ?>&background=0c5d59&color=fff&size=44"
+                                     alt="<?= htmlspecialchars($order['username']) ?>"
+                                     class="avatar-img">
                                 <div class="body">
                                     <div class="top">
                                         <span class="name"><?= htmlspecialchars($order['username']) ?></span>
@@ -339,7 +339,8 @@ $completeOrders = array_values($completeOrders);
                                             <span class="order-id">#<?= $order['order_id'] ?></span>
                                             <span>
                                                 <i class="far fa-calendar-alt"></i>
-                                                <?= $formattedDate ?></span>
+                                                <?= $formattedDate ?>
+                                            </span>
                                         </span>
                                     </div>
                                     <div class="details">
@@ -348,21 +349,22 @@ $completeOrders = array_values($completeOrders);
                                 </div>
                                 <span class="status-badge complete">Complete</span>
                             </div>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <div class="empty-order">Tidak ada order complete.</div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="empty-order">Tidak ada order complete.</div>
+                    <?php endif; ?>
+                </div>
+            </div>
 
-                    <div class="block">
-                        <div class="head">
-                            <h2>Customer Contact</h2>
-                            <a href="customercontact.php">Lihat semua</a>
-                        </div>
-                        <div class="list" id="dash-contact">
-                            <?php if (!empty($result_contact)): ?>
-                            <?php foreach ($result_contact as $row): ?>
+            <!-- Customer Contact -->
+            <div class="block">
+                <div class="head">
+                    <h2>Customer Contact</h2>
+                    <a href="customercontact.php">Lihat semua</a>
+                </div>
+                <div class="list" id="dash-contact">
+                    <?php if (!empty($result_contact)): ?>
+                        <?php foreach ($result_contact as $row): ?>
                             <div class="row">
                                 <div class="left">
                                     <i></i>
@@ -375,16 +377,17 @@ $completeOrders = array_values($completeOrders);
                                     <span><?php echo htmlspecialchars(date('d M Y H:i', strtotime($row['date']))); ?></span>
                                 </div>
                             </div>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <div class="empty">No incoming messages yet.</div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </main>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="empty">No incoming messages yet.</div>
+                    <?php endif; ?>
+                </div>
             </div>
-        </div>
 
-        <script src="../js/panel.js"></script>
-    </body>
+        </main>
+    </div>
+</div>
+
+<script src="../js/panel.js"></script>
+</body>
 </html>

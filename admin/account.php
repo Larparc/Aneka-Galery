@@ -21,6 +21,7 @@ while ($row = mysqli_fetch_assoc($res)) {
   <meta charset="UTF-8">
   <title>Account - Aneka Galery</title>
   <link rel="stylesheet" href="../css/account.css">
+  <link rel="stylesheet" href="../css/notif.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="shortcut icon" href="../img/anekagalery_32x32.png">
 </head>
@@ -30,12 +31,14 @@ while ($row = mysqli_fetch_assoc($res)) {
 
   <aside class="sidebar" id="sidebar">
     <div class="logo">
-      <i><img src="../img/anekagalery_32x32.png" alt="logo"></i>
-      <div>
-        <b>ANEKA GALERI</b>
-        <span>Digital Printing</span>
-      </div>
-    </div>
+            <i><img src="../img/anekagalery_32x32.png" alt=""></i>
+            <div>
+                <a href="../index.php">
+                    <b>ANEKA GALERI</b>
+                    <span>Digital Printing</span>
+                </a>
+            </div>
+        </div>
 
     <nav>
                 <a href="panel.php">
