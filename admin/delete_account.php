@@ -33,7 +33,23 @@ if ($deleteOrders) {
     mysqli_stmt_close($deleteOrders);
 }
 
-// 3. Hapus profil user
+// 3. Hapus customer contact yang terkait dengan user ini
+$deleteContacts = mysqli_prepare($conn, "DELETE FROM contacts WHERE user_id = ?");
+if ($deleteContacts) {
+    mysqli_stmt_bind_param($deleteContacts, "i", $id);
+    mysqli_stmt_execute($deleteContacts);
+    mysqli_stmt_close($deleteContacts);
+}
+
+// 4. Hapus announcements yang dibuat oleh user ini
+$deleteAnnouncements = mysqli_prepare($conn, "DELETE FROM announcements WHERE user_id = ?");
+if ($deleteAnnouncements) {
+    mysqli_stmt_bind_param($deleteAnnouncements, "i", $id);
+    mysqli_stmt_execute($deleteAnnouncements);
+    mysqli_stmt_close($deleteAnnouncements);
+}
+
+// 5. Hapus profil user
 $stmt = mysqli_prepare($conn, "DELETE FROM profiles WHERE user_id = ?");
 if ($stmt) {
     mysqli_stmt_bind_param($stmt, "i", $id);
