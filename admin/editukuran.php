@@ -125,6 +125,9 @@ if ($result && $result->num_rows > 0) {
             <a href="account.php">
                 <i class="fas fa-user"></i> 
                 Account</a>
+            <a href="announcement.php">
+                <i class="fas fa-bullhorn"></i> 
+                Announcement</a>
 
             <small>Pages</small>
             <a href="project.php">

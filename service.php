@@ -11,6 +11,14 @@ $query_service = mysqli_query($conn, "SELECT * FROM services");
 $query_size = mysqli_query($conn, "SELECT * FROM sizes");
 $query_type = mysqli_query($conn, "SELECT * FROM types");
 $query_output = mysqli_query($conn, "SELECT * FROM outputs");
+
+// Koneksi PDO untuk announcement
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e){
+    $pdo = null;
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +32,7 @@ $query_output = mysqli_query($conn, "SELECT * FROM outputs");
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
         <title>Service - Aneka Galery</title>
         <link rel="stylesheet" href="css/service.css">
+        <link rel="stylesheet" href="css/announcement_banner.css">
     </head>
     <body>
         <section id="navbar">
@@ -54,6 +63,8 @@ $query_output = mysqli_query($conn, "SELECT * FROM outputs");
                 </a>
             </div>
         </section>
+
+        <?php include "announcement_banner.php"; ?>
 
         <div class="service-hero-wrapper">
             <div class="service-slider">

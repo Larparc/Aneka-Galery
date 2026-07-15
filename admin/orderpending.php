@@ -105,6 +105,7 @@ $ordersPending = array_values($orderList);
         <nav>
             <a href="panel.php"><i class="fas fa-th-large"></i> Dashboard</a>
             <a href="account.php"><i class="fas fa-user"></i> Account</a>
+            <a href="announcement.php"><i class="fas fa-bullhorn"></i> Announcement</a>
             <small>Pages</small>
             <a href="project.php"><i class="fas fa-folder-open"></i> Project</a>
             <a>

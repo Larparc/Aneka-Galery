@@ -57,6 +57,10 @@ while ($row = mysqli_fetch_assoc($res)) {
       <a href="account.php" class="active">
         <i class="fas fa-user"></i>
         Account</a>
+      <a href="announcement.php">
+        <i class="fas fa-bullhorn"></i> 
+        Announcement</a>
+
       <small>Pages</small>
       <a href="project.php">
         <i class="fas fa-folder-open"></i>

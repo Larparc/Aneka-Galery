@@ -129,7 +129,11 @@ if ($result && $result->num_rows > 0) {
                 <i class="fas fa-th-large"></i> 
                 Dashboard</a>
             <a href="account.php">
-                <i class="fas fa-user"></i> Account</a>
+                <i class="fas fa-user"></i> 
+                Account</a>
+            <a href="announcement.php">
+                <i class="fas fa-bullhorn"></i> 
+                Announcement</a>
                 
             <small>Pages</small>
             <a href="project.php">

@@ -1,6 +1,14 @@
 <?php
 include "koneksi.php";
 include "admin/security.php";
+
+// Koneksi PDO untuk announcement
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e){
+    $pdo = null;
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +22,7 @@ include "admin/security.php";
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
         <title>About Us - Aneka Galery</title>
         <link rel="stylesheet" href="css/aboutus.css">
+        <link rel="stylesheet" href="css/announcement_banner.css">
     </head>
     <body>
 
@@ -45,6 +54,8 @@ include "admin/security.php";
                 </a>
             </div>
         </section>
+
+        <?php include "announcement_banner.php"; ?>
 
         <div class="about-hero-wrapper">
             <div class="about-slider">
